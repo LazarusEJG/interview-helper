@@ -1,0 +1,12 @@
+[
+    {
+        "id": "cc1",
+        "name": "Freshman Year",
+        "description": "A course covering the fundamentals of Java programming."
+    },
+    {
+        "id": "cc2",
+        "name": "Sophomore Year",
+        "description": "A course covering advanced Java programming concepts."
+    }
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "id": "c1",
+        "author": "playboicarti",
+        "publish_time": "2026-01-18",
+        "replies": [
+            "c5",
+            "c6"
+        ],
+        "score": 10,
+        "content": "Great solution! I like how you used a hash map."
+    },
+    {
+        "id": "c2",
+        "author": "travisscott",
+        "publish_time": "2026-01-19",
+        "replies": [
+            "c7",
+            "c8"
+        ],
+        "score": 5,
+        "content": "I think the brute-force solution is easier to understand for beginners."
+    }
+]

@@ -1,0 +1,28 @@
+[
+    {
+        "id": "s1",
+        "author": "playboicarti",
+        "publish_time": "2026-01-16",
+        "replies": [
+            "c1",
+            "c2"
+        ],
+        "score": 45,
+        "file": "solutions/s1.java",
+        "explanation": "This solution uses a hash map to store the indices of the numbers as we iterate through the array. For each number, we check if the complement (target - current number) exists in the hash map. If it does, we return the indices.",
+        "verified": true
+    },
+    {
+        "id": "s2",
+        "author": "playboicarti",
+        "publish_time": "2026-01-17",
+        "replies": [
+            "c3",
+            "c4"
+        ],
+        "score": 30,
+        "file": "solutions/s2.java",
+        "explanation": "This solution uses a brute-force approach, checking all pairs of numbers to see if they add up to the target. This is less efficient than the hash map solution.",
+        "verified": false
+    }
+]

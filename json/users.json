@@ -1,6 +1,65 @@
 [
     {
-        "id": 3fa7a504-89fe-46f7-bb93-80ef40dd1671,
-        
+        "id": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+        "type": "CONTRIBUTOR",
+        "eMail": "playboicarti@gmail.com",
+        "username": "playboicarti",
+        "password": "WholeLottaRed123",
+        "interests": [
+            "java",
+            "algorithms"
+        ],
+        "current_streak": 7,
+        "longest_streak": 14,
+        "submitted_solutions": [
+            "s1",
+            "s2"
+        ],
+        "bookmarked_questions": [
+            "q1",
+            "q2"
+        ],
+        "bookmarked_solutions": [
+            "s3",
+            "s4"
+        ],
+        "completed_courses": [
+            "cc1",
+            "cc2"
+        ],
+        "last_streak_date": "2026-01-03",
+        "received_votes": 150
+    },
+    {
+        "id": "57b3c909-973d-462d-b851-f8a673d3e70b",
+        "type": "REGISTERED",
+        "eMail": "travisscott@gmail.com",
+        "username": "travisscott",
+        "password": "feinfeinfein123",
+        "interests": [
+            "java",
+            "data structures"
+        ],
+        "current_streak": 14,
+        "longest_streak": 21,
+        "submitted_solutions": [
+            "s3",
+            "s4"
+        ],
+        "bookmarked_questions": [
+            "q3",
+            "q4"
+        ],
+        "bookmarked_solutions": [
+            "s5",
+            "s6"
+        ],
+        "completed_courses": [
+            "c1",
+            "c2",
+            "c3"
+        ],
+        "last_streak_date": "2025-12-26",
+        "received_votes": 467
     }
 ]
