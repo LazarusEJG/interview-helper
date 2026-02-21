@@ -20,5 +20,53 @@
         ],
         "score": 5,
         "content": "I think the brute-force solution is easier to understand for beginners."
+    },
+    {
+        "id": "c3",
+        "author": "playboicarti",
+        "publish_time": "2026-01-23",
+        "replies": [],
+        "score": 15,
+        "content": "Your two-pointer solution is efficient and handles edge cases well."
+    },
+    {
+        "id": "c4",
+        "author": "travisscott",
+        "publish_time": "2026-01-24",
+        "replies": [],
+        "score": 20,
+        "content": "I prefer the built-in string functions for simplicity, but your approach is more efficient."
+    },
+    {
+        "id": "c5",
+        "author": "playboicarti",
+        "publish_time": "2026-01-25",
+        "replies": [],
+        "score": 8,
+        "content": "Thanks for the feedback! I agree that the brute-force method is more straightforward for beginners."
+    },
+    {
+        "id": "c6",
+        "author": "travisscott",
+        "publish_time": "2026-01-26",
+        "replies": [],
+        "score": 12,
+        "content": "I appreciate your comment! The hash map solution is definitely more efficient for larger inputs."
+    },
+    {
+        "id": "c7",
+        "author": "playboicarti",
+        "publish_time": "2026-01-27",
+        "replies": [],
+        "score": 10,
+        "content": "Thank you! The two-pointer technique is a common approach for palindrome problems."
+    },
+    {
+        "id": "c8",
+        "author": "travisscott",
+        "publish_time": "2026-01-28",
+        "replies": [],
+        "score": 18,
+        "content": "I appreciate your feedback! The built-in functions are great for simplicity, but the two-pointer method is more efficient."
     }
 ]

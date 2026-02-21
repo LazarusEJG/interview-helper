@@ -14,7 +14,7 @@
     },
     {
         "id": "s2",
-        "author": "playboicarti",
+        "author": "travisscott",
         "publish_time": "2026-01-17",
         "replies": [
             "c3",
@@ -24,5 +24,31 @@
         "file": "solutions/s2.java",
         "explanation": "This solution uses a brute-force approach, checking all pairs of numbers to see if they add up to the target. This is less efficient than the hash map solution.",
         "verified": false
+    },
+    {
+        "id": "s3",
+        "author": "playboicarti",
+        "publish_time": "2026-01-21",
+        "replies": [
+            "c5",
+            "c6"
+        ],
+        "score": 40,
+        "file": "solutions/s3.java",
+        "explanation": "This solution checks if the string is the same when reversed. It uses built-in string functions to reverse the string and compare it to the original.",
+        "verified": true
+    },
+    {
+        "id": "s4",
+        "author": "travisscott",
+        "publish_time": "2026-01-22",
+        "replies": [
+            "c7",
+            "c8"
+        ],
+        "score": 25,
+        "file": "solutions/s4.java",
+        "explanation": "This solution uses a two-pointer technique, comparing characters from the start and end of the string moving towards the center. It also ignores non-alphanumeric characters and is case-insensitive.",
+        "verified": true
     }
 ]

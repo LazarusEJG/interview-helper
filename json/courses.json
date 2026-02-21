@@ -8,5 +8,15 @@
         "id": "cc2",
         "name": "Sophomore Year",
         "description": "A course covering advanced Java programming concepts."
+    },
+    {
+        "id": "cc3",
+        "name": "Junior Year",
+        "description": "A course covering data structures and algorithms in Java."
+    },
+    {
+        "id": "cc4",
+        "name": "Senior Year",
+        "description": "A course covering system design and software engineering principles."
     }
 ]
