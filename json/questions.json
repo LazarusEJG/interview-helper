@@ -1,0 +1,160 @@
+[
+  {
+    "id": "c032db04-7c23-4cd2-bff6-aa6107a19a9d",
+    "name": "Freshman Year",
+    "description": "A course covering the fundamentals of Java programming."
+  },
+  {
+    "id": "405b1536-4c74-4db9-911e-3414e5312f7c",
+    "name": "Sophomore Year",
+    "description": "A course covering advanced Java programming concepts."
+  },
+  {
+    "id": "f206c365-b6be-4fc5-94d8-38d1be8b0620",
+    "name": "Junior Year",
+    "description": "A course covering data structures and algorithms in Java."
+  },
+  {
+    "id": "8525bba9-0ce1-4a93-ad87-edaeed1877e3",
+    "name": "Senior Year",
+    "description": "A course covering system design and software engineering principles."
+  },
+  {
+    "id": "2a91f234-9ac3-4f31-89fe-dd430ceab090",
+    "title": "Two Sum Problem",
+    "difficulty": 1,
+    "score": 100,
+    "content": "Given an array of integers nums and an integer target, return indicies of the two numbers that add up to that target.",
+    "categories": [
+      "arrays",
+      "algorithms"
+    ],
+    "author": "playboicarti",
+    "publishTime": "2026-01-15",
+    "hints": [
+      "Try using a hash map.",
+      "Consider edge cases."
+    ],
+    "solutions": [
+      {
+        "id": "59bd2303-a473-4132-b547-53f13efb7529",
+        "author": "playboicarti",
+        "publishTime": "2026-01-16",
+        "score": 45,
+        "file": "solutions/59bd2303-a473-4132-b547-53f13efb7529.java",
+        "explanation": "This solution uses a hash map to store the indices...",
+        "verified": true,
+        "comments": [
+          {
+            "id": "7d5dfaec-1c79-4225-a3b4-4debf28f9183",
+            "author": "playboicarti",
+            "publishTime": "2026-01-18",
+            "score": 10,
+            "content": "Great solution! I like how you used a hash map."
+          },
+          {
+            "id": "69c552b4-2a36-4a97-93fe-3cb185d706ac",
+            "author": "travisscott",
+            "publishTime": "2026-01-19",
+            "score": 5,
+            "content": "I think the brute-force solution is easier to understand for beginners."
+          }
+        ]
+      },
+      {
+        "id": "9da25f24-9a89-4b2e-8842-72e2256f5cec",
+        "author": "travisscott",
+        "publishTime": "2026-01-17",
+        "score": 30,
+        "file": "solutions/9da25f24-9a89-4b2e-8842-72e2256f5cec.java",
+        "explanation": "This solution uses a brute-force approach...",
+        "verified": false,
+        "comments": [
+          {
+            "id": "ba472d24-e1ab-41ed-bb7e-2f75d5a8a487",
+            "author": "playboicarti",
+            "publishTime": "2026-01-23",
+            "score": 15,
+            "content": "Your two-pointer solution is efficient and handles edge cases well."
+          },
+          {
+            "id": "2cda2d45-f36d-46b0-858d-571243fe1947",
+            "author": "travisscott",
+            "publishTime": "2026-01-24",
+            "score": 20,
+            "content": "I prefer the built-in string functions for simplicity..."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a2b5a068-da41-4098-a3f4-5d072e40708f",
+    "title": "Palindrome Checker",
+    "difficulty": 1,
+    "score": 100,
+    "content": "Write a function that checks if a given string is a palindrome.",
+    "categories": [
+      "strings",
+      "algorithms"
+    ],
+    "author": "travisscott",
+    "publishTime": "2026-01-20",
+    "hints": [
+      "Compare from both ends.",
+      "Consider regex for cleaning."
+    ],
+    "solutions": [
+      {
+        "id": "164a6004-e9cf-46c1-8e0b-0d39ebdc4273",
+        "author": "playboicarti",
+        "publishTime": "2026-01-21",
+        "score": 40,
+        "file": "solutions/164a6004-e9cf-46c1-8e0b-0d39ebdc4273.java",
+        "explanation": "This solution checks if the string is the same when reversed...",
+        "verified": true,
+        "comments": [
+          {
+            "id": "b35f0bf4-704d-48fd-a37f-1045a58a116b",
+            "author": "playboicarti",
+            "publishTime": "2026-01-25",
+            "score": 8,
+            "content": "Thanks for the feedback! I agree that the brute-force method is more straightforward..."
+          },
+          {
+            "id": "72bd9bc9-b3f3-4e97-9ff9-cf66968c1837",
+            "author": "travisscott",
+            "publishTime": "2026-01-26",
+            "score": 12,
+            "content": "I appreciate your comment! The hash map solution is definitely more efficient..."
+          }
+        ]
+      },
+      {
+        "id": "c7a988c4-9e9b-4a7a-8a98-a3e0b0b3152d",
+        "author": "travisscott",
+        "publishTime": "2026-01-22",
+        "score": 25,
+        "file": "solutions/c7a988c4-9e9b-4a7a-8a98-a3e0b0b3152d.java",
+        "explanation": "This solution uses a two-pointer technique...",
+        "verified": true,
+        "comments": [
+          {
+            "id": "a9540f40-e783-42da-9ca3-73d1cf3e1ec8",
+            "author": "playboicarti",
+            "publishTime": "2026-01-27",
+            "score": 10,
+            "content": "Thank you! The two-pointer technique is a common approach..."
+          },
+          {
+            "id": "c8",
+            "author": "travisscott",
+            "publishTime": "2026-01-28",
+            "score": 18,
+            "content": "I appreciate your feedback! The built-in functions are great..."
+          }
+        ]
+      }
+    ]
+  }
+]
