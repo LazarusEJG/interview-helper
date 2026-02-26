@@ -15,6 +15,6 @@ public abstract class DataConstants {
     protected static final String USER_BOOKMARKED_SOLUTIONS = "bookmarked_solutions";
     protected static final String USER_COMPLETED_COURSES = "completed_courses";
     protected static final String USER_LAST_STREAK_DAY = "last_streak_day";
-    protected static final String USER_RECIEVED_VOTES = "recived_votes";
+    protected static final String USER_RECEIVED_votes = "received_votes";
 
 }
