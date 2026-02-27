@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Question implements Commentable {
-    private UUID id;
+    private UUID id; //added to constructor because I felt it probably needed to be there
     private String title;
     private int difficulty;
     private int score;
@@ -22,10 +22,11 @@ public class Question implements Commentable {
         this.content = content;
     }
 
-    public Question(User author, String content, String title,
+    public Question(UUID id, User author, String content, String title,
         ArrayList<String> categories, ArrayList<Solution> solutions,
         ArrayList<Comment> comments, ArrayList<String> hints,
         LocalDateTime publishTime, int score) {
+            this.id = id; //refer to UUID instance variable
             this.author = author;
             this.content = content;
             this.title = title;
