@@ -3,7 +3,7 @@ package com.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Response {
+public abstract class Response implements Commentable {
     private User author;
     private LocalDateTime publishTime;
     private ArrayList<Comment> replies;
