@@ -2,24 +2,24 @@ package com.model.Persistence;
 
 import com.model.*;
 
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 public final class UserWriter extends DataConstants {
 	public static void saveUsers(ArrayList<User> users) {
 		try {
-			FileWriter writer = new FileWriter(USER_FILE_NAME);
-			JSONParser parser = new JSONParser();
+			JSONArray usersJSON = new JSONArray();
 			for (User user : users) {
 				JSONObject userJSON = getUserJSON(user);
+				usersJSON.add(userJSON);
 			}
+
+			FileWriter writer = new FileWriter(USER_FILE_NAME);
+			usersJSON.writeJSONString(writer);
+			writer.close();
 		} catch (Exception e) {
 
 		}
@@ -55,15 +55,20 @@ public final class UserWriter extends DataConstants {
 		}
 		userJSON.put(USER_INTERESTS, bookmarkedQuestions);
 
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
-		userJSON.put(USER_USER_NAME, user.getUsername());
+		JSONArray bookmarkedSolutions = new JSONArray();
+		for (Solution question : user.getBookmarkedSolutions()) {
+			bookmarkedSolutions.add(question.getId());
+		}
+		userJSON.put(USER_INTERESTS, bookmarkedSolutions);
+
+		JSONArray courses = new JSONArray();
+		for (String course : user.getCompletedCourses()) {
+			interests.add(course);
+		}
+		userJSON.put(USER_COMPLETED_COURSES, courses);
+
+		userJSON.put(USER_LAST_STREAK_DAY, user.getLastStreakDate());
+		userJSON.put(USER_RECEIVED_VOTES, user.getReceivedVotes());
 
 		return userJSON;
 	}
