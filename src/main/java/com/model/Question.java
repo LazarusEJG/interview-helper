@@ -66,4 +66,40 @@ public class Question implements Commentable {
 	public ArrayList<Solution> getSolutions() {
 		return solutions; // temporary statement
 	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public int getDifficulty() {
+		return difficulty;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public ArrayList<String> getCategories() {
+		return categories;
+	}
+
+	public ArrayList<Comment> getComments() {
+		return comments;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public LocalDateTime getPublishTime() {
+		return publishTime;
+	}
 }
