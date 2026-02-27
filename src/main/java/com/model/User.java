@@ -71,4 +71,48 @@ public class User {
 	public void receiveDownvote() {
 
 	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public UserType getType() {
+		return type;
+	}
+
+	public String geteMail() {
+		return eMail;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public ArrayList<String> getInterests() {
+		return interests;
+	}
+
+	public int getCurrentStreak() {
+		return currentStreak;
+	}
+
+	public int getLongestStreak() {
+		return longestStreak;
+	}
+
+	public ArrayList<String> getCompletedCourses() {
+		return completedCourses;
+	}
+
+	public LocalDate getLastStreakDate() {
+		return lastStreakDate;
+	}
+
+	public int getReceivedVotes() {
+		return receivedVotes;
+	}
 }
