@@ -18,13 +18,23 @@ public class Question implements Commentable {
     private LocalDateTime publishTime;
 
     public Question (User author, String content) {
-
+        this.author = author;
+        this.content = content;
     }
 
     public Question(User author, String content, String title,
         ArrayList<String> categories, ArrayList<Solution> solutions,
         ArrayList<Comment> comments, ArrayList<String> hints,
         LocalDateTime publishTime, int score) {
+            this.author = author;
+            this.content = content;
+            this.title = title;
+            this.categories = categories;
+            this.solutions = solutions;
+            this.comments = comments;
+            this.hints = hints;
+            this.publishTime = publishTime;
+            this.score = score;
 
     }
 
@@ -45,14 +55,14 @@ public class Question implements Commentable {
     }
 
     public void removeResponse(User user, Response response) {
-
+        
     }
 
-    public String getHints() {
-    return null; //temporary statement
+    public ArrayList<String> getHints() {
+    return hints; //temporary statement & changed to match return types (change if wrong)
     }
 
     public ArrayList<Solution> getSolutions() {
-     return null; //temporary statement
+     return solutions; //temporary statement
     }
 }
