@@ -33,24 +33,27 @@ public final class UserLoader extends DataConstants {
 				int currentStreak = (int) userJSON.get(USER_CURRENT_STREAK);
 				int longestStreak = (int) userJSON.get(USER_LONGEST_STREAK);
 
-				ArrayList<UUID> submittedSolutionsUUID = (ArrayList<UUID>) userJSON.get(USER_SUBMITTED_SOLUTIONS);
-				ArrayList<UUID> bookmarkedQuestionsUUID = (ArrayList<UUID>) userJSON.get(USER_SUBMITTED_SOLUTIONS);
-				ArrayList<UUID> bookmarkedSolutionsUUID = (ArrayList<UUID>) userJSON.get(USER_SUBMITTED_SOLUTIONS);
+				JSONArray submittedSolutionsUUID = (JSONArray) userJSON.get(USER_SUBMITTED_SOLUTIONS);
+				JSONArray bookmarkedQuestionsUUID = (JSONArray) userJSON.get(USER_SUBMITTED_SOLUTIONS);
+				JSONArray bookmarkedSolutionsUUID = (JSONArray) userJSON.get(USER_SUBMITTED_SOLUTIONS);
 
 				ArrayList<String> completedCourses = (ArrayList<String>) userJSON.get(USER_COMPLETED_COURSES);
-				LocalDate lastStreakDate = (LocalDate) userJSON.get(USER_LAST_STREAK_DAY);
+				LocalDate lastStreakDate = LocalDate.parse((String) userJSON.get(USER_LAST_STREAK_DAY));
 				int receivedVotes = (int) userJSON.get(USER_RECEIVED_VOTES);
 
 				ArrayList<Solution> submittedSolutions = new ArrayList<Solution>(submittedSolutionsUUID.size());
-				for (UUID solutionID : submittedSolutionsUUID) {
+				for (Object solutionID : submittedSolutionsUUID) {
+					UUID uuid = UUID.fromString((String) solutionID);
 					// TODO: requires QuestionList
 				}
 				ArrayList<Question> bookmarkedQuestions = new ArrayList<Question>(bookmarkedQuestionsUUID.size());
-				for (UUID questionID : bookmarkedQuestionsUUID) {
+				for (Object questionID : bookmarkedQuestionsUUID) {
+					UUID uuid = UUID.fromString((String) questionID);
 					// TODO: requires QuestionList
 				}
 				ArrayList<Solution> bookmarkedSolutions = new ArrayList<Solution>(bookmarkedSolutionsUUID.size());
-				for (UUID solutionID : bookmarkedSolutionsUUID) {
+				for (Object solutionID : bookmarkedSolutionsUUID) {
+					UUID uuid = UUID.fromString((String) solutionID);
 					// TODO: requires QuestionList
 				}
 
