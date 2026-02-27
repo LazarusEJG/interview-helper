@@ -69,4 +69,16 @@ public class User {
     public void receiveDownvote() {
 
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UUID getUuid() {
+        return id;
+    }
 }

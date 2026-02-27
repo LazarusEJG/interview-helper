@@ -1,51 +1,92 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 public class QuestionList {
     private ArrayList<Question> questions;
-    private ArrayList<String> categoryList; //Wasn't sure where to add a stub for this at
     private static QuestionList instance;
     private Question dailyQuestion;
     private Question currentQuestion; //added for setCurrentQuestion
 
     private QuestionList() {
-        questions = QuestionLoader.getQuestions();
+        questions = new ArrayList<Question>();
+        instance = this;
     }
 
     public QuestionList getInstance() {
         if(instance == null) {
             instance = new QuestionList();
         } 
-        return instance; //temporary statement
+        return instance; 
     }
 
     public Question getDailyQuestion() {
-        return dailyQuestion; //temporary statement
+        if (questions == null || questions.size() == 0) {
+            return null;
+        }
+        int index = (int) (LocalDate.now().toEpochDay()) % questions.size();
+        return questions.get(index); 
     }
 
     public Question setCurrentQuestion(Question question) {
+        this.currentQuestion = question;
         return currentQuestion; //temporary statement
     }
 
     public boolean addQuestion(User author, String content) {
+        questions.add(new Question(author, content));
         return true; //temporary statement
     }
 
     public void removeQuestion(Question question) {
-
+        questions.remove(question);
     }
 
     public ArrayList<Question> getQuestions() {
-        return questions; //temporary statement
+        return questions; 
     }
 
-    public ArrayList<Question> getQuestions(ArrayList<String> tagFilter, int minDifficulty, int maxDifficulty,
-        boolean onlySolved, ArrayList<User> authors) {
-            return questions; //temporary statement
+    public ArrayList<Question> getQuestions(
+        ArrayList<String> tagFilter,
+        Integer minDifficulty, //Using object not primitive so you can call the method with various null args
+        Integer maxDifficulty,
+        boolean onlySolved,
+        ArrayList<User> authors) {
+
+            ArrayList<Question> filtered = new ArrayList<Question>();
+
+            for (Question question : questions) {
+                //Category tags
+                if (tagFilter != null) {
+
+                }
+
+                //Difficulty
+                if (minDifficulty != null && question.getDifficulty() < minDifficulty) {
+                    continue;
+                }
+
+                if (maxDifficulty != null && question.getDifficulty() > maxDifficulty) {
+                    continue;
+                }
+
+                //Solved
+                if (onlySolved && question.getSolutions().size() == 0) { //Needs to be reexamined
+                    continue;
+                }
+
+                //Authors
+                if (authors != null && authors.contains(question.getAuthor()) == false) {
+                    continue;
+                }
+                filtered.add(question);
+            }
+
+            return filtered; 
     }
 
     public void save(String filename) {
-
+        QuestionWriter.saveQuestions(questions);
     }
 }
