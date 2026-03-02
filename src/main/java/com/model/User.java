@@ -24,7 +24,7 @@ public class User {
 
 	}
 
-	public User(UUID id, String eMail, String username, String password, ArrayList<String> interests,
+	public User(UUID id, UserType userType, String eMail, String username, String password, ArrayList<String> interests,
 			int currentStreak, int longestStreak, ArrayList<Solution> submittedSolutions,
 			ArrayList<Question> bookmarkedQuestions,
 			ArrayList<Solution> bookmarkedSolutions, ArrayList<String> completedCourses, LocalDate lastStreakDate,

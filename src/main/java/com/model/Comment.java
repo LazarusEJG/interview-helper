@@ -1,14 +1,19 @@
 package com.model;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class Comment extends Response {
-    private String content;
+	private String content;
 
-    public Comment(User author, String content) {
-        super(author);
-        this.content = content;
-    }
+	public Comment(UUID id, User author, LocalDateTime publishTime, int score, ArrayList<Comment> replies,
+			String content) {
+		super(author, publishTime, replies, score);
+		this.content = content;
+	}
 
-    public String toString() {
-        return content;
-    }
+	public String toString() {
+		return content;
+	}
 }
