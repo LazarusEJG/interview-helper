@@ -2,40 +2,78 @@ package com.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public abstract class Response implements Commentable {
-    private User author;
-    private LocalDateTime publishTime;
-    private ArrayList<Comment> replies;
-    private int score;
-    private boolean flagged = false;
-    private boolean removed = false;
+	private UUID id;
+	private User author;
+	private LocalDateTime publishTime;
+	private ArrayList<Comment> replies;
+	private int score;
+	private boolean flagged = false;
+	private boolean removed = false;
 
-    public Response(User author) {
-        this.author = author;
-        publishTime = LocalDateTime.now();
-        replies = new ArrayList<Comment>();
-        score = 0;
-    }
+	public Response(User author) {
+		this.author = author;
+		publishTime = LocalDateTime.now();
+		replies = new ArrayList<Comment>();
+		score = 0;
+	}
 
-    public void addComment(Comment comment) {
-        replies.add(comment);
-    }
+	protected Response(UUID id, User author, LocalDateTime publishTime, ArrayList<Comment> replies, int score) {
+		this.id = id;
+		this.author = author;
+		this.publishTime = publishTime;
+		this.replies = replies;
+		this.score = score;
+	}
 
-    public void report() {
-        this.flagged = true;
-    }
+	public void addComment(Comment comment) {
+		replies.add(comment);
+	}
 
-    public void remove() {
-        this.removed = true;
-    }
+	public void report() {
+		this.flagged = true;
+	}
 
-    public void upVote() {
-        this.score++;
-    }
+	public void remove() {
+		this.removed = true;
+	}
 
-    public void downVote() {
-        this.score--;
-    }
+	public void upVote() {
+		this.score++;
+	}
+
+	public void downVote() {
+		this.score--;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public LocalDateTime getPublishTime() {
+		return publishTime;
+	}
+
+	public ArrayList<Comment> getReplies() {
+		return replies;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public boolean isFlagged() {
+		return flagged;
+	}
+
+	public boolean isRemoved() {
+		return removed;
+	}
 
 }
