@@ -1,6 +1,7 @@
 package com.model.Persistence;
 
 import com.model.*;
+import com.model.Persistence.QuestionDataConstants;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -72,8 +73,8 @@ public final class QuestionWriter extends QuestionDataConstants {
 		solutionJSON.put(QUESTION_SOLUTIONS_VERIFIED, solution.isVerified());
 		// Comments
 		JSONArray comments = new JSONArray();
-		for (Solution comment : solution.getComments()) {
-			comments.add(getSolutionJSON(comment));
+		for (Comment comment : solution.getReplies()) {
+			comments.add(getCommentJSON(comment));
 		}
 		solutionJSON.put(QUESTION_COMMENTS, comments);
 

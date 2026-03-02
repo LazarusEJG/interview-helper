@@ -1,4 +1,4 @@
-package com.model;
+package com.model.Persistence;
 
 public abstract class UserDataConstants {
 	protected static final String USER_FILE_NAME = "src/main/java/com/data/users.json";

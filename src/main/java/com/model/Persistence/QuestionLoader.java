@@ -1,6 +1,7 @@
 package com.model.Persistence;
 
 import com.model.*;
+import com.model.Persistence.QuestionDataConstants;
 
 import java.io.FileReader;
 import java.time.LocalDateTime;
@@ -96,7 +97,10 @@ public final class QuestionLoader extends QuestionDataConstants {
 			int score = (int) commentJSON.get(QUESTION_COMMENTS_SCORE);
 			String content = (String) commentJSON.get(QUESTION_COMMENTS_CONTENT);
 
-			comments.add(new Comment(id, author, publishTime, score, content));
+			JSONArray repliesJSON = (JSONArray) commentJSON.get(QUESTION_COMMENTS);
+			ArrayList<Comment> replies = getComments(repliesJSON);
+
+			comments.add(new Comment(id, author, publishTime, score, replies, content));
 		}
 		return comments;
 	}
