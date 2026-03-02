@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-public final class UserWriter extends DataConstants {
+public final class UserWriter extends UserDataConstants {
 	public static void saveUsers(ArrayList<User> users) {
 		try {
 			JSONArray usersJSON = new JSONArray();
@@ -21,7 +21,7 @@ public final class UserWriter extends DataConstants {
 			usersJSON.writeJSONString(writer);
 			writer.close();
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 		return;
 	}
