@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Solution extends Response {
-	private UUID id;
 	private String file;
 	private String explanation;
 	private boolean verified = false;
@@ -17,8 +16,7 @@ public class Solution extends Response {
 
 	public Solution(UUID id, User author, LocalDateTime publishTime, int score, String filename, String explanation,
 			boolean verified, ArrayList<Comment> comments) {
-		super(author, publishTime, comments, score);
-		this.id = id;
+		super(id, author, publishTime, comments, score);
 		this.file = filename;
 		this.explanation = explanation;
 		this.verified = verified;
@@ -26,10 +24,6 @@ public class Solution extends Response {
 
 	public void verify() {
 		this.verified = true;
-	}
-
-	public UUID getId() {
-		return id;
 	}
 
 	public String getFile() {

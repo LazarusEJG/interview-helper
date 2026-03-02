@@ -2,8 +2,10 @@ package com.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public abstract class Response implements Commentable {
+	private UUID id;
 	private User author;
 	private LocalDateTime publishTime;
 	private ArrayList<Comment> replies;
@@ -18,7 +20,8 @@ public abstract class Response implements Commentable {
 		score = 0;
 	}
 
-	protected Response(User author, LocalDateTime publishTime, ArrayList<Comment> replies, int score) {
+	protected Response(UUID id, User author, LocalDateTime publishTime, ArrayList<Comment> replies, int score) {
+		this.id = id;
 		this.author = author;
 		this.publishTime = publishTime;
 		this.replies = replies;
@@ -43,6 +46,34 @@ public abstract class Response implements Commentable {
 
 	public void downVote() {
 		this.score--;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public User getAuthor() {
+		return author;
+	}
+
+	public LocalDateTime getPublishTime() {
+		return publishTime;
+	}
+
+	public ArrayList<Comment> getReplies() {
+		return replies;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public boolean isFlagged() {
+		return flagged;
+	}
+
+	public boolean isRemoved() {
+		return removed;
 	}
 
 }
