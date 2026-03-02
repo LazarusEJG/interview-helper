@@ -22,7 +22,7 @@ public class Question implements Commentable {
 		this.content = content;
 	}
 
-	public Question(UUID id, User author, String content, String title,
+	public Question(UUID id, User author, String content, String title, int difficulty,
 			ArrayList<String> categories, ArrayList<Solution> solutions,
 			ArrayList<Comment> comments, ArrayList<String> hints,
 			LocalDateTime publishTime, int score) {
@@ -30,6 +30,7 @@ public class Question implements Commentable {
 		this.author = author;
 		this.content = content;
 		this.title = title;
+		this.difficulty = difficulty;
 		this.categories = categories;
 		this.solutions = solutions;
 		this.comments = comments;
