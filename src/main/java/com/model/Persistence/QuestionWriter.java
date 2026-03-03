@@ -4,6 +4,7 @@ import com.model.*;
 import com.model.Persistence.QuestionDataConstants;
 
 import java.io.FileWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -18,7 +19,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 				questionsJSON.add(questionJSON);
 			}
 
-			FileWriter writer = new FileWriter(QUESTION_FILE_NAME);
+			FileWriter writer = new FileWriter(Paths.get(QUESTION_FILE_PATH, "TEST_" + QUESTION_FILE_NAME).toString());
 			questionsJSON.writeJSONString(writer);
 			// DEBUG
 			System.out.println(questionsJSON.toJSONString());

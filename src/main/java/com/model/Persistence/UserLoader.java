@@ -4,6 +4,7 @@ import com.model.*;
 import com.model.Persistence.UserDataConstants;
 
 import java.io.FileReader;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -17,7 +18,7 @@ public final class UserLoader extends UserDataConstants {
 	public static ArrayList<User> getUsers() {
 		ArrayList<User> users = null;
 		try {
-			FileReader reader = new FileReader(USER_FILE_NAME);
+			FileReader reader = new FileReader(Paths.get(USER_FILE_PATH, USER_FILE_NAME).toString());
 			JSONParser parser = new JSONParser();
 			JSONArray usersJSON = (JSONArray) parser.parse(reader);
 			users = new ArrayList<User>(usersJSON.size());

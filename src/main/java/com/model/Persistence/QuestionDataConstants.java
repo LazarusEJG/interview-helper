@@ -1,7 +1,8 @@
 package com.model.Persistence;
 
 public abstract class QuestionDataConstants {
-	protected static final String QUESTION_FILE_NAME = "src/main/java/com/data/questions.json";
+	protected static final String QUESTION_FILE_PATH = "json";
+	protected static final String QUESTION_FILE_NAME = "questions.json";
 	protected static final String QUESTION_ID = "id";
 	protected static final String QUESTION_TITLE = "title";
 	protected static final String QUESTION_DIFFICULTY = "difficulty";

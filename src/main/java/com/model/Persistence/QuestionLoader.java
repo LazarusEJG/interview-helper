@@ -4,6 +4,7 @@ import com.model.*;
 import com.model.Persistence.QuestionDataConstants;
 
 import java.io.FileReader;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -17,7 +18,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 	public static ArrayList<Question> getQuestions() {
 		ArrayList<Question> questions = null;
 		try {
-			FileReader reader = new FileReader(QUESTION_FILE_NAME);
+			FileReader reader = new FileReader(Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString());
 			JSONParser parser = new JSONParser();
 			JSONArray questionsJSON = (JSONArray) parser.parse(reader);
 			questions = new ArrayList<Question>(questionsJSON.size());

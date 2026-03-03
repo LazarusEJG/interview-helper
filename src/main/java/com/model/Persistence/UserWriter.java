@@ -4,6 +4,7 @@ import com.model.*;
 import com.model.Persistence.UserDataConstants;
 
 import java.io.FileWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -18,7 +19,7 @@ public final class UserWriter extends UserDataConstants {
 				usersJSON.add(userJSON);
 			}
 
-			FileWriter writer = new FileWriter(USER_FILE_NAME);
+			FileWriter writer = new FileWriter(Paths.get(USER_FILE_PATH, "TEST_" + USER_FILE_NAME).toString());
 			usersJSON.writeJSONString(writer);
 			writer.close();
 		} catch (Exception e) {
