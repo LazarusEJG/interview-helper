@@ -22,7 +22,7 @@ public class Question implements Commentable {
     }
 
     public Question(User author, String content, String title,
-        ArrayList<String> categories, ArrayList<Soution> solutions,
+        ArrayList<String> categories, ArrayList<Solution> solutions,
         ArrayList<Comment> comments, ArrayList<String> hints,
         LocalDateTime publishTime, int score) {
 
