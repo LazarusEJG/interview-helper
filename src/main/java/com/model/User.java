@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Manages the changes made to users, acquisition of user data, and tracks progression
+ * Manages the changes made to users, acquisition of user data, and tracks
+ * progression
+ * 
  * @author
  */
 public class User {
@@ -76,6 +78,7 @@ public class User {
 
 	/**
 	 * Acquires a user's answered questions
+	 * 
 	 * @return Returns null
 	 */
 	public ArrayList<Question> getAnsweredQuestions() {
@@ -140,6 +143,38 @@ public class User {
 	 * 
 	 * @return
 	 */
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("User <" + username + ">");
+		sb.append("id: " + id);
+		sb.append("type: " + type);
+		sb.append("eMail: " + eMail);
+		sb.append("username: " + username);
+		sb.append("password: " + password);
+		sb.append("interests: ");
+		for (String interest : interests) {
+			sb.append("  " + interest);
+		}
+		sb.append("longestStreak: " + longestStreak);
+		sb.append("currentStreak: " + currentStreak);
+		sb.append("submittedSolutions: ");
+		for (Solution solution : submittedSolutions) {
+			sb.append("  " + solution);
+		}
+		sb.append("bookmarkedQuestions: ");
+		for (Question question : bookmarkedQuestions) {
+			sb.append("  " + question);
+		}
+		sb.append("bookmarkedSolutions: ");
+		for (Solution solution : bookmarkedSolutions) {
+			sb.append("  " + solution);
+		}
+		sb.append("lastStreakDate: " + lastStreakDate);
+		sb.append("receivedVotes: " + receivedVotes);
+
+		return sb.toString();
+	}
+
 	public UUID getId() {
 		return id;
 	}
@@ -194,6 +229,7 @@ public class User {
 
 	/**
 	 * Returns the last streak date
+	 * 
 	 * @return the last streak date
 	 */
 	public LocalDate getLastStreakDate() {
