@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Manages the changes made to users, acquisition of user data, and tracks progression
+ * Manages the changes made to users, acquisition of user data, and tracks
+ * progression
+ * 
  * @author
  */
 public class User {
@@ -76,6 +78,7 @@ public class User {
 
 	/**
 	 * Acquires a user's answered questions
+	 * 
 	 * @return Returns null
 	 */
 	public ArrayList<Question> getAnsweredQuestions() {
@@ -140,6 +143,38 @@ public class User {
 	 * 
 	 * @return
 	 */
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("User <" + username + ">" + "\n");
+		sb.append("id: " + id + "\n");
+		sb.append("type: " + type + "\n");
+		sb.append("eMail: " + eMail + "\n");
+		sb.append("username: " + username + "\n");
+		sb.append("password: " + password + "\n");
+		sb.append("interests: " + "\n");
+		for (String interest : interests) {
+			sb.append("  " + interest + "\n");
+		}
+		sb.append("longestStreak: " + longestStreak + "\n");
+		sb.append("currentStreak: " + currentStreak + "\n");
+		sb.append("submittedSolutions: " + "\n");
+		for (Solution solution : submittedSolutions) {
+			sb.append("  " + solution + "\n");
+		}
+		sb.append("bookmarkedQuestions: " + "\n");
+		for (Question question : bookmarkedQuestions) {
+			sb.append("  " + question + "\n");
+		}
+		sb.append("bookmarkedSolutions: " + "\n");
+		for (Solution solution : bookmarkedSolutions) {
+			sb.append("  " + solution + "\n");
+		}
+		sb.append("lastStreakDate: " + lastStreakDate + "\n");
+		sb.append("receivedVotes: " + receivedVotes + "\n");
+
+		return sb.toString();
+	}
+
 	public UUID getId() {
 		return id;
 	}
@@ -194,6 +229,7 @@ public class User {
 
 	/**
 	 * Returns the last streak date
+	 * 
 	 * @return the last streak date
 	 */
 	public LocalDate getLastStreakDate() {
