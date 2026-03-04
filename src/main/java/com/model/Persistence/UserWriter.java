@@ -4,7 +4,9 @@ import com.model.*;
 import com.model.Persistence.UserDataConstants;
 
 import java.io.FileWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,7 +20,7 @@ public final class UserWriter extends UserDataConstants {
 				usersJSON.add(userJSON);
 			}
 
-			FileWriter writer = new FileWriter(USER_FILE_NAME);
+			FileWriter writer = new FileWriter(Paths.get(USER_FILE_PATH, "TEST_" + USER_FILE_NAME).toString());
 			usersJSON.writeJSONString(writer);
 			writer.close();
 		} catch (Exception e) {
@@ -29,8 +31,8 @@ public final class UserWriter extends UserDataConstants {
 
 	private static JSONObject getUserJSON(User user) {
 		JSONObject userJSON = new JSONObject();
-		userJSON.put(USER_ID, user.getId());
-		userJSON.put(USER_TYPE, user.getType());
+		userJSON.put(USER_ID, user.getId().toString());
+		userJSON.put(USER_TYPE, user.getType().name());
 		userJSON.put(USER_EMAIL, user.geteMail());
 		userJSON.put(USER_USER_NAME, user.getUsername());
 		userJSON.put(USER_PASSWORD, user.getPassword());
@@ -45,30 +47,30 @@ public final class UserWriter extends UserDataConstants {
 		userJSON.put(USER_LONGEST_STREAK, user.getLongestStreak());
 
 		JSONArray submittedSolutions = new JSONArray();
-		for (Solution solution : user.getSubmittedSolutions()) {
-			submittedSolutions.add(solution.getId());
+		for (UUID solution : user.getSubmittedSolutions()) {
+			submittedSolutions.add(solution.toString());
 		}
-		userJSON.put(USER_INTERESTS, submittedSolutions);
+		userJSON.put(USER_SUBMITTED_SOLUTIONS, submittedSolutions);
 
 		JSONArray bookmarkedQuestions = new JSONArray();
-		for (Question question : user.getBookmarkedQuestions()) {
-			bookmarkedQuestions.add(question.getId());
+		for (UUID question : user.getBookmarkedQuestions()) {
+			bookmarkedQuestions.add(question.toString());
 		}
-		userJSON.put(USER_INTERESTS, bookmarkedQuestions);
+		userJSON.put(USER_BOOKMARKED_QUESTIONS, bookmarkedQuestions);
 
 		JSONArray bookmarkedSolutions = new JSONArray();
-		for (Solution question : user.getBookmarkedSolutions()) {
-			bookmarkedSolutions.add(question.getId());
+		for (UUID solution : user.getBookmarkedSolutions()) {
+			bookmarkedSolutions.add(solution.toString());
 		}
-		userJSON.put(USER_INTERESTS, bookmarkedSolutions);
+		userJSON.put(USER_BOOKMARKED_SOLUTIONS, bookmarkedSolutions);
 
 		JSONArray courses = new JSONArray();
 		for (String course : user.getCompletedCourses()) {
-			interests.add(course);
+			courses.add(course);
 		}
 		userJSON.put(USER_COMPLETED_COURSES, courses);
 
-		userJSON.put(USER_LAST_STREAK_DAY, user.getLastStreakDate());
+		userJSON.put(USER_LAST_STREAK_DAY, user.getLastStreakDate().toString());
 		userJSON.put(USER_RECEIVED_VOTES, user.getReceivedVotes());
 
 		return userJSON;

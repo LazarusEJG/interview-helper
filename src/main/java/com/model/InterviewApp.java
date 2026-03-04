@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class InterviewApp {
 
@@ -84,7 +85,7 @@ public class InterviewApp {
 	}
 
 	// Getter for Bookmarked Questions for the current user.
-	public ArrayList<Question> getBookmarkedQuestions(User currentUser) {
+	public ArrayList<UUID> getBookmarkedQuestions(User currentUser) {
 		return currentUser.getBookmarkedQuestions();
 	}
 
@@ -120,12 +121,12 @@ public class InterviewApp {
 	}
 
 	// Getter for bookmarked solutions.
-	public ArrayList<Solution> getBookmarkedSolutions(User currentUser) {
+	public ArrayList<UUID> getBookmarkedSolutions(User currentUser) {
 		return currentUser.getBookmarkedSolutions();
 	}
 
 	// Getter for submitted solutions.
-	public ArrayList<Solution> getSubmittedSolutions(User currentUser) {
+	public ArrayList<UUID> getSubmittedSolutions(User currentUser) {
 		return currentUser.getSubmittedSolutions();
 	}
 

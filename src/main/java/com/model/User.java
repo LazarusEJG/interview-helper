@@ -19,9 +19,9 @@ public class User {
 	private ArrayList<String> interests;
 	private int currentStreak;
 	private int longestStreak;
-	private ArrayList<Solution> submittedSolutions;
-	private ArrayList<Question> bookmarkedQuestions;
-	private ArrayList<Solution> bookmarkedSolutions;
+	private ArrayList<UUID> submittedSolutions;
+	private ArrayList<UUID> bookmarkedQuestions;
+	private ArrayList<UUID> bookmarkedSolutions;
 	private ArrayList<String> completedCourses;
 	private LocalDate lastStreakDate = null;
 	private int receivedVotes;
@@ -54,11 +54,24 @@ public class User {
 	 * @param receivedVotes
 	 */
 	public User(UUID id, UserType userType, String eMail, String username, String password, ArrayList<String> interests,
-			int currentStreak, int longestStreak, ArrayList<Solution> submittedSolutions,
-			ArrayList<Question> bookmarkedQuestions,
-			ArrayList<Solution> bookmarkedSolutions, ArrayList<String> completedCourses, LocalDate lastStreakDate,
-			int receivedVotes) {
+			int currentStreak, int longestStreak, ArrayList<UUID> submittedSolutions,
+			ArrayList<UUID> bookmarkedQuestions, ArrayList<UUID> bookmarkedSolutions,
+			ArrayList<String> completedCourses, LocalDate lastStreakDate, int receivedVotes) {
 
+		this.id = id;
+		this.type = userType;
+		this.eMail = eMail;
+		this.username = username;
+		this.password = password;
+		this.interests = interests;
+		this.currentStreak = currentStreak;
+		this.longestStreak = longestStreak;
+		this.submittedSolutions = submittedSolutions;
+		this.bookmarkedQuestions = bookmarkedQuestions;
+		this.bookmarkedSolutions = bookmarkedSolutions;
+		this.completedCourses = completedCourses;
+		this.lastStreakDate = lastStreakDate;
+		this.receivedVotes = receivedVotes;
 	}
 
 	/**
@@ -105,24 +118,24 @@ public class User {
 	 * 
 	 * @return
 	 */
-	public ArrayList<Question> getBookmarkedQuestions() {
-		return null; // temporary return statement
+	public ArrayList<UUID> getBookmarkedQuestions() {
+		return bookmarkedQuestions;
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public ArrayList<Solution> getBookmarkedSolutions() {
-		return null; // temporary return statement
+	public ArrayList<UUID> getBookmarkedSolutions() {
+		return bookmarkedSolutions;
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public ArrayList<Solution> getSubmittedSolutions() {
-		return null; // temporary return statement
+	public ArrayList<UUID> getSubmittedSolutions() {
+		return submittedSolutions;
 	}
 
 	/**
@@ -158,15 +171,15 @@ public class User {
 		sb.append("longestStreak: " + longestStreak + "\n");
 		sb.append("currentStreak: " + currentStreak + "\n");
 		sb.append("submittedSolutions: " + "\n");
-		for (Solution solution : submittedSolutions) {
+		for (UUID solution : submittedSolutions) {
 			sb.append("  " + solution + "\n");
 		}
 		sb.append("bookmarkedQuestions: " + "\n");
-		for (Question question : bookmarkedQuestions) {
+		for (UUID question : bookmarkedQuestions) {
 			sb.append("  " + question + "\n");
 		}
 		sb.append("bookmarkedSolutions: " + "\n");
-		for (Solution solution : bookmarkedSolutions) {
+		for (UUID solution : bookmarkedSolutions) {
 			sb.append("  " + solution + "\n");
 		}
 		sb.append("lastStreakDate: " + lastStreakDate + "\n");
