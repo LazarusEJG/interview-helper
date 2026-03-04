@@ -50,23 +50,23 @@ public final class UserWriter extends UserDataConstants {
 		for (UUID solution : user.getSubmittedSolutions()) {
 			submittedSolutions.add(solution.toString());
 		}
-		userJSON.put(USER_INTERESTS, submittedSolutions);
+		userJSON.put(USER_SUBMITTED_SOLUTIONS, submittedSolutions);
 
 		JSONArray bookmarkedQuestions = new JSONArray();
 		for (UUID question : user.getBookmarkedQuestions()) {
 			bookmarkedQuestions.add(question.toString());
 		}
-		userJSON.put(USER_INTERESTS, bookmarkedQuestions);
+		userJSON.put(USER_BOOKMARKED_QUESTIONS, bookmarkedQuestions);
 
 		JSONArray bookmarkedSolutions = new JSONArray();
 		for (UUID solution : user.getBookmarkedSolutions()) {
 			bookmarkedSolutions.add(solution.toString());
 		}
-		userJSON.put(USER_INTERESTS, bookmarkedSolutions);
+		userJSON.put(USER_BOOKMARKED_SOLUTIONS, bookmarkedSolutions);
 
 		JSONArray courses = new JSONArray();
 		for (String course : user.getCompletedCourses()) {
-			interests.add(course);
+			courses.add(course);
 		}
 		userJSON.put(USER_COMPLETED_COURSES, courses);
 
