@@ -54,11 +54,24 @@ public class User {
 	 * @param receivedVotes
 	 */
 	public User(UUID id, UserType userType, String eMail, String username, String password, ArrayList<String> interests,
-			int currentStreak, int longestStreak, ArrayList<Solution> submittedSolutions,
-			ArrayList<Question> bookmarkedQuestions,
-			ArrayList<Solution> bookmarkedSolutions, ArrayList<String> completedCourses, LocalDate lastStreakDate,
-			int receivedVotes) {
+			int currentStreak, int longestStreak, ArrayList<UUID> submittedSolutions,
+			ArrayList<UUID> bookmarkedQuestions, ArrayList<UUID> bookmarkedSolutions,
+			ArrayList<String> completedCourses, LocalDate lastStreakDate, int receivedVotes) {
 
+		this.id = id;
+		this.type = userType;
+		this.eMail = eMail;
+		this.username = username;
+		this.password = password;
+		this.interests = interests;
+		this.currentStreak = currentStreak;
+		this.longestStreak = longestStreak;
+		this.submittedSolutions = submittedSolutions;
+		this.bookmarkedQuestions = bookmarkedQuestions;
+		this.bookmarkedSolutions = bookmarkedSolutions;
+		this.completedCourses = completedCourses;
+		this.lastStreakDate = lastStreakDate;
+		this.receivedVotes = receivedVotes;
 	}
 
 	/**
