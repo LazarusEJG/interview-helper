@@ -73,7 +73,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 			int score = ((Long) solutionJSON.get(QUESTION_SOLUTIONS_SCORE)).intValue();
 			String filename = (String) solutionJSON.get(QUESTION_SOLUTIONS_FILE);
 			String explanation = (String) solutionJSON.get(QUESTION_SOLUTIONS_EXPLANATION);
-			boolean verified = ((String) solutionJSON.get(QUESTION_SOLUTIONS_VERIFIED)).equalsIgnoreCase("true");
+			boolean verified = ((boolean) solutionJSON.get(QUESTION_SOLUTIONS_VERIFIED));
 
 			// Comments
 			JSONArray commentsJSON = (JSONArray) solutionJSON.get(QUESTION_COMMENTS);
@@ -85,6 +85,9 @@ public final class QuestionLoader extends QuestionDataConstants {
 	}
 
 	private static ArrayList<Comment> getComments(JSONArray commentsJSON) {
+		if (commentsJSON == null) {
+			return new ArrayList<>();
+		}
 		ArrayList<Comment> comments = new ArrayList<Comment>(commentsJSON.size());
 		for (Object _commentJSON : commentsJSON) {
 			JSONObject commentJSON = (JSONObject) _commentJSON;

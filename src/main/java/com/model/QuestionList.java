@@ -1,6 +1,7 @@
 package com.model;
 
 import com.model.Persistence.QuestionWriter;
+import com.model.Persistence.QuestionLoader;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -16,7 +17,7 @@ public class QuestionList {
 	private Question currentQuestion; // added for setCurrentQuestion
 
 	private QuestionList() {
-		questions = new ArrayList<Question>();
+		questions = QuestionLoader.getQuestions();
 		instance = this;
 	}
 
