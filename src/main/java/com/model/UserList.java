@@ -1,6 +1,7 @@
 package com.model;
 
 import com.model.Persistence.UserWriter;
+import com.model.Persistence.UserLoader;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -17,7 +18,7 @@ public class UserList {
 	 * Constructor for UserList
 	 */
 	private UserList() {
-		users = new ArrayList<User>();
+		users = UserLoader.getUsers();
 		instance = this;
 	}
 
@@ -93,7 +94,7 @@ public class UserList {
 	 * Saves the list of users
 	 * @param filename Storage location of users
 	 */
-	public void save(String filename) {
+	public void save() {
 		UserWriter.saveUsers(users);
 	}
 }
