@@ -17,7 +17,7 @@ public class User {
     private ArrayList<Question> bookmarkedQuestions;
     private ArrayList<Solution> bookmarkedSolutions;
     private ArrayList<String> completedCourses;
-    private LocalDate lastStreakDate = null;
+    private LocalDate lastStreakDate;
     private int receivedVotes;
 
     public User(String eMail, String username, String password) {

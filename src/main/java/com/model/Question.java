@@ -65,4 +65,8 @@ public class Question implements Commentable {
     public ArrayList<Solution> getSolutions() {
      return solutions; //temporary statement
     }
+
+    public static void main(String[] args) {
+        Question testQuestion = new Question(null, null, null, null, null, null, null, null, 0);
+    }
 }
