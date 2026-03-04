@@ -67,7 +67,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 			UUID id = UUID.fromString((String) solutionJSON.get(QUESTION_SOLUTIONS_ID));
 
 			UUID authorUUID = UUID.fromString((String) solutionJSON.get(QUESTION_SOLUTIONS_AUTHOR));
-			User author = UserList.getInstance().getUser(authorUUID);
+			UUID author = authorUUID;
 
 			LocalDateTime publishTime = LocalDateTime.parse((String) solutionJSON.get(QUESTION_SOLUTIONS_PUBLISH_TIME));
 			int score = ((Long) solutionJSON.get(QUESTION_SOLUTIONS_SCORE)).intValue();

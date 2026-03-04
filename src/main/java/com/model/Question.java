@@ -103,4 +103,34 @@ public class Question implements Commentable {
 	public LocalDateTime getPublishTime() {
 		return publishTime;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("Question <" + title + ">" + "\n");
+		sb.append("id: " + id + "\n");
+		sb.append("author: " + author.toString() + "\n");
+		sb.append("content: " + content + "\n");
+		sb.append("title: " + title + "\n");
+		sb.append("difficulty: " + difficulty + "\n");
+		sb.append("categories: \n");
+		for (String category : categories) {
+			sb.append("  " + category + "\n");
+		}
+		sb.append("solutions: \n");
+		for (Solution solution : solutions) {
+			sb.append("  " + solution.getId().toString() + "\n");
+		}
+		sb.append("comments: \n");
+		for (Comment comment : comments) {
+			sb.append("  " + comment.getId().toString() + "\n");
+		}
+		sb.append("hints: \n");
+		for (String hint : hints) {
+			sb.append("  " + hint + "\n");
+		}
+		sb.append("publishTime: " + publishTime + "\n");
+		sb.append("score: " + score + "\n");
+
+		return sb.toString();
+	}
 }

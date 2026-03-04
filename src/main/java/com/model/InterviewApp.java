@@ -156,5 +156,6 @@ public class InterviewApp {
 
 	public void close() {
 		UserList.getInstance().save();
+		QuestionList.getInstance().save();
 	}
 }

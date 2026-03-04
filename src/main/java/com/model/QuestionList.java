@@ -125,7 +125,7 @@ public class QuestionList {
 			Integer minDifficulty, // Using object not primitive so you can call the method with various null args
 			Integer maxDifficulty,
 			boolean onlySolved,
-			ArrayList<User> authors) {
+			ArrayList<UUID> authors) {
 
 		ArrayList<Question> filtered = new ArrayList<Question>();
 
@@ -159,7 +159,7 @@ public class QuestionList {
 		return filtered;
 	}
 
-	public void save(String filename) {
+	public void save() {
 		QuestionWriter.saveQuestions(questions);
 	}
 }
