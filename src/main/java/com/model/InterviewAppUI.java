@@ -22,7 +22,7 @@ public class InterviewAppUI {
 			return;
 		}
 
-		System.out.println("Amy Smith is now logged in");
+		System.out.println("Playboi Carti is now logged in");
 		System.out.println(user.toString());
 
 		library.close();
