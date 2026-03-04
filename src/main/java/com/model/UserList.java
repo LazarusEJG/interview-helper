@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Manages addition or removal of users in the json files, as well as user data acquisition.
+ * Manages addition or removal of users in the json files, as well as user data
+ * acquisition.
+ * 
  * @author tsitnik1
  */
 public class UserList {
@@ -24,6 +26,7 @@ public class UserList {
 
 	/**
 	 * GetInstance for UserList
+	 * 
 	 * @return Returns specific instance
 	 */
 	public static UserList getInstance() {
@@ -35,6 +38,7 @@ public class UserList {
 
 	/**
 	 * Acquires user username and password from users.json
+	 * 
 	 * @param username Username of user
 	 * @param password Password of user
 	 * @return Returns null
@@ -50,6 +54,7 @@ public class UserList {
 
 	/**
 	 * Acquires user UUID from users.json
+	 * 
 	 * @param id UUID of user
 	 * @return Returns null
 	 */
@@ -64,7 +69,8 @@ public class UserList {
 
 	/**
 	 * Manages the addition of a new user to users.json
-	 * @param eMail Email of user
+	 * 
+	 * @param eMail    Email of user
 	 * @param username Username of user
 	 * @param password Password of user
 	 * @return whether or not the process of adding a user completed successfully
@@ -76,6 +82,7 @@ public class UserList {
 
 	/**
 	 * Removes user from users.json
+	 * 
 	 * @param user User
 	 */
 	public void removeUser(User user) {
@@ -84,6 +91,7 @@ public class UserList {
 
 	/**
 	 * Acquires users from users.json
+	 * 
 	 * @return Returns users
 	 */
 	public ArrayList<User> getUsers() {
@@ -92,6 +100,7 @@ public class UserList {
 
 	/**
 	 * Saves the list of users
+	 * 
 	 * @param filename Storage location of users
 	 */
 	public void save() {
