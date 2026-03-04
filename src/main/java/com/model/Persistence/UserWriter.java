@@ -6,6 +6,7 @@ import com.model.Persistence.UserDataConstants;
 import java.io.FileWriter;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -46,20 +47,20 @@ public final class UserWriter extends UserDataConstants {
 		userJSON.put(USER_LONGEST_STREAK, user.getLongestStreak());
 
 		JSONArray submittedSolutions = new JSONArray();
-		for (Solution solution : user.getSubmittedSolutions()) {
-			submittedSolutions.add(solution.getId());
+		for (UUID solution : user.getSubmittedSolutions()) {
+			submittedSolutions.add(solution.toString());
 		}
 		userJSON.put(USER_INTERESTS, submittedSolutions);
 
 		JSONArray bookmarkedQuestions = new JSONArray();
-		for (Question question : user.getBookmarkedQuestions()) {
-			bookmarkedQuestions.add(question.getId());
+		for (UUID question : user.getBookmarkedQuestions()) {
+			bookmarkedQuestions.add(question.toString());
 		}
 		userJSON.put(USER_INTERESTS, bookmarkedQuestions);
 
 		JSONArray bookmarkedSolutions = new JSONArray();
-		for (Solution question : user.getBookmarkedSolutions()) {
-			bookmarkedSolutions.add(question.getId());
+		for (UUID solution : user.getBookmarkedSolutions()) {
+			bookmarkedSolutions.add(solution.toString());
 		}
 		userJSON.put(USER_INTERESTS, bookmarkedSolutions);
 
