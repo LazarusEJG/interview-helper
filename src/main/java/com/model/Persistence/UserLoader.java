@@ -47,8 +47,8 @@ public final class UserLoader extends UserDataConstants {
 				int receivedVotes = ((Long) userJSON.get(USER_RECEIVED_VOTES)).intValue();
 
 				User user = new User(id, userType, eMail, username, password, interests, currentStreak, longestStreak,
-						submittedSolutions,
-						bookmarkedQuestions, bookmarkedSolutions, completedCourses, lastStreakDate, receivedVotes);
+						submittedSolutions, bookmarkedQuestions, bookmarkedSolutions, completedCourses, lastStreakDate,
+						receivedVotes);
 				users.add(user);
 			}
 
