@@ -1,51 +1,165 @@
 package com.model;
 
+import com.model.Persistence.QuestionWriter;
+
 import java.util.ArrayList;
+import java.util.UUID;
+import java.time.LocalDate;
 
+/**
+ * Singleton class for managing all questions
+ * @author tsitnik1
+ */
 public class QuestionList {
-    private ArrayList<Question> questions;
-    private ArrayList<String> categoryList; //Wasn't sure where to add a stub for this at
-    private static QuestionList instance;
-    private Question dailyQuestion;
-    private Question currentQuestion; //added for setCurrentQuestion
+	private ArrayList<Question> questions;
+	private static QuestionList instance;
+	private Question currentQuestion; // added for setCurrentQuestion
 
-    private QuestionList() {
-        questions = QuestionLoader.getQuestions();
-    }
+	private QuestionList() {
+		questions = new ArrayList<Question>();
+		instance = this;
+	}
 
-    public QuestionList getInstance() {
-        if(instance == null) {
-            instance = new QuestionList();
-        } 
-        return instance; //temporary statement
-    }
+	/**
+	 * Returns the instance of the QuestionList object. If null, it constructs a new one
+	 * @return
+	 */
+	public static QuestionList getInstance() {
+		if (instance == null) {
+			instance = new QuestionList();
+		}
+		return instance;
+	}
 
-    public Question getDailyQuestion() {
-        return dailyQuestion; //temporary statement
-    }
+	/**
+	 * Returns the daily question
+	 * @return A Question selected from the list of questions based on the day
+	 */
+	public Question getDailyQuestion() {
+		if (questions == null || questions.size() == 0) {
+			return null;
+		}
+		int index = (int) (LocalDate.now().toEpochDay()) % questions.size();
+		return questions.get(index);
+	}
 
-    public Question setCurrentQuestion(Question question) {
-        return currentQuestion; //temporary statement
-    }
+	/**
+	 * Sets the current question
+	 * @param question The question being set
+	 */
+	public void setCurrentQuestion(Question question) {
+		this.currentQuestion = question;
+	}
 
-    public boolean addQuestion(User author, String content) {
-        return true; //temporary statement
-    }
+	/**
+	 * Adds a question to the question list
+	 * @param author The author of the question, must be a contributor
+	 * @param content The content of the question
+	 * @return True if the method was successful, false otherwise
+	 */
+	public boolean addQuestion(User author, String content) {
+		if (author.getType() == UserType.CONTRIBUTOR) {
+			questions.add(new Question(author, content));
+			return true;
+		}
+		return false;
+	}
 
-    public void removeQuestion(Question question) {
+	/**
+	 * Removes a question from the list
+	 * @param question The question being removed
+	 */
+	public void removeQuestion(Question question) {
+		questions.remove(question);
+	}
 
-    }
+	/**
+	 * Gets the ArrayList of questions
+	 * @return The ArrayList of questions
+	 */
+	public ArrayList<Question> getQuestions() {
+		return questions;
+	}
 
-    public ArrayList<Question> getQuestions() {
-        return questions; //temporary statement
-    }
+	/**
+	 * Finds and returns the question with the specified ID
+	 * @param id The ID being searched for
+	 * @return The question with the specified ID
+	 */
+	public Question getQuestion(UUID id) {
+		for (Question question : questions) {
+			if (question.getId() == id) {
+				return question;
+			}
+		}
+		return null;
+	}
 
-    public ArrayList<Question> getQuestions(ArrayList<String> tagFilter, int minDifficulty, int maxDifficulty,
-        boolean onlySolved, ArrayList<User> authors) {
-            return questions; //temporary statement
-    }
+	/**
+	 * Finds and returns the solution with the specified ID
+	 * @param id The ID being searched for
+	 * @return The solution with the specified ID
+	 */
+	public Solution getSolution(UUID id) {
+		for (Question question : questions) {
+			for (Solution solution : question.getSolutions()) {
+				if (solution.getId() == id) {
+					return solution;
+				}
+			}
+		}
+		return null;
+	}
 
-    public void save(String filename) {
+	/**
+	 * Gets the questions with the specified filters. If no filter, leave as null
+	 * @param tagFilter Filter for questions with certain tags
+	 * @param minDifficulty Filter for minimum difficulty. Must be Integer()
+	 * @param maxDifficulty Filter for maximum difficulty. Must be Integer()
+	 * @param onlySolved Filter for only solved questions
+	 * @param authors Filter for specific authors
+	 * @return ArrayList with filtered questions
+	 */
+	public ArrayList<Question> getQuestions(
+			ArrayList<String> tagFilter,
+			Integer minDifficulty, // Using object not primitive so you can call the method with various null args
+			Integer maxDifficulty,
+			boolean onlySolved,
+			ArrayList<User> authors) {
 
-    }
+		ArrayList<Question> filtered = new ArrayList<Question>();
+
+		for (Question question : questions) {
+			// Category tags
+			if (tagFilter != null) {
+				//Work on later
+			}
+
+			// Difficulty
+			if (minDifficulty != null && question.getDifficulty() < minDifficulty) {
+				continue;
+			}
+
+			if (maxDifficulty != null && question.getDifficulty() > maxDifficulty) {
+				continue;
+			}
+
+			// Solved
+			if (onlySolved && question.getSolutions().size() == 0) { // Needs to be reexamined
+				continue;
+			}
+
+			// Authors
+			if (authors != null && authors.contains(question.getAuthor()) == false) {
+				continue;
+			}
+			filtered.add(question);
+		}
+
+		return filtered;
+	}
+
+	public void save(String filename) {
+		QuestionWriter.saveQuestions(questions);
+	}
 }
