@@ -42,7 +42,11 @@ public class InterviewApp {
 
 	// Adds Question to QuestionList.getInstance() with author and content.
 	public void addQuestion(Question question) {
-		QuestionList.getInstance().addQuestion(question.getAuthor(), question.getContent());
+		QuestionList.getInstance().addQuestion(getUser(question.getAuthor()), question.getContent());
+	}
+
+	public User getUser(UUID id) {
+		return UserList.getInstance().getUser(id);
 	}
 
 	// Overloaded getQuestions method that takes in filters and returns a list of
@@ -52,7 +56,7 @@ public class InterviewApp {
 			Integer minDifficulty,
 			Integer maxDifficulty,
 			boolean onlySolved,
-			ArrayList<User> authors) {
+			ArrayList<UUID> authors) {
 
 		return QuestionList.getInstance().getQuestions(
 				tagFilter,

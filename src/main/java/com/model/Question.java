@@ -13,16 +13,16 @@ public class Question implements Commentable {
 	private ArrayList<String> categories;
 	private ArrayList<Solution> solutions;
 	private ArrayList<Comment> comments;
-	private User author;
+	private UUID author;
 	private ArrayList<String> hints;
 	private LocalDateTime publishTime;
 
-	public Question(User author, String content) {
+	public Question(UUID author, String content) {
 		this.author = author;
 		this.content = content;
 	}
 
-	public Question(UUID id, User author, String content, String title, int difficulty,
+	public Question(UUID id, UUID author, String content, String title, int difficulty,
 			ArrayList<String> categories, ArrayList<Solution> solutions,
 			ArrayList<Comment> comments, ArrayList<String> hints,
 			LocalDateTime publishTime, int score) {
@@ -96,7 +96,7 @@ public class Question implements Commentable {
 		return comments;
 	}
 
-	public User getAuthor() {
+	public UUID getAuthor() {
 		return author;
 	}
 

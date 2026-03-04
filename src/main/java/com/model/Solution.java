@@ -9,12 +9,12 @@ public class Solution extends Response {
 	private String explanation;
 	private boolean verified = false;
 
-	public Solution(User author, String filename) {
+	public Solution(UUID author, String filename) {
 		super(author);
 		this.file = filename;
 	}
 
-	public Solution(UUID id, User author, LocalDateTime publishTime, int score, String filename, String explanation,
+	public Solution(UUID id, UUID author, LocalDateTime publishTime, int score, String filename, String explanation,
 			boolean verified, ArrayList<Comment> comments) {
 		super(id, author, publishTime, comments, score);
 		this.file = filename;

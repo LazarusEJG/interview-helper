@@ -36,7 +36,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 				ArrayList<String> categories = getCategories(categoriesJSON);
 
 				UUID authorUUID = UUID.fromString((String) questionJSON.get(QUESTION_AUTHOR));
-				User author = UserList.getInstance().getUser(authorUUID);
+				UUID author = authorUUID;
 				LocalDateTime publishTime = LocalDateTime.parse((String) questionJSON.get(QUESTION_PUBLISH_TIME));
 				// Hints
 				JSONArray hintsJSON = (JSONArray) questionJSON.get(QUESTION_HINTS);
@@ -92,7 +92,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 			UUID id = UUID.fromString((String) commentJSON.get(QUESTION_COMMENTS_ID));
 
 			UUID authorUUID = UUID.fromString((String) commentJSON.get(QUESTION_COMMENTS_AUTHOR));
-			User author = UserList.getInstance().getUser(authorUUID);
+			UUID author = authorUUID;
 
 			LocalDateTime publishTime = LocalDateTime.parse((String) commentJSON.get(QUESTION_COMMENTS_PUBLISH_TIME));
 			int score = ((Long) commentJSON.get(QUESTION_COMMENTS_SCORE)).intValue();

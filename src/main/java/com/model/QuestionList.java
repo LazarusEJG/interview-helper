@@ -59,7 +59,7 @@ public class QuestionList {
 	 */
 	public boolean addQuestion(User author, String content) {
 		if (author.getType() == UserType.CONTRIBUTOR) {
-			questions.add(new Question(author, content));
+			questions.add(new Question(author.getId(), content));
 			return true;
 		}
 		return false;
