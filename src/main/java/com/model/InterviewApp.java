@@ -71,10 +71,9 @@ public class InterviewApp {
 		return QuestionList.getInstance().getDailyQuestion();
 	}
 
-	// Sets current question to a question and returns the current question.
-	public Question setCurrentQuestion(Question question) {
-		currentQuestion = QuestionList.getInstance().setCurrentQuestion(question);
-		return currentQuestion;
+	// Sets current question to a question.
+	public void setCurrentQuestion(Question question) {
+		QuestionList.getInstance().setCurrentQuestion(question);
 	}
 
 	// Checks if there is a current user and bookmarks a question for the user.
@@ -148,5 +147,9 @@ public class InterviewApp {
 	// Downvotes given content.
 	public void downvote(Commentable content) {
 		content.downVote();
+	}
+
+	public void close() {
+		UserList.getInstance().save();
 	}
 }

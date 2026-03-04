@@ -24,6 +24,8 @@ public class InterviewAppUI {
 
 		System.out.println("Amy Smith is now logged in");
 		System.out.println(user.toString());
+
+		library.close();
 	}
 
 	public void scenario2() {
@@ -37,6 +39,8 @@ public class InterviewAppUI {
 
 		System.out.println("Travis Scott is now logged in");
 		System.out.println(user.toString());
+
+		library.close();
 	}
 
 	public static void main(String[] args) {
