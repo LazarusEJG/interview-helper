@@ -3,6 +3,11 @@ package com.model;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Facade class for the Interview Helper system.
+ * Provides simplified access to questions, users,
+ * solutions, and comments.
+ */
 public class InterviewApp {
 
 	private User currentUser;
@@ -11,22 +16,17 @@ public class InterviewApp {
 	public InterviewApp() {
 	}
 
-	// Constructor 2
 	public InterviewApp(User user) {
 		this.currentUser = user;
 	}
 
-	// Methods Stubs
-
-	// Sets Current User to a user for given list and returns the user.
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
 		return currentUser;
 	}
 
-	// Checks if there is a current user and logs out by setting current user to
-	// null. Returns true if logout is successful, false otherwise.
 	public boolean logout() {
+
 		if (currentUser != null) {
 			currentUser = null;
 			return true;
@@ -34,19 +34,18 @@ public class InterviewApp {
 		return false;
 	}
 
-	// Registers a new user by adding them to list with email, username and
-	// password.
 	public void registerUser(String eMail, String username, String password) {
 		UserList.getInstance().addUser(eMail, username, password);
 	}
 
-	// Adds Question to QuestionList.getInstance() with author and content.
 	public void addQuestion(Question question) {
-		QuestionList.getInstance().addQuestion(question.getAuthor(), question.getContent());
+		QuestionList.getInstance().getQuestions().add(question);
 	}
 
-	// Overloaded getQuestions method that takes in filters and returns a list of
-	// questions that match the filters.
+	public ArrayList<Question> getQuestions() {
+		return QuestionList.getInstance().getQuestions();
+	}
+
 	public ArrayList<Question> getQuestions(
 			ArrayList<String> tagFilter,
 			Integer minDifficulty,
@@ -62,12 +61,6 @@ public class InterviewApp {
 				authors);
 	}
 
-	// getter for question list
-	public ArrayList<Question> getQuestions() {
-		return QuestionList.getInstance().getQuestions();
-	}
-
-	// getter for daily question
 	public Question getDailyQuestion() {
 		return QuestionList.getInstance().getDailyQuestion();
 	}
@@ -77,8 +70,8 @@ public class InterviewApp {
 		QuestionList.getInstance().setCurrentQuestion(question);
 	}
 
-	// Checks if there is a current user and bookmarks a question for the user.
 	public void bookmarkQuestion(Question question) {
+
 		if (currentUser != null) {
 			currentUser.bookmarkQuestion(question);
 		}
@@ -89,35 +82,37 @@ public class InterviewApp {
 		return currentUser.getBookmarkedQuestions();
 	}
 
-	// Getter for Answered Questions for the current user.
 	public ArrayList<Question> getAnsweredQuestions(User currentUser) {
 		return currentUser.getAnsweredQuestions();
 	}
 
-	// Checks if there is a currentQuestion and if the question has hints.
-	// Returns the first hint. Otherwise, returns an empty string.
 	public String getHints() {
-		if (currentQuestion != null && !currentQuestion.getHints().isEmpty()) {
+
+		if (currentQuestion != null &&
+				currentQuestion.getHints() != null &&
+				!currentQuestion.getHints().isEmpty()) {
+
 			return currentQuestion.getHints().get(0);
 		}
+
 		return "";
 	}
 
-	// Checks if there is a currentQuestion and adds a solution
-	// with currentUser and the solution.
 	public void addSolution(User currentUser, Solution solution) {
-		if (this.currentQuestion != null) {
-			this.currentQuestion.addSolution(currentUser, solution);
+
+		if (currentQuestion != null) {
+			currentQuestion.addSolution(currentUser, solution);
 		}
 	}
 
-	// Checks for currentQuestion and returns the list of solutions.
-	// If there is no currentQuestion, returns an empty list.
 	public ArrayList<Solution> getSolutions() {
-		if (currentQuestion != null) {
-			return currentQuestion.getSolutions();
-		}
-		return new ArrayList<>();
+
+		if (currentQuestion == null)
+			return new ArrayList<>();
+
+		ArrayList<Solution> solutions = currentQuestion.getSolutions();
+
+		return solutions != null ? solutions : new ArrayList<>();
 	}
 
 	// Getter for bookmarked solutions.
@@ -130,22 +125,18 @@ public class InterviewApp {
 		return currentUser.getSubmittedSolutions();
 	}
 
-	// Adds comment to the parent content (question or solution) using a comment.
 	public void addComment(Commentable parent, Comment comment) {
 		parent.addComment(comment);
 	}
 
-	// Changed from UML to take in Response to uphold the facade design.
 	public void report(Response response) {
 		response.report();
 	}
 
-	// Adds an upvote to the content
 	public void upvote(Commentable content) {
 		content.upVote();
 	}
 
-	// Downvotes given content.
 	public void downvote(Commentable content) {
 		content.downVote();
 	}
