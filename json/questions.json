@@ -9,8 +9,8 @@
       "arrays",
       "algorithms"
     ],
-    "author": "playboicarti",
-    "publishTime": "2026-01-15",
+    "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+    "publishTime": "2026-01-15T10:30:12",
     "hints": [
       "Try using a hash map.",
       "Consider edge cases."
@@ -18,8 +18,8 @@
     "solutions": [
       {
         "id": "59bd2303-a473-4132-b547-53f13efb7529",
-        "author": "playboicarti",
-        "publishTime": "2026-01-16",
+        "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+        "publishTime": "2026-01-16T05:31:26",
         "score": 45,
         "file": "solutions/59bd2303-a473-4132-b547-53f13efb7529.java",
         "explanation": "This solution uses a hash map to store the indices...",
@@ -27,15 +27,15 @@
         "comments": [
           {
             "id": "7d5dfaec-1c79-4225-a3b4-4debf28f9183",
-            "author": "playboicarti",
-            "publishTime": "2026-01-18",
+            "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+            "publishTime": "2026-01-18T21:54:12",
             "score": 10,
             "content": "Great solution! I like how you used a hash map."
           },
           {
             "id": "69c552b4-2a36-4a97-93fe-3cb185d706ac",
-            "author": "travisscott",
-            "publishTime": "2026-01-19",
+            "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
+            "publishTime": "2026-01-19T17:41:15",
             "score": 5,
             "content": "I think the brute-force solution is easier to understand for beginners."
           }
@@ -43,8 +43,8 @@
       },
       {
         "id": "9da25f24-9a89-4b2e-8842-72e2256f5cec",
-        "author": "travisscott",
-        "publishTime": "2026-01-17",
+        "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
+        "publishTime": "2026-01-17T10:24:17",
         "score": 30,
         "file": "solutions/9da25f24-9a89-4b2e-8842-72e2256f5cec.java",
         "explanation": "This solution uses a brute-force approach...",
@@ -52,15 +52,15 @@
         "comments": [
           {
             "id": "ba472d24-e1ab-41ed-bb7e-2f75d5a8a487",
-            "author": "playboicarti",
-            "publishTime": "2026-01-23",
+            "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+            "publishTime": "2026-01-23T04:26:49",
             "score": 15,
             "content": "Your two-pointer solution is efficient and handles edge cases well."
           },
           {
             "id": "2cda2d45-f36d-46b0-858d-571243fe1947",
-            "author": "travisscott",
-            "publishTime": "2026-01-24",
+            "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
+            "publishTime": "2026-01-24T23:19:05",
             "score": 20,
             "content": "I prefer the built-in string functions for simplicity..."
           }
@@ -78,8 +78,8 @@
       "strings",
       "algorithms"
     ],
-    "author": "travisscott",
-    "publishTime": "2026-01-20",
+    "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
+    "publishTime": "2026-01-20T12:43:16",
     "hints": [
       "Compare from both ends.",
       "Consider regex for cleaning."
@@ -87,8 +87,8 @@
     "solutions": [
       {
         "id": "164a6004-e9cf-46c1-8e0b-0d39ebdc4273",
-        "author": "playboicarti",
-        "publishTime": "2026-01-21",
+        "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+        "publishTime": "2026-01-21T03:14:52",
         "score": 40,
         "file": "solutions/164a6004-e9cf-46c1-8e0b-0d39ebdc4273.java",
         "explanation": "This solution checks if the string is the same when reversed...",
@@ -96,15 +96,15 @@
         "comments": [
           {
             "id": "b35f0bf4-704d-48fd-a37f-1045a58a116b",
-            "author": "playboicarti",
-            "publishTime": "2026-01-25",
+            "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+            "publishTime": "2026-01-25T23:28:24",
             "score": 8,
             "content": "Thanks for the feedback! I agree that the brute-force method is more straightforward..."
           },
           {
             "id": "72bd9bc9-b3f3-4e97-9ff9-cf66968c1837",
-            "author": "travisscott",
-            "publishTime": "2026-01-26",
+            "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
+            "publishTime": "2026-01-26T14:26:19",
             "score": 12,
             "content": "I appreciate your comment! The hash map solution is definitely more efficient..."
           }
@@ -112,8 +112,8 @@
       },
       {
         "id": "c7a988c4-9e9b-4a7a-8a98-a3e0b0b3152d",
-        "author": "travisscott",
-        "publishTime": "2026-01-22",
+        "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
+        "publishTime": "2026-01-22T11:37:51",
         "score": 25,
         "file": "solutions/c7a988c4-9e9b-4a7a-8a98-a3e0b0b3152d.java",
         "explanation": "This solution uses a two-pointer technique...",
@@ -121,15 +121,15 @@
         "comments": [
           {
             "id": "a9540f40-e783-42da-9ca3-73d1cf3e1ec8",
-            "author": "playboicarti",
-            "publishTime": "2026-01-27",
+            "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+            "publishTime": "2026-01-27T23:45:10",
             "score": 10,
             "content": "Thank you! The two-pointer technique is a common approach..."
           },
           {
-            "id": "c8",
-            "author": "travisscott",
-            "publishTime": "2026-01-28",
+            "id": "c7cd3dc4-7a20-4876-a54b-822a98865fe1",
+            "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
+            "publishTime": "2026-01-28T14:35:34",
             "score": 18,
             "content": "I appreciate your feedback! The built-in functions are great..."
           }

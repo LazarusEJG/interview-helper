@@ -6,21 +6,21 @@ import java.util.UUID;
 
 public abstract class Response implements Commentable {
 	private UUID id;
-	private User author;
+	private UUID author;
 	private LocalDateTime publishTime;
 	private ArrayList<Comment> replies;
 	private int score;
 	private boolean flagged = false;
 	private boolean removed = false;
 
-	public Response(User author) {
+	public Response(UUID author) {
 		this.author = author;
 		publishTime = LocalDateTime.now();
 		replies = new ArrayList<Comment>();
 		score = 0;
 	}
 
-	protected Response(UUID id, User author, LocalDateTime publishTime, ArrayList<Comment> replies, int score) {
+	protected Response(UUID id, UUID author, LocalDateTime publishTime, ArrayList<Comment> replies, int score) {
 		this.id = id;
 		this.author = author;
 		this.publishTime = publishTime;
@@ -52,7 +52,7 @@ public abstract class Response implements Commentable {
 		return id;
 	}
 
-	public User getAuthor() {
+	public UUID getAuthor() {
 		return author;
 	}
 

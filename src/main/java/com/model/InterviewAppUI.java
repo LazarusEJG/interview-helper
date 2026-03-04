@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 public class InterviewAppUI {
 	private InterviewApp library;
@@ -25,6 +26,13 @@ public class InterviewAppUI {
 		System.out.println("Playboi Carti is now logged in");
 		System.out.println(user.toString());
 
+		System.out.println();
+
+		System.out.println(user.getUsername() + "'s published the questions: ");
+		for (UUID id : user.getSubmittedSolutions()) {
+			System.out.println(QuestionList.getInstance().getQuestion(id));
+		}
+
 		library.close();
 	}
 
@@ -39,6 +47,13 @@ public class InterviewAppUI {
 
 		System.out.println("Travis Scott is now logged in");
 		System.out.println(user.toString());
+
+		System.out.println();
+
+		System.out.println(user.getUsername() + "'s published the questions: ");
+		for (UUID id : user.getSubmittedSolutions()) {
+			System.out.println(QuestionList.getInstance().getQuestion(id));
+		}
 
 		library.close();
 	}

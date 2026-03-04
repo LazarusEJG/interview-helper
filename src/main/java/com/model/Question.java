@@ -13,16 +13,16 @@ public class Question implements Commentable {
 	private ArrayList<String> categories;
 	private ArrayList<Solution> solutions;
 	private ArrayList<Comment> comments;
-	private User author;
+	private UUID author;
 	private ArrayList<String> hints;
 	private LocalDateTime publishTime;
 
-	public Question(User author, String content) {
+	public Question(UUID author, String content) {
 		this.author = author;
 		this.content = content;
 	}
 
-	public Question(UUID id, User author, String content, String title, int difficulty,
+	public Question(UUID id, UUID author, String content, String title, int difficulty,
 			ArrayList<String> categories, ArrayList<Solution> solutions,
 			ArrayList<Comment> comments, ArrayList<String> hints,
 			LocalDateTime publishTime, int score) {
@@ -96,11 +96,41 @@ public class Question implements Commentable {
 		return comments;
 	}
 
-	public User getAuthor() {
+	public UUID getAuthor() {
 		return author;
 	}
 
 	public LocalDateTime getPublishTime() {
 		return publishTime;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("Question <" + title + ">" + "\n");
+		sb.append("id: " + id + "\n");
+		sb.append("author: " + author.toString() + "\n");
+		sb.append("content: " + content + "\n");
+		sb.append("title: " + title + "\n");
+		sb.append("difficulty: " + difficulty + "\n");
+		sb.append("categories: \n");
+		for (String category : categories) {
+			sb.append("  " + category + "\n");
+		}
+		sb.append("solutions: \n");
+		for (Solution solution : solutions) {
+			sb.append("  " + solution.getId().toString() + "\n");
+		}
+		sb.append("comments: \n");
+		for (Comment comment : comments) {
+			sb.append("  " + comment.getId().toString() + "\n");
+		}
+		sb.append("hints: \n");
+		for (String hint : hints) {
+			sb.append("  " + hint + "\n");
+		}
+		sb.append("publishTime: " + publishTime + "\n");
+		sb.append("score: " + score + "\n");
+
+		return sb.toString();
 	}
 }

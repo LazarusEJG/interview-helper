@@ -1,6 +1,7 @@
 package com.model;
 
 import com.model.Persistence.QuestionWriter;
+import com.model.Persistence.QuestionLoader;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -16,7 +17,7 @@ public class QuestionList {
 	private Question currentQuestion; // added for setCurrentQuestion
 
 	private QuestionList() {
-		questions = new ArrayList<Question>();
+		questions = QuestionLoader.getQuestions();
 		instance = this;
 	}
 
@@ -59,7 +60,7 @@ public class QuestionList {
 	 */
 	public boolean addQuestion(User author, String content) {
 		if (author.getType() == UserType.CONTRIBUTOR) {
-			questions.add(new Question(author, content));
+			questions.add(new Question(author.getId(), content));
 			return true;
 		}
 		return false;
@@ -125,7 +126,7 @@ public class QuestionList {
 			Integer minDifficulty, // Using object not primitive so you can call the method with various null args
 			Integer maxDifficulty,
 			boolean onlySolved,
-			ArrayList<User> authors) {
+			ArrayList<UUID> authors) {
 
 		ArrayList<Question> filtered = new ArrayList<Question>();
 
@@ -159,7 +160,7 @@ public class QuestionList {
 		return filtered;
 	}
 
-	public void save(String filename) {
+	public void save() {
 		QuestionWriter.saveQuestions(questions);
 	}
 }
