@@ -32,8 +32,8 @@ public final class UserLoader extends UserDataConstants {
 				String username = (String) userJSON.get(USER_USER_NAME);
 				String password = (String) userJSON.get(USER_PASSWORD);
 				ArrayList<String> interests = (ArrayList<String>) userJSON.get(USER_INTERESTS);
-				int currentStreak = (int) userJSON.get(USER_CURRENT_STREAK);
-				int longestStreak = (int) userJSON.get(USER_LONGEST_STREAK);
+				int currentStreak = ((Long) userJSON.get(USER_CURRENT_STREAK)).intValue();
+				int longestStreak = ((Long) userJSON.get(USER_LONGEST_STREAK)).intValue();
 
 				JSONArray submittedSolutionsUUID = (JSONArray) userJSON.get(USER_SUBMITTED_SOLUTIONS);
 				ArrayList<UUID> submittedSolutions = getSubmittedSolutions(submittedSolutionsUUID);
@@ -44,7 +44,7 @@ public final class UserLoader extends UserDataConstants {
 
 				ArrayList<String> completedCourses = (ArrayList<String>) userJSON.get(USER_COMPLETED_COURSES);
 				LocalDate lastStreakDate = LocalDate.parse((String) userJSON.get(USER_LAST_STREAK_DAY));
-				int receivedVotes = (int) userJSON.get(USER_RECEIVED_VOTES);
+				int receivedVotes = ((Long) userJSON.get(USER_RECEIVED_VOTES)).intValue();
 
 				User user = new User(id, userType, eMail, username, password, interests, currentStreak, longestStreak,
 						submittedSolutions,

@@ -31,8 +31,8 @@ public final class UserWriter extends UserDataConstants {
 
 	private static JSONObject getUserJSON(User user) {
 		JSONObject userJSON = new JSONObject();
-		userJSON.put(USER_ID, user.getId());
-		userJSON.put(USER_TYPE, user.getType());
+		userJSON.put(USER_ID, user.getId().toString());
+		userJSON.put(USER_TYPE, user.getType().name());
 		userJSON.put(USER_EMAIL, user.geteMail());
 		userJSON.put(USER_USER_NAME, user.getUsername());
 		userJSON.put(USER_PASSWORD, user.getPassword());
@@ -70,7 +70,7 @@ public final class UserWriter extends UserDataConstants {
 		}
 		userJSON.put(USER_COMPLETED_COURSES, courses);
 
-		userJSON.put(USER_LAST_STREAK_DAY, user.getLastStreakDate());
+		userJSON.put(USER_LAST_STREAK_DAY, user.getLastStreakDate().toString());
 		userJSON.put(USER_RECEIVED_VOTES, user.getReceivedVotes());
 
 		return userJSON;
