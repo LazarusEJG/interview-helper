@@ -4,6 +4,7 @@ import com.model.*;
 import com.model.Persistence.QuestionDataConstants;
 
 import java.io.FileReader;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -17,7 +18,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 	public static ArrayList<Question> getQuestions() {
 		ArrayList<Question> questions = null;
 		try {
-			FileReader reader = new FileReader(QUESTION_FILE_NAME);
+			FileReader reader = new FileReader(Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString());
 			JSONParser parser = new JSONParser();
 			JSONArray questionsJSON = (JSONArray) parser.parse(reader);
 			questions = new ArrayList<Question>(questionsJSON.size());
@@ -27,8 +28,8 @@ public final class QuestionLoader extends QuestionDataConstants {
 
 				UUID id = UUID.fromString((String) questionJSON.get(QUESTION_ID));
 				String title = (String) questionJSON.get(QUESTION_TITLE);
-				int difficulty = (int) questionJSON.get(QUESTION_DIFFICULTY);
-				int score = (int) questionJSON.get(QUESTION_SCORE);
+				int difficulty = ((Long) questionJSON.get(QUESTION_DIFFICULTY)).intValue();
+				int score = ((Long) questionJSON.get(QUESTION_SCORE)).intValue();
 				String content = (String) questionJSON.get(QUESTION_CONTENT);
 				// Categories
 				JSONArray categoriesJSON = (JSONArray) questionJSON.get(QUESTION_CATEGORIES);
@@ -69,7 +70,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 			User author = UserList.getInstance().getUser(authorUUID);
 
 			LocalDateTime publishTime = LocalDateTime.parse((String) solutionJSON.get(QUESTION_SOLUTIONS_PUBLISH_TIME));
-			int score = (int) solutionJSON.get(QUESTION_SOLUTIONS_SCORE);
+			int score = ((Long) solutionJSON.get(QUESTION_SOLUTIONS_SCORE)).intValue();
 			String filename = (String) solutionJSON.get(QUESTION_SOLUTIONS_FILE);
 			String explanation = (String) solutionJSON.get(QUESTION_SOLUTIONS_EXPLANATION);
 			boolean verified = ((String) solutionJSON.get(QUESTION_SOLUTIONS_VERIFIED)).equalsIgnoreCase("true");
@@ -94,7 +95,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 			User author = UserList.getInstance().getUser(authorUUID);
 
 			LocalDateTime publishTime = LocalDateTime.parse((String) commentJSON.get(QUESTION_COMMENTS_PUBLISH_TIME));
-			int score = (int) commentJSON.get(QUESTION_COMMENTS_SCORE);
+			int score = ((Long) commentJSON.get(QUESTION_COMMENTS_SCORE)).intValue();
 			String content = (String) commentJSON.get(QUESTION_COMMENTS_CONTENT);
 
 			JSONArray repliesJSON = (JSONArray) commentJSON.get(QUESTION_COMMENTS);
