@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.regex.*;
 
 /**
  * Facade class for the Interview Helper system.
@@ -23,6 +24,23 @@ public class InterviewApp {
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
 		return currentUser;
+	}
+
+	boolean isValidUsername(String username) {
+		return true;
+	}
+
+	boolean isValidPassword(String password) {
+		return true;
+	}
+
+	boolean isValidEmail(String email) {
+		Pattern pattern = Pattern.compile("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/");
+		return email.matches(email);
+	}
+
+	boolean containsUser(String username, String password) {
+		return true;
 	}
 
 	public boolean logout() {
