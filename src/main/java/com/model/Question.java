@@ -76,12 +76,11 @@ public class Question implements Commentable {
 	 * Sorry in advance if this is like super wrong - EJ]
 	 */
 	public void addSolution(User user, Solution solution) {
-		if (user.getType() == UserType.CONTRIBUTOR) {
+		if (user.getType() == UserType.REGISTERED) {
 			Solution newSolution = new Solution(UUID.randomUUID(),author,publishTime,score,
 			"","",true, comments);
-			solutions.add(newSolution);
+			this.solutions.add(newSolution);
 		}
-		
 	}
 
 	/**
@@ -90,7 +89,7 @@ public class Question implements Commentable {
 	 */
 	public void addComment(Comment comment) {
 		Comment newComment = new Comment(UUID.randomUUID(),author, publishTime, score, comments, content);
-		comments.add(newComment);
+		this.comments.add(newComment);
 	}
 
 	public void removeResponse(User user, Response response) {
