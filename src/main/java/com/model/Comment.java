@@ -7,7 +7,7 @@ import java.util.UUID;
 public class Comment extends Response {
 	private String content;
 
-	public Comment(UUID id, User author, LocalDateTime publishTime, int score, ArrayList<Comment> replies,
+	public Comment(UUID id, UUID author, LocalDateTime publishTime, int score, ArrayList<Comment> replies,
 			String content) {
 		super(id, author, publishTime, replies, score);
 		this.content = content;

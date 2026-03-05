@@ -39,11 +39,11 @@ public class InterviewApp {
 	}
 
 	public void addQuestion(Question question) {
-		QuestionList.getInstance().getQuestions().add(question);
+		QuestionList.getInstance().addQuestion(getUser(question.getAuthor()), question.getContent());
 	}
 
-	public ArrayList<Question> getQuestions() {
-		return QuestionList.getInstance().getQuestions();
+	public User getUser(UUID id) {
+		return UserList.getInstance().getUser(id);
 	}
 
 	public ArrayList<Question> getQuestions(
@@ -51,7 +51,7 @@ public class InterviewApp {
 			Integer minDifficulty,
 			Integer maxDifficulty,
 			boolean onlySolved,
-			ArrayList<User> authors) {
+			ArrayList<UUID> authors) {
 
 		return QuestionList.getInstance().getQuestions(
 				tagFilter,
@@ -143,5 +143,6 @@ public class InterviewApp {
 
 	public void close() {
 		UserList.getInstance().save();
+		QuestionList.getInstance().save();
 	}
 }
