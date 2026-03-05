@@ -86,6 +86,14 @@ public class InterviewApp {
 		return currentUser.getAnsweredQuestions();
 	}
 
+	/**
+	 * Calls upon getQuestions in QuestionList
+	 * @return returns all questions
+	 */
+	public ArrayList<Question> getAllQuestions() {
+		return QuestionList.getInstance().getQuestions();
+	}
+
 	public String getHints() {
 
 		if (currentQuestion != null &&
