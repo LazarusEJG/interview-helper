@@ -4,6 +4,7 @@ import com.model.*;
 import com.model.Persistence.QuestionDataConstants;
 
 import java.io.FileWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.json.simple.JSONArray;
@@ -18,7 +19,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 				questionsJSON.add(questionJSON);
 			}
 
-			FileWriter writer = new FileWriter(QUESTION_FILE_NAME);
+			FileWriter writer = new FileWriter(Paths.get(QUESTION_FILE_PATH, "TEST_" + QUESTION_FILE_NAME).toString());
 			questionsJSON.writeJSONString(writer);
 			// DEBUG
 			System.out.println(questionsJSON.toJSONString());
@@ -31,7 +32,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 
 	private static JSONObject getQuestionJSON(Question question) {
 		JSONObject questionJSON = new JSONObject();
-		questionJSON.put(QUESTION_ID, question.getId());
+		questionJSON.put(QUESTION_ID, question.getId().toString());
 		questionJSON.put(QUESTION_TITLE, question.getTitle());
 		questionJSON.put(QUESTION_DIFFICULTY, question.getDifficulty());
 		questionJSON.put(QUESTION_SCORE, question.getScore());
@@ -43,8 +44,8 @@ public final class QuestionWriter extends QuestionDataConstants {
 		}
 		questionJSON.put(QUESTION_CATEGORIES, categories);
 
-		questionJSON.put(QUESTION_AUTHOR, question.getAuthor());
-		questionJSON.put(QUESTION_PUBLISH_TIME, question.getPublishTime());
+		questionJSON.put(QUESTION_AUTHOR, question.getAuthor().toString());
+		questionJSON.put(QUESTION_PUBLISH_TIME, question.getPublishTime().toString());
 		// Hints
 		JSONArray hints = new JSONArray();
 		for (String hint : question.getHints()) {
@@ -64,9 +65,9 @@ public final class QuestionWriter extends QuestionDataConstants {
 
 	private static JSONObject getSolutionJSON(Solution solution) {
 		JSONObject solutionJSON = new JSONObject();
-		solutionJSON.put(QUESTION_SOLUTIONS_ID, solution.getId());
-		solutionJSON.put(QUESTION_SOLUTIONS_AUTHOR, solution.getAuthor());
-		solutionJSON.put(QUESTION_SOLUTIONS_PUBLISH_TIME, solution.getPublishTime());
+		solutionJSON.put(QUESTION_SOLUTIONS_ID, solution.getId().toString());
+		solutionJSON.put(QUESTION_SOLUTIONS_AUTHOR, solution.getAuthor().toString());
+		solutionJSON.put(QUESTION_SOLUTIONS_PUBLISH_TIME, solution.getPublishTime().toString());
 		solutionJSON.put(QUESTION_SOLUTIONS_SCORE, solution.getScore());
 		solutionJSON.put(QUESTION_SOLUTIONS_FILE, solution.getFile());
 		solutionJSON.put(QUESTION_SOLUTIONS_EXPLANATION, solution.getExplanation());
@@ -83,9 +84,9 @@ public final class QuestionWriter extends QuestionDataConstants {
 
 	private static JSONObject getCommentJSON(Comment comment) {
 		JSONObject commentJSON = new JSONObject();
-		commentJSON.put(QUESTION_COMMENTS_ID, comment.getId());
-		commentJSON.put(QUESTION_COMMENTS_AUTHOR, comment.getAuthor());
-		commentJSON.put(QUESTION_COMMENTS_PUBLISH_TIME, comment.getPublishTime());
+		commentJSON.put(QUESTION_COMMENTS_ID, comment.getId().toString());
+		commentJSON.put(QUESTION_COMMENTS_AUTHOR, comment.getAuthor().toString());
+		commentJSON.put(QUESTION_COMMENTS_PUBLISH_TIME, comment.getPublishTime().toString());
 		commentJSON.put(QUESTION_COMMENTS_SCORE, comment.getScore());
 		commentJSON.put(QUESTION_COMMENTS_CONTENT, comment.getContent());
 

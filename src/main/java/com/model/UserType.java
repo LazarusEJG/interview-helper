@@ -2,7 +2,7 @@ package com.model;
 
 /**
  * Types of users
- * @author MrKlauk
+ * @author LazarusEJG
  */
 public enum UserType {
 	REGISTERED,
