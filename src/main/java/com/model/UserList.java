@@ -77,6 +77,7 @@ public class UserList {
 	 */
 	public boolean addUser(String eMail, String username, String password) {
 		users.add(new User(eMail, username, password));
+		UserWriter.saveUsers(users);
 		return true; // temporary return statement
 	}
 

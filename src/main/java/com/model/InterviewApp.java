@@ -21,9 +21,18 @@ public class InterviewApp {
 		this.currentUser = user;
 	}
 
+	User getCurrentUser() {
+		return currentUser;
+	}
+
+
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
 		return currentUser;
+	}
+
+	public boolean isLoggedIn() {
+		return (currentUser != null);
 	}
 
 	boolean isValidUsername(String username) {
@@ -41,6 +50,10 @@ public class InterviewApp {
 
 	boolean containsUser(String username, String password) {
 		return true;
+	}
+
+	public ArrayList<User> getAllUsers() {
+		return UserList.getInstance().getUsers();
 	}
 
 	public boolean logout() {
