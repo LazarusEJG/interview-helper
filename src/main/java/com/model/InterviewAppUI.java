@@ -1,6 +1,5 @@
 package com.model;
 
-import java.util.UUID;
 import java.util.Scanner;
 
 public class InterviewAppUI {
@@ -57,7 +56,7 @@ public class InterviewAppUI {
 					if (library.isValidUsername(username) && 
 						library.isValidPassword(password) &&
 						library.isValidEmail(email)) {
-						library.registerUser(input, username, password);
+						library.registerUser(email, username, password);
 					}
 					break;
 				

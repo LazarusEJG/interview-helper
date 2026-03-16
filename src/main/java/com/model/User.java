@@ -26,7 +26,7 @@ public class User {
 
 	private ArrayList<String> completedCourses;
 
-	private LocalDate lastStreakDate = null;
+	private LocalDate lastStreakDate = LocalDate.now();
 
 	private int receivedVotes;
 

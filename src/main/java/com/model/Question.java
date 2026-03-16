@@ -61,7 +61,7 @@ public class Question implements Commentable {
 
 
 	public void upVote() {
-
+		
 	}
 
 	public void downVote() {
