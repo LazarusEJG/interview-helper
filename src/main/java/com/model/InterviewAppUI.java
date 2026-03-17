@@ -37,9 +37,7 @@ public class InterviewAppUI {
 					if (library.containsUser(username, password)) {
 						library.login(username, password);
 						System.out.println("Logged in as " + username);
-					}
-
-					else {
+					} else {
 						System.out.println("Account not found");
 					}
 
@@ -78,11 +76,17 @@ public class InterviewAppUI {
 				case "5": //show my account
 					if (library.isLoggedIn()) {
 						System.out.println(library.getCurrentUser().toString());
+					} else {
+						System.out.println("Please login to see your account");
 					}
 					break;
 				
 				case "6": //logout
-					library.logout();
+					if (library.logout() == true) {
+						System.out.println("Logout successful");
+					} else {
+						System.out.println("Logout failed or not logged in");
+					}
 					break;
 				
 			}
