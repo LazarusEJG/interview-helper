@@ -13,6 +13,8 @@ public class InterviewApp {
 
 	private User currentUser;
 	private Question currentQuestion;
+	private static final String SPECIALS = "!@#$%^&?*";
+	private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
 
 	public InterviewApp() {
 	}
@@ -36,16 +38,51 @@ public class InterviewApp {
 	}
 
 	boolean isValidUsername(String username) {
-		return true;
+		boolean hasLetter = false;
+		boolean hasNumber = false;
+
+		if (username.length() < 6 || username.length() > 12)
+			return false;
+
+		for (char c : username.toCharArray()) {
+			if (Character.isAlphabetic(c)) 
+				hasLetter = true;
+			else if (Character.isDigit(c)) 
+				hasNumber = true;
+			else
+				return false;
+		}
+
+		return (hasLetter && hasNumber);
+
 	}
 
 	boolean isValidPassword(String password) {
-		return true;
+		boolean hasLetter = false;
+		boolean hasNumber = false;
+		boolean hasSpecial = false;
+
+		if (password.length() < 8)
+			return false;
+
+		for (char c : password.toCharArray()) {
+			if (Character.isAlphabetic(c)) 
+				hasLetter = true;
+			else if (Character.isDigit(c)) 
+				hasNumber = true;
+			if (hasSpecial == false ) {
+				for (char v : SPECIALS.toCharArray()) {
+					if (c == v) {
+						hasSpecial = true;
+					}
+				}
+			}
+		}
+		return (hasLetter && hasNumber && hasSpecial);
 	}
 
 	boolean isValidEmail(String email) {
-		Pattern pattern = Pattern.compile("/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/");
-		return email.matches(email);
+		return EMAIL_PATTERN.matcher(email).find();
 	}
 
 	boolean containsUser(String username, String password) {

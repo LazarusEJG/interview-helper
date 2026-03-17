@@ -54,11 +54,20 @@ public class InterviewAppUI {
 					System.out.println("Enter password:");
 					password = keyboard.nextLine();
 
-					if (library.isValidUsername(username) && 
-						library.isValidPassword(password) &&
-						library.isValidEmail(email)) {
-						library.registerUser(input, username, password);
+					if (library.isValidEmail(email) == false) {
+						System.out.println("Invalid email");
 					}
+					if (library.isValidUsername(username) == false) {
+						System.out.println("Invalid username");
+					}
+					if (library.isValidPassword(password) == false) {
+						System.out.println("Invalid password");
+					}
+
+					if (library.isValidEmail(email) && library.isValidPassword(password) &&
+					    library.isValidUsername(username))
+						library.registerUser(email, username, password);
+
 					break;
 				
 				case "3": //show all questions
