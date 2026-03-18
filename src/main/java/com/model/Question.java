@@ -70,8 +70,8 @@ public class Question implements Commentable {
 
 	/**
 	 * method to a add a solution to the question
-	 * @param user User who made the question
-	 * @param solution [placeholder text]
+	 * @param user User who made the solution
+	 * @param solution the solution itself
 	 * [I wanted to add at least somthing if I could.
 	 * Sorry in advance if this is like super wrong - EJ]
 	 */
