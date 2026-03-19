@@ -4,31 +4,67 @@ import java.util.Scanner;
 
 public class InterviewAppUI {
 	private InterviewApp library;
+	private Scanner keyboard;
 
 	InterviewAppUI() {
 		library = new InterviewApp();
 	}
 
-	public void showOptions() {
-		System.out.println("1: Login");
-		System.out.println("2: Create account");
-		System.out.println("3: Show all questions");
-		System.out.println("4: Show all users");
-		System.out.println("5: Show my account");
-		System.out.println("6: Logout");
-		System.out.println("-1: Exit");
+	class Options {
+		public static final int LOGIN = 1;
+		public static final int CREATE_ACCOUNT = 2;
+		public static final int SHOW_ALL_QUESTIONS = 3;
+		public static final int SHOW_ALL_USERS = 4;
+		public static final int SHOW_MY_ACCOUNT = 5;
+		public static final int LOGOUT = 6;
+		public static final int VIEW_CURRENT_QUESTION = 7;
+		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 8;
+		public static final int ADD_COMMENT_TO_QUESTION = 9;
+		public static final int REPLY_TO_COMMENT = 10;
+
+		public static final int EXIT = -1;
+		public static final int INVALID = 0;
+	}
+
+	public void showOptions(boolean currentQuestion, boolean loggedIn) {
+		System.out.println(Options.LOGIN + ": Login");
+		System.out.println(Options.CREATE_ACCOUNT + ": Create account");
+		System.out.println(Options.SHOW_ALL_USERS + ": Show all users");
+		if (loggedIn) {
+			System.out.println(Options.SHOW_MY_ACCOUNT + ": Show my account");
+			System.out.println(Options.LOGOUT + ": Logout");
+		}
+		System.out.println("----------------------------------------");
+		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
+		if (currentQuestion) {
+			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
+			System.out.println(Options.VIEW_CURRENT_QUESTION_COMMENTS + ": View current question comments");
+			System.out.println(Options.ADD_COMMENT_TO_QUESTION + ": Add comment to question");
+			System.out.println(Options.REPLY_TO_COMMENT + ": Reply to comment");
+			// System.out.println(Options. + ": ");
+		}
+		System.out.println(Options.EXIT + ": Exit");
+	}
+
+	public int getOption() {
+		String input = keyboard.nextLine();
+		try {
+			return Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			return 0;
+		}
 	}
 
 	public void run() {
 		System.out.println("Welcome to InterviewApp!");
-		showOptions();
-		Scanner keyboard = new Scanner(System.in);
-		String input = keyboard.nextLine();
+		showOptions(library.getCurrentQuestion() != null, library.getCurrentUser() != null);
+		keyboard = new Scanner(System.in);
+		int option = getOption();
 
-		while (input.equals("-1") == false) {
-			switch(input) {
+		while (option != Options.EXIT) {
+			switch (option) {
 
-				case "1": //login
+				case Options.LOGIN:
 					System.out.println("Enter username:");
 					String username = keyboard.nextLine();
 					System.out.println("Enter password:");
@@ -43,7 +79,7 @@ public class InterviewAppUI {
 
 					break;
 
-				case "2": //create account
+				case Options.CREATE_ACCOUNT:
 					System.out.println("Enter email:");
 					String email = keyboard.nextLine();
 					System.out.println("Enter username:");
@@ -62,49 +98,48 @@ public class InterviewAppUI {
 					}
 
 					if (library.isValidEmail(email) && library.isValidPassword(password) &&
-					    library.isValidUsername(username))
+							library.isValidUsername(username))
 						library.registerUser(email, username, password);
 
 					break;
-				
-				case "3": //show all questions
+
+				case Options.SHOW_ALL_QUESTIONS:
 					for (Question question : library.getAllQuestions()) {
 						System.out.println(question.getTitle());
 						System.out.println(question.getContent());
 						System.out.println();
 					}
 					break;
-				
-				case "4": //show all users
+
+				case Options.SHOW_ALL_USERS:
 					for (User user : library.getAllUsers()) {
 						System.out.println(user.getUsername());
 						System.out.println();
 					}
 					break;
-				
-				case "5": //show my account
+
+				case Options.SHOW_MY_ACCOUNT:
 					if (library.isLoggedIn()) {
 						System.out.println(library.getCurrentUser().toString());
 					} else {
 						System.out.println("Please login to see your account");
 					}
 					break;
-				
-				case "6": //logout
+
+				case Options.LOGOUT:
 					if (library.logout() == true) {
 						System.out.println("Logout successful");
 					} else {
 						System.out.println("Logout failed or not logged in");
 					}
 					break;
-				
 			}
-			showOptions();
-			input = keyboard.nextLine();
-		}
-		
 
+			showOptions(library.getCurrentQuestion() != null, library.getCurrentUser() != null);
+			option = getOption();
+		}
 	}
+
 	public static void main(String[] args) {
 		InterviewAppUI libraryInterface = new InterviewAppUI();
 		libraryInterface.run();
