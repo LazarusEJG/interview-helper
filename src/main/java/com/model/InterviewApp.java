@@ -113,8 +113,13 @@ public class InterviewApp {
 		UserList.getInstance().addUser(eMail, username, password);
 	}
 
-	public void addQuestion(Question question) {
-		QuestionList.getInstance().addQuestion(getUser(question.getAuthor()), question.getContent());
+	public boolean addQuestion(Question question) {
+		if (currentUser.getType() == UserType.CONTRIBUTOR) {
+			QuestionList.getInstance().addQuestion(getUser(question.getAuthor()), question.getContent());
+			return true;
+		}
+		else
+			return false;
 	}
 
 	public User getUser(UUID id) {
