@@ -26,7 +26,7 @@ public class User {
 
 	private ArrayList<String> completedCourses;
 
-	private LocalDate lastStreakDate = null;
+	private LocalDate lastStreakDate;
 
 	private int receivedVotes;
 
@@ -51,6 +51,8 @@ public class User {
 		this.bookmarkedQuestions = new ArrayList<>();
 		this.bookmarkedSolutions = new ArrayList<>();
 		this.completedCourses = new ArrayList<>();
+
+		this.lastStreakDate = LocalDate.now();
 
 		this.currentStreak = 0;
 		this.longestStreak = 0;
