@@ -12,7 +12,7 @@ import java.util.regex.*;
 public class InterviewApp {
 
 	private User currentUser;
-	private Question currentQuestion;
+	private ArrayList<Question> searchResults;
 	private static final String SPECIALS = "!@#$%^&?*";
 	private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
 
@@ -23,10 +23,17 @@ public class InterviewApp {
 		this.currentUser = user;
 	}
 
-	User getCurrentUser() {
+	public User getCurrentUser() {
 		return currentUser;
 	}
 
+	public Question getCurrentQuestion() {
+		return QuestionList.getInstance().getCurrentQuestion();
+	}
+
+	public ArrayList<Question> getSearchResults() {
+		return searchResults;
+	}
 
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
@@ -45,9 +52,9 @@ public class InterviewApp {
 			return false;
 
 		for (char c : username.toCharArray()) {
-			if (Character.isAlphabetic(c)) 
+			if (Character.isAlphabetic(c))
 				hasLetter = true;
-			else if (Character.isDigit(c)) 
+			else if (Character.isDigit(c))
 				hasNumber = true;
 			else
 				return false;
@@ -66,11 +73,11 @@ public class InterviewApp {
 			return false;
 
 		for (char c : password.toCharArray()) {
-			if (Character.isAlphabetic(c)) 
+			if (Character.isAlphabetic(c))
 				hasLetter = true;
-			else if (Character.isDigit(c)) 
+			else if (Character.isDigit(c))
 				hasNumber = true;
-			if (hasSpecial == false ) {
+			if (hasSpecial == false) {
 				for (char v : SPECIALS.toCharArray()) {
 					if (c == v) {
 						hasSpecial = true;
@@ -121,12 +128,14 @@ public class InterviewApp {
 			boolean onlySolved,
 			ArrayList<UUID> authors) {
 
-		return QuestionList.getInstance().getQuestions(
+		searchResults = QuestionList.getInstance().getQuestions(
 				tagFilter,
 				minDifficulty,
 				maxDifficulty,
 				onlySolved,
 				authors);
+
+		return searchResults;
 	}
 
 	public Question getDailyQuestion() {
@@ -156,13 +165,16 @@ public class InterviewApp {
 
 	/**
 	 * Calls upon getQuestions in QuestionList
+	 * 
 	 * @return returns all questions
 	 */
 	public ArrayList<Question> getAllQuestions() {
-		return QuestionList.getInstance().getQuestions();
+		searchResults = QuestionList.getInstance().getQuestions();
+		return searchResults;
 	}
 
 	public String getHints() {
+		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion != null &&
 				currentQuestion.getHints() != null &&
@@ -175,6 +187,7 @@ public class InterviewApp {
 	}
 
 	public void addSolution(User currentUser, Solution solution) {
+		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion != null) {
 			currentQuestion.addSolution(currentUser, solution);
@@ -182,6 +195,7 @@ public class InterviewApp {
 	}
 
 	public ArrayList<Solution> getSolutions() {
+		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion == null)
 			return new ArrayList<>();

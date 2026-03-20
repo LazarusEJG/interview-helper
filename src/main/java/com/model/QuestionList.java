@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 /**
  * Singleton class for managing all questions
+ * 
  * @author tsitnik1
  */
 public class QuestionList {
@@ -22,7 +23,9 @@ public class QuestionList {
 	}
 
 	/**
-	 * Returns the instance of the QuestionList object. If null, it constructs a new one
+	 * Returns the instance of the QuestionList object. If null, it constructs a new
+	 * one
+	 * 
 	 * @return
 	 */
 	public static QuestionList getInstance() {
@@ -34,6 +37,7 @@ public class QuestionList {
 
 	/**
 	 * Returns the daily question
+	 * 
 	 * @return A Question selected from the list of questions based on the day
 	 */
 	public Question getDailyQuestion() {
@@ -46,15 +50,21 @@ public class QuestionList {
 
 	/**
 	 * Sets the current question
+	 * 
 	 * @param question The question being set
 	 */
 	public void setCurrentQuestion(Question question) {
 		this.currentQuestion = question;
 	}
 
+	public Question getCurrentQuestion() {
+		return currentQuestion;
+	}
+
 	/**
 	 * Adds a question to the question list
-	 * @param author The author of the question, must be a contributor
+	 * 
+	 * @param author  The author of the question, must be a contributor
 	 * @param content The content of the question
 	 * @return True if the method was successful, false otherwise
 	 */
@@ -68,6 +78,7 @@ public class QuestionList {
 
 	/**
 	 * Removes a question from the list
+	 * 
 	 * @param question The question being removed
 	 */
 	public void removeQuestion(Question question) {
@@ -76,6 +87,7 @@ public class QuestionList {
 
 	/**
 	 * Gets the ArrayList of questions
+	 * 
 	 * @return The ArrayList of questions
 	 */
 	public ArrayList<Question> getQuestions() {
@@ -84,6 +96,7 @@ public class QuestionList {
 
 	/**
 	 * Finds and returns the question with the specified ID
+	 * 
 	 * @param id The ID being searched for
 	 * @return The question with the specified ID
 	 */
@@ -98,6 +111,7 @@ public class QuestionList {
 
 	/**
 	 * Finds and returns the solution with the specified ID
+	 * 
 	 * @param id The ID being searched for
 	 * @return The solution with the specified ID
 	 */
@@ -114,11 +128,12 @@ public class QuestionList {
 
 	/**
 	 * Gets the questions with the specified filters. If no filter, leave as null
-	 * @param tagFilter Filter for questions with certain tags
+	 * 
+	 * @param tagFilter     Filter for questions with certain tags
 	 * @param minDifficulty Filter for minimum difficulty. Must be Integer()
 	 * @param maxDifficulty Filter for maximum difficulty. Must be Integer()
-	 * @param onlySolved Filter for only solved questions
-	 * @param authors Filter for specific authors
+	 * @param onlySolved    Filter for only solved questions
+	 * @param authors       Filter for specific authors
 	 * @return ArrayList with filtered questions
 	 */
 	public ArrayList<Question> getQuestions(
@@ -133,7 +148,7 @@ public class QuestionList {
 		for (Question question : questions) {
 			// Category tags
 			if (tagFilter != null) {
-				//Work on later
+				// Work on later
 			}
 
 			// Difficulty

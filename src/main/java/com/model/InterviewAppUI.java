@@ -58,12 +58,24 @@ public class InterviewAppUI {
 		System.out.println(Options.EXIT + ": Exit");
 	}
 
-	public int getOption() {
+	int getOption() {
 		String input = keyboard.nextLine();
 		try {
 			return Integer.parseInt(input);
 		} catch (NumberFormatException e) {
-			return 0;
+			return Options.INVALID;
+		}
+	}
+
+	int selectItem() {
+		System.out.print("Select from the above ( 1 - " + itemCount + "; -1 to cancel): ");
+		while (true) {
+			String input = keyboard.nextLine();
+			try {
+				return Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println(input + " is not a valid entry. ");
+			}
 		}
 	}
 
@@ -96,6 +108,8 @@ public class InterviewAppUI {
 
 				case Options.SHOW_ALL_QUESTIONS:
 					showAllQuestions();
+					int question = selectItem();
+					library.setCurrentQuestion(library.getSearchResults().get(question));
 					break;
 
 				case Options.SEARCH_QUESTIONS:
