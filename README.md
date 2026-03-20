@@ -10,7 +10,9 @@ UML Use Case Diagram:
 https://lucid.app/lucidchart/e3a5328a-2317-4d28-87f1-ae752404fbd0/edit?invitationId=inv_a40a7470-4f2b-4bb7-9a7c-772ebb5cf021
 
 Sequence Diagram 1:
+Logging in and adding a question then logging out.
 https://lucid.app/lucidchart/81f5189d-f690-41d6-bdce-27805a18a5f9/edit?invitationId=inv_2e3e82fd-9dbd-4b96-a0d7-fc0b0d4a7c0f
 
 Sequence Diagram 2:
+Logging in and adding a solution then logging out.
 https://lucid.app/lucidchart/a13f9f9a-9589-4223-8379-6fa4b44e94d3/edit?invitationId=inv_2c8e8902-914f-4ee6-a8ba-4f5a0d6de413
