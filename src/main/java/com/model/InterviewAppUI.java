@@ -30,9 +30,11 @@ public class InterviewAppUI {
 
 		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 10;
 		public static final int ADD_COMMENT_TO_QUESTION = 11;
-		public static final int REPLY_TO_COMMENT = 12;
-		public static final int UPVOTE_COMMENTS = 13;
-		public static final int DOWNVOTE_COMMENTS = 14;
+		public static final int VIEW_CURRENT_QUESTION_SOLUTIONS = 12;
+
+		public static final int REPLY_TO_COMMENT = 13;
+		public static final int UPVOTE_SOLUTION = 14;
+		public static final int DOWNVOTE_SOLUTION = 15;
 
 		public static final int EXIT = -1;
 		public static final int INVALID = 0;
@@ -51,6 +53,8 @@ public class InterviewAppUI {
 		if (currentQuestion) {
 			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
 			System.out.println(Options.VIEW_CURRENT_QUESTION_COMMENTS + ": View current question comments");
+			System.out.println(Options.VIEW_CURRENT_QUESTION_SOLUTIONS + ": View current question solutions");
+			System.out.println(Options.UPVOTE_SOLUTION + ": Upvote a solution");
 			System.out.println(Options.ADD_COMMENT_TO_QUESTION + ": Add comment to question");
 			System.out.println(Options.REPLY_TO_COMMENT + ": Reply to comment");
 			// System.out.println(Options. + ": ");
@@ -96,6 +100,7 @@ public class InterviewAppUI {
 		while (option != Options.EXIT) {
 			System.out.print(CLEAR);
 			System.out.flush();
+			int question;
 			switch (option) {
 
 				case Options.LOGIN:
@@ -108,12 +113,14 @@ public class InterviewAppUI {
 
 				case Options.SHOW_ALL_QUESTIONS:
 					showAllQuestions();
-					int question = selectItem();
-					library.setCurrentQuestion(library.getSearchResults().get(question));
+					question = selectItem();
+					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
 
 				case Options.SEARCH_QUESTIONS:
 					searchQuestions();
+					question = selectItem();
+					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
 
 				case Options.VIEW_CURRENT_QUESTION:
@@ -121,6 +128,18 @@ public class InterviewAppUI {
 					break;
 
 				case Options.VIEW_CURRENT_QUESTION_COMMENTS:
+					printComments(library.getCurrentQuestion().getComments());
+					break;
+
+				case Options.VIEW_CURRENT_QUESTION_SOLUTIONS:
+					printSolutions(library.getCurrentQuestion().getSolutions());
+					break;
+
+				case Options.UPVOTE_SOLUTION:
+					printSolutions(library.getCurrentQuestion().getSolutions());
+					itemCount = library.getCurrentQuestion().getSolutions().size(); // TODO
+					question = selectItem();
+					library.upvote(library.getCurrentQuestion().getSolutions().get(question - 1));
 					break;
 
 				case Options.SHOW_ALL_USERS:
@@ -135,6 +154,8 @@ public class InterviewAppUI {
 					logOut();
 					break;
 			}
+
+			horizontalRule('-');
 
 			showOptions(library.getCurrentQuestion() != null, library.getCurrentUser() != null);
 			option = getOption();
@@ -176,6 +197,44 @@ public class InterviewAppUI {
 		if (library.isValidEmail(email) && library.isValidPassword(password) &&
 				library.isValidUsername(username))
 			library.registerUser(email, username, password);
+	}
+
+	void printSolution(Solution solution, int number) {
+		System.out.println(
+				number + ". " + library.getUser(solution.getAuthor()).getUsername() + "(" + solution.getScore() + ")" + "["
+						+ solution.getPublishTime() + "]");
+		System.out.println(solution.getExplanation());
+		System.out.println(solution.getFile());
+	}
+
+	void printSolutions(ArrayList<Solution> solutions) {
+		int number = 1;
+		for (Solution solution : solutions) {
+			printSolution(solution, number);
+			number++;
+		}
+	}
+
+	void printComment(Comment comment, int depth, int number) {
+		String indent = "  ";
+		System.out.println(
+				indent.repeat(depth) + number + ". " + library.getUser(comment.getAuthor()).getUsername() + "("
+						+ comment.getScore() + ")");
+		// ensure that any breaks in the comment are correctly indented
+		System.out.println(indent.repeat(depth + 1) + comment.getContent().replace("\n", "\n" + indent));
+	}
+
+	void printComments(ArrayList<Comment> comments, int depth, Integer number) {
+		for (Comment comment : comments) {
+			printComment(comment, depth, number);
+			number++;
+			printComments(comment.getReplies(), depth + 1, number);
+		}
+	}
+
+	void printComments(ArrayList<Comment> comments) {
+		System.out.println("sdhfjdgsbvjfkshf" + comments.size());
+		printComments(comments, 0, 1);
 	}
 
 	void printQuestions(ArrayList<Question> questions, boolean numbered) {
