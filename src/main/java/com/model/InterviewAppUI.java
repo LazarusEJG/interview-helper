@@ -7,7 +7,9 @@ import java.util.UUID;
 public class InterviewAppUI {
 	private InterviewApp library;
 	private Scanner keyboard;
+	private int terminalWidth;
 	private int itemCount;
+	private static final String CLEAR = "\033[H\033[2J\033[3J";
 
 	InterviewAppUI() {
 		library = new InterviewApp();
@@ -44,7 +46,7 @@ public class InterviewAppUI {
 			System.out.println(Options.SHOW_MY_ACCOUNT + ": Show my account");
 			System.out.println(Options.LOGOUT + ": Logout");
 		}
-		System.out.println("----------------------------------------");
+		horizontalRule('.');
 		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
 		if (currentQuestion) {
 			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
@@ -65,13 +67,23 @@ public class InterviewAppUI {
 		}
 	}
 
+	void horizontalRule(char fillChar) {
+		for (int i = 0; i < terminalWidth; i++) {
+			System.out.print(fillChar);
+		}
+		System.out.println();
+	}
+
 	public void run() {
+		terminalWidth = Integer.parseInt(System.getenv().getOrDefault("COLUMNS", "80"));
 		System.out.println("Welcome to InterviewApp!");
 		showOptions(library.getCurrentQuestion() != null, library.getCurrentUser() != null);
 		keyboard = new Scanner(System.in);
 		int option = getOption();
 
 		while (option != Options.EXIT) {
+			System.out.print(CLEAR);
+			System.out.flush();
 			switch (option) {
 
 				case Options.LOGIN:
