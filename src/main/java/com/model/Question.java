@@ -60,12 +60,18 @@ public class Question implements Commentable {
 	}
 
 
+	/**
+	 * upvoting the question increses the score
+	 */
 	public void upVote() {
-		
+		score++;
 	}
 
+	/**
+	 * downvoting the question decreases the score
+	 */
 	public void downVote() {
-
+		score--;
 	}
 
 	/**
@@ -92,53 +98,105 @@ public class Question implements Commentable {
 		this.comments.add(newComment);
 	}
 
+	/**
+	 * removes the response of a user from the question
+	 * @param user Who's response is removed
+	 * @param response The removed response
+	 */
 	public void removeResponse(User user, Response response) {
+
 	}
 
+	/**
+	 * method used to get the hints on a question
+	 * @return the list of hints
+	 */
 	public ArrayList<String> getHints() {
 		return hints; // temporary statement & changed to match return types (change if wrong)
 	}
 
+	/**
+	 * method used to get the solutions on a question
+	 * @return the list of solutions
+	 */
 	public ArrayList<Solution> getSolutions() {
 		return solutions; // temporary statement
 	}
 
+	/**
+	 * ID of the question
+	 * @return returns the ID field of the question
+	 */
 	public UUID getId() {
 		return id;
 	}
 
+	/**
+	 * returns the title field of the question
+	 * @return ^^^
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/**
+	 * returns the difficulty field of the question
+	 * @return
+	 */
 	public int getDifficulty() {
 		return difficulty;
 	}
 
+	/**
+	 * returns the score field of the question
+	 * @return
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * returns the content within the question
+	 * @return
+	 */
 	public String getContent() {
 		return content;
 	}
 
+	/**
+	 * returns the list of categories the question has
+	 * @return
+	 */
 	public ArrayList<String> getCategories() {
 		return categories;
 	}
 
+	/**
+	 * returns the list of comments the question has
+	 */
 	public ArrayList<Comment> getComments() {
 		return comments;
 	}
 
+	/**
+	 * returns the id of the author of the question
+	 * @return
+	 */
 	public UUID getAuthor() {
 		return author;
 	}
 
+	/**
+	 * returns the publishtime of the question
+	 * @return
+	 */
 	public LocalDateTime getPublishTime() {
 		return publishTime;
 	}
 
+	/**
+	 * toString to build the question out
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("Question <" + title + ">" + "\n");
