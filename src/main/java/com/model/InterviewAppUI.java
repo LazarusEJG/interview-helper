@@ -13,14 +13,21 @@ public class InterviewAppUI {
 	class Options {
 		public static final int LOGIN = 1;
 		public static final int CREATE_ACCOUNT = 2;
-		public static final int SHOW_ALL_QUESTIONS = 3;
 		public static final int SHOW_ALL_USERS = 4;
 		public static final int SHOW_MY_ACCOUNT = 5;
 		public static final int LOGOUT = 6;
+
+		public static final int SHOW_ALL_QUESTIONS = 3;
+		public static final int SEARCH_QUESTIONS = 15;
 		public static final int VIEW_CURRENT_QUESTION = 7;
-		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 8;
-		public static final int ADD_COMMENT_TO_QUESTION = 9;
-		public static final int REPLY_TO_COMMENT = 10;
+		public static final int UPVOTE_CURRENT_QUESTION = 8;
+		public static final int DOWNVOTE_CURRENT_QUESTION = 9;
+
+		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 10;
+		public static final int ADD_COMMENT_TO_QUESTION = 11;
+		public static final int REPLY_TO_COMMENT = 12;
+		public static final int UPVOTE_COMMENTS = 13;
+		public static final int DOWNVOTE_COMMENTS = 14;
 
 		public static final int EXIT = -1;
 		public static final int INVALID = 0;
@@ -109,6 +116,15 @@ public class InterviewAppUI {
 						System.out.println(question.getContent());
 						System.out.println();
 					}
+				case Options.SEARCH_QUESTIONS:
+					searchQuestions();
+					break;
+
+				case Options.VIEW_CURRENT_QUESTION:
+					viewCurrentQuestion();
+					break;
+
+				case Options.VIEW_CURRENT_QUESTION_COMMENTS:
 					break;
 
 				case Options.SHOW_ALL_USERS:
