@@ -27,6 +27,13 @@ public class Question implements Commentable {
 		this.author = author;
 		this.title = title;
 		this.content = content;
+		publishTime = LocalDateTime.now();
+
+		id = UUID.randomUUID();
+		categories = new ArrayList<>();
+		solutions = new ArrayList<>();
+		comments = new ArrayList<>();
+		hints = new ArrayList<>();
 	}
 
 	/**

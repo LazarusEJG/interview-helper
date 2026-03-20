@@ -15,6 +15,8 @@ public abstract class Response implements Commentable {
 
 	public Response(UUID author) {
 		this.author = author;
+
+		id = UUID.randomUUID();
 		publishTime = LocalDateTime.now();
 		replies = new ArrayList<Comment>();
 		score = 0;

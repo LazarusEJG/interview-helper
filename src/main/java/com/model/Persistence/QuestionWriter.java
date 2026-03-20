@@ -60,6 +60,13 @@ public final class QuestionWriter extends QuestionDataConstants {
 		}
 		questionJSON.put(QUESTION_SOLUTIONS, solutions);
 
+		// Comments
+		JSONArray comments = new JSONArray();
+		for (Comment comment : question.getComments()) {
+			comments.add(getCommentJSON(comment));
+		}
+		questionJSON.put(QUESTION_COMMENTS, comments);
+
 		return questionJSON;
 	}
 
