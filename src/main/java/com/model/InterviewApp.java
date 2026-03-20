@@ -30,6 +30,7 @@ public class InterviewApp {
 
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
+		currentUser.incrementStreak();
 		return currentUser;
 	}
 
@@ -86,7 +87,10 @@ public class InterviewApp {
 	}
 
 	boolean containsUser(String username, String password) {
-		return true;
+		if (UserList.getInstance().getUser(username, password) != null) {
+			return true;
+		}
+		return false;
 	}
 
 	public ArrayList<User> getAllUsers() {
@@ -103,11 +107,19 @@ public class InterviewApp {
 	}
 
 	public void registerUser(String eMail, String username, String password) {
+		if (containsUser(username, password)) {
+			return;
+		}
 		UserList.getInstance().addUser(eMail, username, password);
 	}
 
-	public void addQuestion(Question question) {
-		QuestionList.getInstance().addQuestion(getUser(question.getAuthor()), question.getContent());
+	public boolean addQuestion(Question question) {
+		if (currentUser.getType() == UserType.CONTRIBUTOR) {
+			QuestionList.getInstance().addQuestion(getUser(question.getAuthor()), question.getContent());
+			return true;
+		}
+		else
+			return false;
 	}
 
 	public User getUser(UUID id) {
