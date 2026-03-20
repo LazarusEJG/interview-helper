@@ -1,10 +1,13 @@
 package com.model;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class InterviewAppUI {
 	private InterviewApp library;
 	private Scanner keyboard;
+	private int itemCount;
 
 	InterviewAppUI() {
 		library = new InterviewApp();
@@ -72,50 +75,17 @@ public class InterviewAppUI {
 			switch (option) {
 
 				case Options.LOGIN:
-					System.out.println("Enter username:");
-					String username = keyboard.nextLine();
-					System.out.println("Enter password:");
-					String password = keyboard.nextLine();
-
-					if (library.containsUser(username, password)) {
-						library.login(username, password);
-						System.out.println("Logged in as " + username);
-					} else {
-						System.out.println("Account not found");
-					}
-
+					login();
 					break;
 
 				case Options.CREATE_ACCOUNT:
-					System.out.println("Enter email:");
-					String email = keyboard.nextLine();
-					System.out.println("Enter username:");
-					username = keyboard.nextLine();
-					System.out.println("Enter password:");
-					password = keyboard.nextLine();
-
-					if (library.isValidEmail(email) == false) {
-						System.out.println("Invalid email");
-					}
-					if (library.isValidUsername(username) == false) {
-						System.out.println("Invalid username");
-					}
-					if (library.isValidPassword(password) == false) {
-						System.out.println("Invalid password");
-					}
-
-					if (library.isValidEmail(email) && library.isValidPassword(password) &&
-							library.isValidUsername(username))
-						library.registerUser(email, username, password);
-
+					createAccount();
 					break;
 
 				case Options.SHOW_ALL_QUESTIONS:
-					for (Question question : library.getAllQuestions()) {
-						System.out.println(question.getTitle());
-						System.out.println(question.getContent());
-						System.out.println();
-					}
+					showAllQuestions();
+					break;
+
 				case Options.SEARCH_QUESTIONS:
 					searchQuestions();
 					break;
@@ -128,31 +98,121 @@ public class InterviewAppUI {
 					break;
 
 				case Options.SHOW_ALL_USERS:
-					for (User user : library.getAllUsers()) {
-						System.out.println(user.getUsername());
-						System.out.println();
-					}
+					showAllUsers();
 					break;
 
 				case Options.SHOW_MY_ACCOUNT:
-					if (library.isLoggedIn()) {
-						System.out.println(library.getCurrentUser().toString());
-					} else {
-						System.out.println("Please login to see your account");
-					}
+					showCurrentUser();
 					break;
 
 				case Options.LOGOUT:
-					if (library.logout() == true) {
-						System.out.println("Logout successful");
-					} else {
-						System.out.println("Logout failed or not logged in");
-					}
+					logOut();
 					break;
 			}
 
 			showOptions(library.getCurrentQuestion() != null, library.getCurrentUser() != null);
 			option = getOption();
+		}
+	}
+
+	void login() {
+		System.out.println("Enter username:");
+		String username = keyboard.nextLine();
+		System.out.println("Enter password:");
+		String password = keyboard.nextLine();
+
+		if (library.containsUser(username, password)) {
+			library.login(username, password);
+			System.out.println("Logged in as " + username);
+		} else {
+			System.out.println("Account not found");
+		}
+	}
+
+	void createAccount() {
+		System.out.println("Enter email:");
+		String email = keyboard.nextLine();
+		System.out.println("Enter username:");
+		String username = keyboard.nextLine();
+		System.out.println("Enter password:");
+		String password = keyboard.nextLine();
+
+		if (library.isValidEmail(email) == false) {
+			System.out.println("Invalid email");
+		}
+		if (library.isValidUsername(username) == false) {
+			System.out.println("Invalid username");
+		}
+		if (library.isValidPassword(password) == false) {
+			System.out.println("Invalid password");
+		}
+
+		if (library.isValidEmail(email) && library.isValidPassword(password) &&
+				library.isValidUsername(username))
+			library.registerUser(email, username, password);
+	}
+
+	void printQuestions(ArrayList<Question> questions, boolean numbered) {
+		itemCount = questions.size();
+		int number = 1;
+		for (Question question : questions) {
+			if (numbered) {
+				System.out.print(number + ". ");
+				number++;
+			}
+			printQuestion(question);
+		}
+	}
+
+	void printQuestion(Question question) {
+		System.out.println(question.getTitle());
+		System.out.println(question.getContent());
+		System.out.println();
+	}
+
+	void showAllQuestions() {
+		printQuestions(library.getAllQuestions(), true);
+	}
+
+	void searchQuestions() {
+		ArrayList<String> tagFilter;
+		int minDifficulty;
+		int maxDifficulty;
+		boolean onlySolved;
+		ArrayList<UUID> authors;
+		// TODO
+		// printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty,
+		// onlySolved, authors), false);
+	}
+
+	void showAllUsers() {
+		for (User user : library.getAllUsers()) {
+			System.out.println(user.getUsername());
+			System.out.println();
+		}
+	}
+
+	void showCurrentUser() {
+		if (library.isLoggedIn()) {
+			System.out.println(library.getCurrentUser().toString());
+		} else {
+			System.out.println("Please login to see your account");
+		}
+	}
+
+	void viewCurrentQuestion() {
+		Question question = library.getCurrentQuestion();
+		if (question == null) {
+			return;
+		}
+		printQuestion(question);
+	}
+
+	void logOut() {
+		if (library.logout() == true) {
+			System.out.println("Logout successful");
+		} else {
+			System.out.println("Logout failed or not logged in");
 		}
 	}
 
