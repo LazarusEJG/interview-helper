@@ -183,6 +183,9 @@ public class InterviewAppUI {
 			showOptions();
 			option = getOption();
 		}
+
+		library.close();
+		keyboard.close();
 	}
 
 	void login() {
@@ -303,6 +306,7 @@ public class InterviewAppUI {
 						content += '\n' + line;
 						line = keyboard.nextLine();
 					}
+					content = content.stripLeading();
 					break;
 
 				case QuestionFields.EXAMPLE:
@@ -365,6 +369,7 @@ public class InterviewAppUI {
 			content += '\n' + line;
 			line = keyboard.nextLine();
 		}
+		content = content.stripLeading();
 
 		System.out.println("qqqqqqqqqqqqqqqqq: " + new Comment(author.getId(), content).getReplies().size());
 
