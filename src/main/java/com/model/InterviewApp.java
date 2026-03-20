@@ -215,8 +215,8 @@ public class InterviewApp {
 		return currentUser.getSubmittedSolutions();
 	}
 
-	public void addComment(Commentable parent, Comment comment) {
-		parent.addComment(comment);
+	public void addComment(Commentable parent, UUID author, String content) {
+		parent.addComment(new Comment(author, content));
 	}
 
 	public void report(Response response) {

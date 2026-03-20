@@ -91,8 +91,7 @@ public class Question implements Commentable {
 	 * [^^^^ sorry if this is super wrong and needs to be changed entirely.]
 	 */
 	public void addComment(Comment comment) {
-		Comment newComment = new Comment(UUID.randomUUID(), author, publishTime, score, comments, content);
-		this.comments.add(newComment);
+		this.comments.add(comment);
 	}
 
 	public void removeResponse(User user, Response response) {

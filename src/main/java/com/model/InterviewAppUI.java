@@ -157,6 +157,10 @@ public class InterviewAppUI {
 					library.upvote(library.getCurrentQuestion().getSolutions().get(question - 1));
 					break;
 
+				case Options.ADD_COMMENT_TO_QUESTION:
+					addCommentToQuestion();
+					break;
+
 				case Options.SHOW_ALL_USERS:
 					showAllUsers();
 					break;
@@ -247,12 +251,12 @@ public class InterviewAppUI {
 		for (Comment comment : comments) {
 			printComment(comment, depth, number);
 			number++;
-			printComments(comment.getReplies(), depth + 1, number);
+			// printComments(comment.getReplies(), depth + 1, number);
 		}
 	}
 
 	void printComments(ArrayList<Comment> comments) {
-		System.out.println("sdhfjdgsbvjfkshf" + comments.size());
+		System.out.println("sdhfjdgsbvjfkshf" + comments.size() + " asdasd " + comments.get(0).getReplies().size());
 		printComments(comments, 0, 1);
 	}
 
@@ -338,6 +342,33 @@ public class InterviewAppUI {
 		} catch (NumberFormatException e) {
 			return QuestionFields.INVALID;
 		}
+	}
+
+	void addCommentToQuestion() {
+		Question question = library.getCurrentQuestion();
+		User author = library.getCurrentUser();
+		if (question == null) {
+			System.out.println("there is no current question");
+			return;
+		}
+
+		if (author == null) {
+			System.out.println("you are not logged in");
+			return;
+		}
+
+		printQuestion(question);
+
+		String content = "";
+		String line = keyboard.nextLine();
+		while (line.equals("EOF") == false) {
+			content += '\n' + line;
+			line = keyboard.nextLine();
+		}
+
+		System.out.println("qqqqqqqqqqqqqqqqq: " + new Comment(author.getId(), content).getReplies().size());
+
+		library.addComment(question, author.getId(), content);
 	}
 
 	void showAllQuestions() {
