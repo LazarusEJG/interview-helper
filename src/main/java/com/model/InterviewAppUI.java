@@ -23,6 +23,7 @@ public class InterviewAppUI {
 		public static final int LOGOUT = 6;
 
 		public static final int SHOW_ALL_QUESTIONS = 3;
+		public static final int CREATE_QUESTION = 16;
 		public static final int SEARCH_QUESTIONS = 15;
 		public static final int VIEW_CURRENT_QUESTION = 7;
 		public static final int UPVOTE_CURRENT_QUESTION = 8;
@@ -40,7 +41,17 @@ public class InterviewAppUI {
 		public static final int INVALID = 0;
 	}
 
-	public void showOptions(boolean currentQuestion, boolean loggedIn) {
+	class QuestionFields {
+		public static final int CONTENT = 1;
+		public static final int EXAMPLE = 2;
+
+		public static final int EXIT = -1;
+		public static final int INVALID = 0;
+	}
+
+	public void showOptions() {
+		boolean loggedIn = library.getCurrentUser() != null;
+		boolean currentQuestion = library.getCurrentQuestion() != null;
 		System.out.println(Options.LOGIN + ": Login");
 		System.out.println(Options.CREATE_ACCOUNT + ": Create account");
 		System.out.println(Options.SHOW_ALL_USERS + ": Show all users");
@@ -48,8 +59,12 @@ public class InterviewAppUI {
 			System.out.println(Options.SHOW_MY_ACCOUNT + ": Show my account");
 			System.out.println(Options.LOGOUT + ": Logout");
 		}
-		horizontalRule('.');
 		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
+		if (loggedIn && library.getCurrentUser().getType() == UserType.CONTRIBUTOR) {
+			System.out.println(Options.CREATE_QUESTION + ": Create question");
+		}
+
+		horizontalRule('.');
 		if (currentQuestion) {
 			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
 			System.out.println(Options.VIEW_CURRENT_QUESTION_COMMENTS + ": View current question comments");
@@ -93,7 +108,7 @@ public class InterviewAppUI {
 	public void run() {
 		terminalWidth = Integer.parseInt(System.getenv().getOrDefault("COLUMNS", "80"));
 		System.out.println("Welcome to InterviewApp!");
-		showOptions(library.getCurrentQuestion() != null, library.getCurrentUser() != null);
+		showOptions();
 		keyboard = new Scanner(System.in);
 		int option = getOption();
 
@@ -146,6 +161,10 @@ public class InterviewAppUI {
 					showAllUsers();
 					break;
 
+				case Options.CREATE_QUESTION:
+					createQuestion();
+					break;
+
 				case Options.SHOW_MY_ACCOUNT:
 					showCurrentUser();
 					break;
@@ -155,9 +174,9 @@ public class InterviewAppUI {
 					break;
 			}
 
-			horizontalRule('-');
+			horizontalRule('⠿');
 
-			showOptions(library.getCurrentQuestion() != null, library.getCurrentUser() != null);
+			showOptions();
 			option = getOption();
 		}
 	}
@@ -253,6 +272,72 @@ public class InterviewAppUI {
 		System.out.println(question.getTitle());
 		System.out.println(question.getContent());
 		System.out.println();
+	}
+
+	void createQuestion() {
+		User author = library.getCurrentUser();
+		if (author != null && author.getType() != UserType.CONTRIBUTOR) {
+			System.out.println("You are not a contributor");
+			return;
+		}
+
+		System.out.println("What is your question title?");
+		String title = keyboard.nextLine();
+
+		String content = "";
+		ArrayList<String> examples = new ArrayList<>();
+
+		System.out.println("What kind of field do you wish to create?");
+		int option = getQuestionField();
+		String line;
+		while (option != QuestionFields.EXIT) {
+			switch (option) {
+				case QuestionFields.CONTENT:
+					System.out.println("Type the content of the question, when done, type EOF on its own line.");
+					line = keyboard.nextLine();
+					while (line.equals("EOF") == false) {
+						content += '\n' + line;
+						line = keyboard.nextLine();
+					}
+					break;
+
+				case QuestionFields.EXAMPLE:
+					String example = "";
+					System.out.println("Type the content of the example of the question, when done, type EOF on its own line.");
+					line = keyboard.nextLine();
+					while (line.equals("EOF") == false) {
+						example += '\n' + line;
+						line = keyboard.nextLine();
+					}
+					examples.add(example);
+					break;
+
+				default:
+					break;
+			}
+
+			for (int i = 0; i < examples.size(); i++) {
+				content += '\n' + "Example " + i + examples.get(i);
+			}
+			System.out.println("What kind of field do you wish to create?");
+			option = getQuestionField();
+		}
+
+		library.addQuestion(author, title, content);
+	}
+
+	int getQuestionField() {
+		System.out.println(QuestionFields.CONTENT + ". Content");
+		System.out.println(QuestionFields.EXAMPLE + ". Example");
+		// TODO preview
+		System.out.println(QuestionFields.EXIT + ". EXIT");
+
+		String input = keyboard.nextLine();
+		try {
+			return Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			return QuestionFields.INVALID;
+		}
 	}
 
 	void showAllQuestions() {
