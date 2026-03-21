@@ -19,7 +19,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 				questionsJSON.add(questionJSON);
 			}
 
-			FileWriter writer = new FileWriter(Paths.get(QUESTION_FILE_PATH, "TEST_" + QUESTION_FILE_NAME).toString());
+			FileWriter writer = new FileWriter(Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString());
 			questionsJSON.writeJSONString(writer);
 			// DEBUG
 			System.out.println(questionsJSON.toJSONString());
@@ -59,6 +59,13 @@ public final class QuestionWriter extends QuestionDataConstants {
 			solutions.add(getSolutionJSON(solution));
 		}
 		questionJSON.put(QUESTION_SOLUTIONS, solutions);
+
+		// Comments
+		JSONArray comments = new JSONArray();
+		for (Comment comment : question.getComments()) {
+			comments.add(getCommentJSON(comment));
+		}
+		questionJSON.put(QUESTION_COMMENTS, comments);
 
 		return questionJSON;
 	}
