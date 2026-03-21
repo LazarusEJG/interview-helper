@@ -28,6 +28,7 @@ public class InterviewAppUI {
 		public static final int VIEW_CURRENT_QUESTION = 23;
 		public static final int UPVOTE_CURRENT_QUESTION = 24;
 		public static final int DOWNVOTE_CURRENT_QUESTION = 25;
+		public static final int GET_DAILY_QUESTION = 26;
 
 		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 31;
 		public static final int ADD_COMMENT_TO_QUESTION = 32;
@@ -71,6 +72,7 @@ public class InterviewAppUI {
 		horizontalRule('.');
 		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
 		System.out.println(Options.SEARCH_QUESTIONS + ": Search for questions");
+		System.out.println(Options.GET_DAILY_QUESTION + ": Show the daily question");
 		if (currentQuestion) {
 			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
 			System.out.println(Options.UPVOTE_CURRENT_QUESTION + ": Upvote current question");
@@ -159,6 +161,9 @@ public class InterviewAppUI {
 					}
 					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
+				
+				case Options.GET_DAILY_QUESTION:
+					library.setCurrentQuestion(library.getDailyQuestion());
 
 				case Options.VIEW_CURRENT_QUESTION:
 					viewCurrentQuestion();

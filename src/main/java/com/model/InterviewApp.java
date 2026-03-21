@@ -48,7 +48,7 @@ public class InterviewApp {
 		boolean hasLetter = false;
 		boolean hasNumber = false;
 
-		if (username.length() < 6 || username.length() > 12)
+		if (username.length() < 6 || username.length() > 12 || this.getUserFromUsername(username) != null)
 			return false;
 
 		for (char c : username.toCharArray()) {
