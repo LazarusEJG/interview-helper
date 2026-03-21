@@ -16,26 +16,27 @@ public class InterviewAppUI {
 	}
 
 	class Options {
-		public static final int LOGIN = 1;
-		public static final int CREATE_ACCOUNT = 2;
-		public static final int SHOW_ALL_USERS = 4;
-		public static final int SHOW_MY_ACCOUNT = 5;
-		public static final int LOGOUT = 6;
+		public static final int LOGIN = 11;
+		public static final int CREATE_ACCOUNT = 12;
+		public static final int SHOW_ALL_USERS = 13;
+		public static final int SHOW_MY_ACCOUNT = 14;
+		public static final int CREATE_QUESTION = 15;
+		public static final int LOGOUT = 19;
 
-		public static final int SHOW_ALL_QUESTIONS = 3;
-		public static final int CREATE_QUESTION = 16;
-		public static final int SEARCH_QUESTIONS = 15;
-		public static final int VIEW_CURRENT_QUESTION = 7;
-		public static final int UPVOTE_CURRENT_QUESTION = 8;
-		public static final int DOWNVOTE_CURRENT_QUESTION = 9;
+		public static final int SHOW_ALL_QUESTIONS = 21;
+		public static final int SEARCH_QUESTIONS = 22;
+		public static final int VIEW_CURRENT_QUESTION = 23;
+		public static final int UPVOTE_CURRENT_QUESTION = 24;
+		public static final int DOWNVOTE_CURRENT_QUESTION = 25;
 
-		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 10;
-		public static final int ADD_COMMENT_TO_QUESTION = 11;
-		public static final int VIEW_CURRENT_QUESTION_SOLUTIONS = 12;
+		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 31;
+		public static final int ADD_COMMENT_TO_QUESTION = 32;
+		public static final int REPLY_TO_COMMENT = 33;
 
-		public static final int REPLY_TO_COMMENT = 13;
-		public static final int UPVOTE_SOLUTION = 14;
-		public static final int DOWNVOTE_SOLUTION = 15;
+		public static final int VIEW_CURRENT_QUESTION_SOLUTIONS = 41;
+		public static final int ADD_SOLUTION_TO_QUESTION = 42;
+		public static final int UPVOTE_SOLUTION = 43;
+		public static final int DOWNVOTE_SOLUTION = 44;
 
 		public static final int EXIT = -1;
 		public static final int INVALID = 0;
@@ -52,26 +53,40 @@ public class InterviewAppUI {
 	public void showOptions() {
 		boolean loggedIn = library.getCurrentUser() != null;
 		boolean currentQuestion = library.getCurrentQuestion() != null;
-		System.out.println(Options.LOGIN + ": Login");
-		System.out.println(Options.CREATE_ACCOUNT + ": Create account");
+
+		if (!loggedIn) {
+			System.out.println(Options.LOGIN + ": Login");
+			System.out.println(Options.CREATE_ACCOUNT + ": Create account");
+		}
 		System.out.println(Options.SHOW_ALL_USERS + ": Show all users");
 		if (loggedIn) {
 			System.out.println(Options.SHOW_MY_ACCOUNT + ": Show my account");
+			if (library.getCurrentUser().getType() == UserType.CONTRIBUTOR) {
+				System.out.println(Options.CREATE_QUESTION + ": Create question");
+			}
 			System.out.println(Options.LOGOUT + ": Logout");
-		}
-		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
-		if (loggedIn && library.getCurrentUser().getType() == UserType.CONTRIBUTOR) {
-			System.out.println(Options.CREATE_QUESTION + ": Create question");
 		}
 
 		horizontalRule('.');
+		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
+		System.out.println(Options.SEARCH_QUESTIONS + ": Search for questions");
 		if (currentQuestion) {
 			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
+			System.out.println(Options.UPVOTE_CURRENT_QUESTION + ": Upvote current question");
+			System.out.println(Options.DOWNVOTE_CURRENT_QUESTION + ": Downvote current question");
+
+			horizontalRule('.');
 			System.out.println(Options.VIEW_CURRENT_QUESTION_COMMENTS + ": View current question comments");
-			System.out.println(Options.VIEW_CURRENT_QUESTION_SOLUTIONS + ": View current question solutions");
-			System.out.println(Options.UPVOTE_SOLUTION + ": Upvote a solution");
 			System.out.println(Options.ADD_COMMENT_TO_QUESTION + ": Add comment to question");
 			System.out.println(Options.REPLY_TO_COMMENT + ": Reply to comment");
+
+			horizontalRule('.');
+			System.out.println(Options.VIEW_CURRENT_QUESTION_SOLUTIONS + ": View current question solutions");
+			if (loggedIn) {
+				System.out.println(Options.ADD_SOLUTION_TO_QUESTION + ": Add a solution to the current question");
+				System.out.println(Options.UPVOTE_SOLUTION + ": Upvote a solution");
+				System.out.println(Options.DOWNVOTE_SOLUTION + ": Downvote a solution");
+			}
 			// System.out.println(Options. + ": ");
 		}
 		System.out.println(Options.EXIT + ": Exit");
