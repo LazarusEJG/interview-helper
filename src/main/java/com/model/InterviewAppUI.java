@@ -145,12 +145,18 @@ public class InterviewAppUI {
 				case Options.SHOW_ALL_QUESTIONS:
 					showAllQuestions();
 					question = selectItem();
+					if (question == -1) {
+						break;
+					}
 					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
 
 				case Options.SEARCH_QUESTIONS:
 					searchQuestions();
 					question = selectItem();
+					if (question == -1) {
+						break;
+					}
 					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
 
@@ -286,7 +292,6 @@ public class InterviewAppUI {
 	}
 
 	void printComments(ArrayList<Comment> comments) {
-		System.out.println("sdhfjdgsbvjfkshf" + comments.size() + " asdasd " + comments.get(0).getReplies().size());
 		printComments(comments, 0, 1);
 	}
 
