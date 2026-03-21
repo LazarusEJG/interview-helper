@@ -100,6 +100,10 @@ public class InterviewApp {
 		return UserList.getInstance().getUsers();
 	}
 
+	public User getUserFromUsername(String username) {
+		return UserList.getInstance().getUserFromUsername(username);
+	}
+
 	public boolean logout() {
 
 		if (currentUser != null) {

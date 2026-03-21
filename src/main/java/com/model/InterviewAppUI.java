@@ -173,6 +173,13 @@ public class InterviewAppUI {
 					library.upvote(library.getCurrentQuestion().getSolutions().get(question - 1));
 					break;
 
+				case Options.DOWNVOTE_SOLUTION:
+					printSolutions(library.getCurrentQuestion().getSolutions());
+					itemCount = library.getCurrentQuestion().getSolutions().size(); // TODO
+					question = selectItem();
+					library.downvote(library.getCurrentQuestion().getSolutions().get(question - 1));
+					break;
+
 				case Options.ADD_SOLUTION_TO_QUESTION:
 					createSolution();
 					break;
@@ -411,14 +418,42 @@ public class InterviewAppUI {
 	}
 
 	void searchQuestions() {
-		ArrayList<String> tagFilter;
 		int minDifficulty;
 		int maxDifficulty;
 		boolean onlySolved;
-		ArrayList<UUID> authors;
+		ArrayList<String> tagFilter = new ArrayList<>();
+		ArrayList<UUID> authors = new ArrayList<>();
+
+		String input;
+
+		System.out.println("What is the minimum dificulty of the question you wish to see (0-5)");
+		minDifficulty = getIntInput();
+		// minDifficulty = Integer.parseInt(keyboard.nextLine());
+		System.out.println("What is the maximum dificulty of the question you wish to see (0-5)");
+		maxDifficulty = getIntInput();
+		// maxDifficulty = Integer.parseInt(keyboard.nextLine());
+		System.out.println("Do you wish to only see solved question (Y/[N])");
+		onlySolved = keyboard.nextLine().equalsIgnoreCase("y");
+
+		System.out.println("Which tags do you wish to view (END to end)");
+		input = keyboard.nextLine();
+		while (input.equals("END") != true) {
+			tagFilter.add(input);
+			input = keyboard.nextLine();
+		}
+
+		System.out.println("which author do you wish to view (END to end)");
+		input = keyboard.nextLine();
+		while (input.equals("END") != true) {
+			User author = library.getUserFromUsername(input);
+			if (author == null) {
+				continue;
+			}
+			authors.add(author.getId());
+			input = keyboard.nextLine();
+		}
 		// TODO
-		// printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty,
-		// onlySolved, authors), false);
+		printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty, onlySolved, authors), false);
 	}
 
 	void createSolution() {
@@ -469,6 +504,18 @@ public class InterviewAppUI {
 			System.out.println("Logout successful");
 		} else {
 			System.out.println("Logout failed or not logged in");
+		}
+	}
+
+	int getIntInput() {
+		String input;
+		while (true) {
+			input = keyboard.nextLine();
+			try {
+				Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println(input + " is not a valid number");
+			}
 		}
 	}
 
