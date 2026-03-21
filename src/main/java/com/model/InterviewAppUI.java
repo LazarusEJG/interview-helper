@@ -42,10 +42,11 @@ public class InterviewAppUI {
 		public static final int INVALID = 0;
 	}
 
-	class QuestionFields {
+	class QuestionOptions {
 		public static final int CONTENT = 1;
 		public static final int EXAMPLE = 2;
 
+		public static final int PREVIEW = 3;
 		public static final int EXIT = -1;
 		public static final int INVALID = 0;
 	}
@@ -312,9 +313,9 @@ public class InterviewAppUI {
 		System.out.println("What kind of field do you wish to create?");
 		int option = getQuestionField();
 		String line;
-		while (option != QuestionFields.EXIT) {
+		while (option != QuestionOptions.EXIT) {
 			switch (option) {
-				case QuestionFields.CONTENT:
+				case QuestionOptions.CONTENT:
 					System.out.println("Type the content of the question, when done, type EOF on its own line.");
 					line = keyboard.nextLine();
 					while (line.equals("EOF") == false) {
@@ -324,15 +325,23 @@ public class InterviewAppUI {
 					content = content.stripLeading();
 					break;
 
-				case QuestionFields.EXAMPLE:
+				case QuestionOptions.EXAMPLE:
 					String example = "";
 					System.out.println("Type the content of the example of the question, when done, type EOF on its own line.");
-					line = keyboard.nextLine();
-					while (line.equals("EOF") == false) {
-						example += '\n' + line;
-						line = keyboard.nextLine();
-					}
+					// line = keyboard.nextLine();
+					// while (line.equals("EOF") == false) {
+					// example += '\n' + line;
+					// line = keyboard.nextLine();
+					// }
+					example = multiLineInput();
 					examples.add(example);
+					break;
+
+				case QuestionOptions.PREVIEW:
+					System.out.print(CLEAR);
+					System.out.flush();
+					System.out.println(content);
+					horizontalRule('-');
 					break;
 
 				default:
@@ -350,16 +359,17 @@ public class InterviewAppUI {
 	}
 
 	int getQuestionField() {
-		System.out.println(QuestionFields.CONTENT + ". Content");
-		System.out.println(QuestionFields.EXAMPLE + ". Example");
-		// TODO preview
-		System.out.println(QuestionFields.EXIT + ". EXIT");
+		System.out.println(QuestionOptions.CONTENT + ". Content");
+		System.out.println(QuestionOptions.EXAMPLE + ". Example");
+		System.out.println();
+		System.out.println(QuestionOptions.PREVIEW + ": Preview current question contents");
+		System.out.println(QuestionOptions.EXIT + ". EXIT");
 
 		String input = keyboard.nextLine();
 		try {
 			return Integer.parseInt(input);
 		} catch (NumberFormatException e) {
-			return QuestionFields.INVALID;
+			return QuestionOptions.INVALID;
 		}
 	}
 
@@ -378,15 +388,16 @@ public class InterviewAppUI {
 
 		printQuestion(question);
 
-		String content = "";
-		String line = keyboard.nextLine();
-		while (line.equals("EOF") == false) {
-			content += '\n' + line;
-			line = keyboard.nextLine();
-		}
-		content = content.stripLeading();
+		System.out.println("Type the content of the example of the question, when done, type EOF on its own line.");
 
-		System.out.println("qqqqqqqqqqqqqqqqq: " + new Comment(author.getId(), content).getReplies().size());
+		// String content = "";
+		// String line = keyboard.nextLine();
+		// while (line.equals("EOF") == false) {
+		// content += '\n' + line;
+		// line = keyboard.nextLine();
+		// }
+		String content = multiLineInput();
+		content = content.stripLeading();
 
 		library.addComment(question, author.getId(), content);
 	}
@@ -404,6 +415,16 @@ public class InterviewAppUI {
 		// TODO
 		// printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty,
 		// onlySolved, authors), false);
+	}
+
+	String multiLineInput() {
+		String output = "";
+		String line = keyboard.nextLine();
+		while (line.equals("EOF") == false) {
+			output += '\n' + line;
+			line = keyboard.nextLine();
+		}
+		return output;
 	}
 
 	void showAllUsers() {
