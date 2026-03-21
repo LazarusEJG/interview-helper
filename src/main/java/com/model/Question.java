@@ -85,12 +85,8 @@ public class Question implements Commentable {
 	 *                 [I wanted to add at least somthing if I could.
 	 *                 Sorry in advance if this is like super wrong - EJ]
 	 */
-	public void addSolution(User user, Solution solution) {
-		if (user.getType() == UserType.REGISTERED) {
-			Solution newSolution = new Solution(UUID.randomUUID(), author, publishTime, score,
-					"", "", true, comments);
-			this.solutions.add(newSolution);
-		}
+	public void addSolution(User author, String explanation, String filename) {
+		this.solutions.add(new Solution(author.getId(), explanation, filename));
 	}
 
 	/**

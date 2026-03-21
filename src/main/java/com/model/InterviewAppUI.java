@@ -173,6 +173,10 @@ public class InterviewAppUI {
 					library.upvote(library.getCurrentQuestion().getSolutions().get(question - 1));
 					break;
 
+				case Options.ADD_SOLUTION_TO_QUESTION:
+					createSolution();
+					break;
+
 				case Options.ADD_COMMENT_TO_QUESTION:
 					addCommentToQuestion();
 					break;
@@ -415,6 +419,16 @@ public class InterviewAppUI {
 		// TODO
 		// printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty,
 		// onlySolved, authors), false);
+	}
+
+	void createSolution() {
+		System.out.println("Type the content of the solution of the question, when done, type EOF on its own line.");
+		String content = multiLineInput();
+
+		System.out.println("Enter the filename:");
+		String filename = keyboard.nextLine();
+
+		library.addSolution(content, filename);
 	}
 
 	String multiLineInput() {
