@@ -93,11 +93,15 @@ public class InterviewApp {
 	}
 
 	boolean containsUser(String username, String password) {
-		return true;
+		return UserList.getInstance().containsUser(username, password);
 	}
 
 	public ArrayList<User> getAllUsers() {
 		return UserList.getInstance().getUsers();
+	}
+
+	public User getUserFromUsername(String username) {
+		return UserList.getInstance().getUserFromUsername(username);
 	}
 
 	public boolean logout() {
@@ -155,11 +159,11 @@ public class InterviewApp {
 	}
 
 	// Getter for Bookmarked Questions for the current user.
-	public ArrayList<UUID> getBookmarkedQuestions(User currentUser) {
+	public ArrayList<UUID> getBookmarkedQuestions() {
 		return currentUser.getBookmarkedQuestions();
 	}
 
-	public ArrayList<Question> getAnsweredQuestions(User currentUser) {
+	public ArrayList<Question> getAnsweredQuestions() {
 		return currentUser.getAnsweredQuestions();
 	}
 
@@ -186,11 +190,11 @@ public class InterviewApp {
 		return "";
 	}
 
-	public void addSolution(User currentUser, Solution solution) {
+	public void addSolution(String explanation, String filename) {
 		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion != null) {
-			currentQuestion.addSolution(currentUser, solution);
+			currentQuestion.addSolution(currentUser, explanation, filename);
 		}
 	}
 
@@ -206,12 +210,12 @@ public class InterviewApp {
 	}
 
 	// Getter for bookmarked solutions.
-	public ArrayList<UUID> getBookmarkedSolutions(User currentUser) {
+	public ArrayList<UUID> getBookmarkedSolutions() {
 		return currentUser.getBookmarkedSolutions();
 	}
 
 	// Getter for submitted solutions.
-	public ArrayList<UUID> getSubmittedSolutions(User currentUser) {
+	public ArrayList<UUID> getSubmittedSolutions() {
 		return currentUser.getSubmittedSolutions();
 	}
 

@@ -21,7 +21,7 @@ public final class UserWriter extends UserDataConstants {
 				usersJSON.add(userJSON);
 			}
 
-			FileWriter writer = new FileWriter(Paths.get(USER_FILE_PATH, "TEST_" + USER_FILE_NAME).toString());
+			FileWriter writer = new FileWriter(Paths.get(USER_FILE_PATH, USER_FILE_NAME).toString());
 			usersJSON.writeJSONString(writer);
 			writer.close();
 		} catch (Exception e) {

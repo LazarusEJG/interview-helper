@@ -16,35 +16,37 @@ public class InterviewAppUI {
 	}
 
 	class Options {
-		public static final int LOGIN = 1;
-		public static final int CREATE_ACCOUNT = 2;
-		public static final int SHOW_ALL_USERS = 4;
-		public static final int SHOW_MY_ACCOUNT = 5;
-		public static final int LOGOUT = 6;
+		public static final int LOGIN = 11;
+		public static final int CREATE_ACCOUNT = 12;
+		public static final int SHOW_ALL_USERS = 13;
+		public static final int SHOW_MY_ACCOUNT = 14;
+		public static final int CREATE_QUESTION = 15;
+		public static final int LOGOUT = 19;
 
-		public static final int SHOW_ALL_QUESTIONS = 3;
-		public static final int CREATE_QUESTION = 16;
-		public static final int SEARCH_QUESTIONS = 15;
-		public static final int VIEW_CURRENT_QUESTION = 7;
-		public static final int UPVOTE_CURRENT_QUESTION = 8;
-		public static final int DOWNVOTE_CURRENT_QUESTION = 9;
+		public static final int SHOW_ALL_QUESTIONS = 21;
+		public static final int SEARCH_QUESTIONS = 22;
+		public static final int VIEW_CURRENT_QUESTION = 23;
+		public static final int UPVOTE_CURRENT_QUESTION = 24;
+		public static final int DOWNVOTE_CURRENT_QUESTION = 25;
 
-		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 10;
-		public static final int ADD_COMMENT_TO_QUESTION = 11;
-		public static final int VIEW_CURRENT_QUESTION_SOLUTIONS = 12;
+		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 31;
+		public static final int ADD_COMMENT_TO_QUESTION = 32;
+		public static final int REPLY_TO_COMMENT = 33;
 
-		public static final int REPLY_TO_COMMENT = 13;
-		public static final int UPVOTE_SOLUTION = 14;
-		public static final int DOWNVOTE_SOLUTION = 15;
+		public static final int VIEW_CURRENT_QUESTION_SOLUTIONS = 41;
+		public static final int ADD_SOLUTION_TO_QUESTION = 42;
+		public static final int UPVOTE_SOLUTION = 43;
+		public static final int DOWNVOTE_SOLUTION = 44;
 
 		public static final int EXIT = -1;
 		public static final int INVALID = 0;
 	}
 
-	class QuestionFields {
+	class QuestionOptions {
 		public static final int CONTENT = 1;
 		public static final int EXAMPLE = 2;
 
+		public static final int PREVIEW = 3;
 		public static final int EXIT = -1;
 		public static final int INVALID = 0;
 	}
@@ -52,26 +54,40 @@ public class InterviewAppUI {
 	public void showOptions() {
 		boolean loggedIn = library.getCurrentUser() != null;
 		boolean currentQuestion = library.getCurrentQuestion() != null;
-		System.out.println(Options.LOGIN + ": Login");
-		System.out.println(Options.CREATE_ACCOUNT + ": Create account");
+
+		if (!loggedIn) {
+			System.out.println(Options.LOGIN + ": Login");
+			System.out.println(Options.CREATE_ACCOUNT + ": Create account");
+		}
 		System.out.println(Options.SHOW_ALL_USERS + ": Show all users");
 		if (loggedIn) {
 			System.out.println(Options.SHOW_MY_ACCOUNT + ": Show my account");
+			if (library.getCurrentUser().getType() == UserType.CONTRIBUTOR) {
+				System.out.println(Options.CREATE_QUESTION + ": Create question");
+			}
 			System.out.println(Options.LOGOUT + ": Logout");
-		}
-		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
-		if (loggedIn && library.getCurrentUser().getType() == UserType.CONTRIBUTOR) {
-			System.out.println(Options.CREATE_QUESTION + ": Create question");
 		}
 
 		horizontalRule('.');
+		System.out.println(Options.SHOW_ALL_QUESTIONS + ": Show all questions");
+		System.out.println(Options.SEARCH_QUESTIONS + ": Search for questions");
 		if (currentQuestion) {
 			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
+			System.out.println(Options.UPVOTE_CURRENT_QUESTION + ": Upvote current question");
+			System.out.println(Options.DOWNVOTE_CURRENT_QUESTION + ": Downvote current question");
+
+			horizontalRule('.');
 			System.out.println(Options.VIEW_CURRENT_QUESTION_COMMENTS + ": View current question comments");
-			System.out.println(Options.VIEW_CURRENT_QUESTION_SOLUTIONS + ": View current question solutions");
-			System.out.println(Options.UPVOTE_SOLUTION + ": Upvote a solution");
 			System.out.println(Options.ADD_COMMENT_TO_QUESTION + ": Add comment to question");
 			System.out.println(Options.REPLY_TO_COMMENT + ": Reply to comment");
+
+			horizontalRule('.');
+			System.out.println(Options.VIEW_CURRENT_QUESTION_SOLUTIONS + ": View current question solutions");
+			if (loggedIn) {
+				System.out.println(Options.ADD_SOLUTION_TO_QUESTION + ": Add a solution to the current question");
+				System.out.println(Options.UPVOTE_SOLUTION + ": Upvote a solution");
+				System.out.println(Options.DOWNVOTE_SOLUTION + ": Downvote a solution");
+			}
 			// System.out.println(Options. + ": ");
 		}
 		System.out.println(Options.EXIT + ": Exit");
@@ -129,12 +145,18 @@ public class InterviewAppUI {
 				case Options.SHOW_ALL_QUESTIONS:
 					showAllQuestions();
 					question = selectItem();
+					if (question == -1) {
+						break;
+					}
 					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
 
 				case Options.SEARCH_QUESTIONS:
 					searchQuestions();
 					question = selectItem();
+					if (question == -1) {
+						break;
+					}
 					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
 
@@ -155,6 +177,17 @@ public class InterviewAppUI {
 					itemCount = library.getCurrentQuestion().getSolutions().size(); // TODO
 					question = selectItem();
 					library.upvote(library.getCurrentQuestion().getSolutions().get(question - 1));
+					break;
+
+				case Options.DOWNVOTE_SOLUTION:
+					printSolutions(library.getCurrentQuestion().getSolutions());
+					itemCount = library.getCurrentQuestion().getSolutions().size(); // TODO
+					question = selectItem();
+					library.downvote(library.getCurrentQuestion().getSolutions().get(question - 1));
+					break;
+
+				case Options.ADD_SOLUTION_TO_QUESTION:
+					createSolution();
 					break;
 
 				case Options.ADD_COMMENT_TO_QUESTION:
@@ -259,7 +292,6 @@ public class InterviewAppUI {
 	}
 
 	void printComments(ArrayList<Comment> comments) {
-		System.out.println("sdhfjdgsbvjfkshf" + comments.size() + " asdasd " + comments.get(0).getReplies().size());
 		printComments(comments, 0, 1);
 	}
 
@@ -297,9 +329,9 @@ public class InterviewAppUI {
 		System.out.println("What kind of field do you wish to create?");
 		int option = getQuestionField();
 		String line;
-		while (option != QuestionFields.EXIT) {
+		while (option != QuestionOptions.EXIT) {
 			switch (option) {
-				case QuestionFields.CONTENT:
+				case QuestionOptions.CONTENT:
 					System.out.println("Type the content of the question, when done, type EOF on its own line.");
 					line = keyboard.nextLine();
 					while (line.equals("EOF") == false) {
@@ -309,15 +341,23 @@ public class InterviewAppUI {
 					content = content.stripLeading();
 					break;
 
-				case QuestionFields.EXAMPLE:
+				case QuestionOptions.EXAMPLE:
 					String example = "";
 					System.out.println("Type the content of the example of the question, when done, type EOF on its own line.");
-					line = keyboard.nextLine();
-					while (line.equals("EOF") == false) {
-						example += '\n' + line;
-						line = keyboard.nextLine();
-					}
+					// line = keyboard.nextLine();
+					// while (line.equals("EOF") == false) {
+					// example += '\n' + line;
+					// line = keyboard.nextLine();
+					// }
+					example = multiLineInput();
 					examples.add(example);
+					break;
+
+				case QuestionOptions.PREVIEW:
+					System.out.print(CLEAR);
+					System.out.flush();
+					System.out.println(content);
+					horizontalRule('-');
 					break;
 
 				default:
@@ -335,16 +375,17 @@ public class InterviewAppUI {
 	}
 
 	int getQuestionField() {
-		System.out.println(QuestionFields.CONTENT + ". Content");
-		System.out.println(QuestionFields.EXAMPLE + ". Example");
-		// TODO preview
-		System.out.println(QuestionFields.EXIT + ". EXIT");
+		System.out.println(QuestionOptions.CONTENT + ". Content");
+		System.out.println(QuestionOptions.EXAMPLE + ". Example");
+		System.out.println();
+		System.out.println(QuestionOptions.PREVIEW + ": Preview current question contents");
+		System.out.println(QuestionOptions.EXIT + ". EXIT");
 
 		String input = keyboard.nextLine();
 		try {
 			return Integer.parseInt(input);
 		} catch (NumberFormatException e) {
-			return QuestionFields.INVALID;
+			return QuestionOptions.INVALID;
 		}
 	}
 
@@ -363,15 +404,16 @@ public class InterviewAppUI {
 
 		printQuestion(question);
 
-		String content = "";
-		String line = keyboard.nextLine();
-		while (line.equals("EOF") == false) {
-			content += '\n' + line;
-			line = keyboard.nextLine();
-		}
-		content = content.stripLeading();
+		System.out.println("Type the content of the example of the question, when done, type EOF on its own line.");
 
-		System.out.println("qqqqqqqqqqqqqqqqq: " + new Comment(author.getId(), content).getReplies().size());
+		// String content = "";
+		// String line = keyboard.nextLine();
+		// while (line.equals("EOF") == false) {
+		// content += '\n' + line;
+		// line = keyboard.nextLine();
+		// }
+		String content = multiLineInput();
+		content = content.stripLeading();
 
 		library.addComment(question, author.getId(), content);
 	}
@@ -381,14 +423,62 @@ public class InterviewAppUI {
 	}
 
 	void searchQuestions() {
-		ArrayList<String> tagFilter;
 		int minDifficulty;
 		int maxDifficulty;
 		boolean onlySolved;
-		ArrayList<UUID> authors;
+		ArrayList<String> tagFilter = new ArrayList<>();
+		ArrayList<UUID> authors = new ArrayList<>();
+
+		String input;
+
+		System.out.println("What is the minimum dificulty of the question you wish to see (0-5)");
+		minDifficulty = getIntInput();
+		// minDifficulty = Integer.parseInt(keyboard.nextLine());
+		System.out.println("What is the maximum dificulty of the question you wish to see (0-5)");
+		maxDifficulty = getIntInput();
+		// maxDifficulty = Integer.parseInt(keyboard.nextLine());
+		System.out.println("Do you wish to only see solved question (Y/[N])");
+		onlySolved = keyboard.nextLine().equalsIgnoreCase("y");
+
+		System.out.println("Which tags do you wish to view (END to end)");
+		input = keyboard.nextLine();
+		while (input.equals("END") != true) {
+			tagFilter.add(input);
+			input = keyboard.nextLine();
+		}
+
+		System.out.println("which author do you wish to view (END to end)");
+		input = keyboard.nextLine();
+		while (input.equals("END") != true) {
+			User author = library.getUserFromUsername(input);
+			if (author == null) {
+				continue;
+			}
+			authors.add(author.getId());
+			input = keyboard.nextLine();
+		}
 		// TODO
-		// printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty,
-		// onlySolved, authors), false);
+		printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty, onlySolved, authors), false);
+	}
+
+	void createSolution() {
+		System.out.println("Type the content of the solution of the question, when done, type EOF on its own line.");
+		String content = multiLineInput();
+
+		System.out.println("Enter the filename:");
+		String filename = keyboard.nextLine();
+
+		library.addSolution(content, filename);
+	}
+
+	String multiLineInput() {
+		String output = "";
+		String line = keyboard.nextLine();
+		while (line.equals("EOF") == false) {
+			output += '\n' + line;
+			line = keyboard.nextLine();
+		}
+		return output;
 	}
 
 	void showAllUsers() {
@@ -419,6 +509,18 @@ public class InterviewAppUI {
 			System.out.println("Logout successful");
 		} else {
 			System.out.println("Logout failed or not logged in");
+		}
+	}
+
+	int getIntInput() {
+		String input;
+		while (true) {
+			input = keyboard.nextLine();
+			try {
+				Integer.parseInt(input);
+			} catch (NumberFormatException e) {
+				System.out.println(input + " is not a valid number");
+			}
 		}
 	}
 
