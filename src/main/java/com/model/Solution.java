@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Class representing a Solution to a Question
+ */
+
 public class Solution extends Response {
 	private String file;
 	private String explanation;

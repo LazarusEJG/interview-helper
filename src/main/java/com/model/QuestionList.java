@@ -175,6 +175,9 @@ public class QuestionList {
 		return filtered;
 	}
 
+	/**
+	 * Saves the questions to the JSON file
+	 */
 	public void save() {
 		QuestionWriter.saveQuestions(questions);
 	}
