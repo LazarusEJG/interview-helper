@@ -69,13 +69,15 @@ public class Question implements Commentable {
 
 	}
 
+	@Override
 	public void upVote() {
-
+		score++;
 	}
 
 	/**
 	 * downvoting the question decreases the score
 	 */
+	@Override
 	public void downVote() {
 		score--;
 	}
@@ -102,7 +104,8 @@ public class Question implements Commentable {
 
 	/**
 	 * removes the response of a user from the question
-	 * @param user Who's response is removed
+	 * 
+	 * @param user     Who's response is removed
 	 * @param response The removed response
 	 */
 	public void removeResponse(User user, Response response) {
@@ -111,6 +114,7 @@ public class Question implements Commentable {
 
 	/**
 	 * method used to get the hints on a question
+	 * 
 	 * @return the list of hints
 	 */
 	public ArrayList<String> getHints() {
@@ -119,6 +123,7 @@ public class Question implements Commentable {
 
 	/**
 	 * method used to get the solutions on a question
+	 * 
 	 * @return the list of solutions
 	 */
 	public ArrayList<Solution> getSolutions() {
@@ -127,6 +132,7 @@ public class Question implements Commentable {
 
 	/**
 	 * ID of the question
+	 * 
 	 * @return returns the ID field of the question
 	 */
 	public UUID getId() {
@@ -135,6 +141,7 @@ public class Question implements Commentable {
 
 	/**
 	 * returns the title field of the question
+	 * 
 	 * @return ^^^
 	 */
 	public String getTitle() {
@@ -143,6 +150,7 @@ public class Question implements Commentable {
 
 	/**
 	 * returns the difficulty field of the question
+	 * 
 	 * @return
 	 */
 	public int getDifficulty() {
@@ -151,6 +159,7 @@ public class Question implements Commentable {
 
 	/**
 	 * returns the score field of the question
+	 * 
 	 * @return
 	 */
 	public int getScore() {
@@ -159,6 +168,7 @@ public class Question implements Commentable {
 
 	/**
 	 * returns the content within the question
+	 * 
 	 * @return
 	 */
 	public String getContent() {
@@ -167,6 +177,7 @@ public class Question implements Commentable {
 
 	/**
 	 * returns the list of categories the question has
+	 * 
 	 * @return
 	 */
 	public ArrayList<String> getCategories() {
@@ -182,6 +193,7 @@ public class Question implements Commentable {
 
 	/**
 	 * returns the id of the author of the question
+	 * 
 	 * @return
 	 */
 	public UUID getAuthor() {
@@ -190,6 +202,7 @@ public class Question implements Commentable {
 
 	/**
 	 * returns the publishtime of the question
+	 * 
 	 * @return
 	 */
 	public LocalDateTime getPublishTime() {
