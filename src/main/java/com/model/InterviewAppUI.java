@@ -42,6 +42,8 @@ public class InterviewAppUI {
 		public static final int ADD_SOLUTION_TO_QUESTION = 42;
 		public static final int UPVOTE_SOLUTION = 43;
 		public static final int DOWNVOTE_SOLUTION = 44;
+		public static final int ADD_COMMENT_TO_SOLUTION = 45;
+		public static final int VIEW_SOLUTION_COMMENTS = 46;
 
 		public static final int EXIT = -1;
 		public static final int INVALID = 0;
@@ -94,6 +96,8 @@ public class InterviewAppUI {
 				System.out.println(Options.ADD_SOLUTION_TO_QUESTION + ": Add a solution to the current question");
 				System.out.println(Options.UPVOTE_SOLUTION + ": Upvote a solution");
 				System.out.println(Options.DOWNVOTE_SOLUTION + ": Downvote a solution");
+				System.out.println(Options.ADD_COMMENT_TO_SOLUTION + ": Add a comment to a solution");
+				System.out.println(Options.VIEW_SOLUTION_COMMENTS + ": View comments on a solution");
 			}
 			// System.out.println(Options. + ": ");
 		}
@@ -202,6 +206,20 @@ public class InterviewAppUI {
 					itemCount = library.getCurrentQuestion().getSolutions().size(); // TODO
 					question = selectItem();
 					library.downvote(library.getCurrentQuestion().getSolutions().get(question - 1));
+					break;
+
+				case Options.ADD_COMMENT_TO_SOLUTION:
+					printSolutions(library.getCurrentQuestion().getSolutions());
+					itemCount = library.getCurrentQuestion().getSolutions().size(); // TODO
+					question = selectItem();
+					addCommentToSolution(library.getCurrentQuestion().getSolutions().get(question - 1));
+					break;
+
+				case Options.VIEW_SOLUTION_COMMENTS:
+					printSolutions(library.getCurrentQuestion().getSolutions());
+					itemCount = library.getCurrentQuestion().getSolutions().size(); // TODO
+					question = selectItem();
+					printComments(library.getCurrentQuestion().getSolutions().get(question - 1).getReplies());
 					break;
 
 				case Options.ADD_SOLUTION_TO_QUESTION:
@@ -449,6 +467,34 @@ public class InterviewAppUI {
 		library.addComment(question, author.getId(), content);
 	}
 
+	void addCommentToSolution(Solution solution) {
+		User author = library.getCurrentUser();
+		if (solution == null) {
+			System.out.println("there is no current question");
+			return;
+		}
+
+		if (author == null) {
+			System.out.println("you are not logged in");
+			return;
+		}
+
+		printSolution(solution);
+
+		System.out.println("Type the content of the content of the comment, when done, type EOF on its own line.");
+
+		// String content = "";
+		// String line = keyboard.nextLine();
+		// while (line.equals("EOF") == false) {
+		// content += '\n' + line;
+		// line = keyboard.nextLine();
+		// }
+		String content = multiLineInput();
+		content = content.stripLeading();
+
+		library.addComment(solution, author.getId(), content);
+	}
+
 	void showAllQuestions() {
 		printQuestions(library.getAllQuestions(), true);
 	}
@@ -489,7 +535,7 @@ public class InterviewAppUI {
 			input = keyboard.nextLine();
 		}
 		// TODO
-		printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty, onlySolved, authors), false);
+		printQuestions(library.getQuestions(tagFilter, minDifficulty, maxDifficulty, onlySolved, authors), true);
 	}
 
 	void createSolution() {
