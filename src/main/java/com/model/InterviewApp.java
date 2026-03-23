@@ -37,6 +37,7 @@ public class InterviewApp {
 
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
+		currentUser.incrementStreak();
 		return currentUser;
 	}
 
@@ -114,6 +115,9 @@ public class InterviewApp {
 	}
 
 	public void registerUser(String eMail, String username, String password) {
+		if (containsUser(username, password)) {
+			return;
+		}
 		UserList.getInstance().addUser(eMail, username, password);
 	}
 

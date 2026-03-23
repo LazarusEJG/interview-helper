@@ -148,6 +148,16 @@ public class QuestionList {
 		for (Question question : questions) {
 			// Category tags
 			if (tagFilter != null) {
+				boolean exclude = true;
+				for (String tag : tagFilter) {
+					if (question.getCategories().contains(tag)) {
+						exclude = false;
+						break;
+					}
+				}
+				if (exclude) {
+					continue;
+				}
 				// Work on later
 			}
 
@@ -166,7 +176,7 @@ public class QuestionList {
 			}
 
 			// Authors
-			if (authors != null && authors.contains(question.getAuthor()) == false) {
+			if (authors != null && authors.size() > 0 && authors.contains(question.getAuthor()) == false) {
 				continue;
 			}
 			filtered.add(question);
@@ -175,6 +185,9 @@ public class QuestionList {
 		return filtered;
 	}
 
+	/**
+	 * Saves the questions to the JSON file
+	 */
 	public void save() {
 		QuestionWriter.saveQuestions(questions);
 	}

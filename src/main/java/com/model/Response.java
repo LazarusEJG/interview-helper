@@ -3,15 +3,17 @@ package com.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ * Abstract class representing a response to a question
+ */
 public abstract class Response implements Commentable {
-	private UUID id;
-	private UUID author;
-	private LocalDateTime publishTime;
-	private ArrayList<Comment> replies;
-	private int score;
-	private boolean flagged = false;
-	private boolean removed = false;
+	protected UUID id;
+	protected UUID author;
+	protected LocalDateTime publishTime;
+	protected ArrayList<Comment> replies;
+	protected int score;
+	protected  boolean flagged = false;
+	protected boolean removed = false;
 
 	public Response(UUID author) {
 		this.author = author;

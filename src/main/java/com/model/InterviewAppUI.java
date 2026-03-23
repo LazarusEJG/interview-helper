@@ -161,9 +161,11 @@ public class InterviewAppUI {
 					}
 					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
 					break;
-				
+
 				case Options.GET_DAILY_QUESTION:
 					library.setCurrentQuestion(library.getDailyQuestion());
+					viewCurrentQuestion();
+					break;
 
 				case Options.VIEW_CURRENT_QUESTION:
 					viewCurrentQuestion();

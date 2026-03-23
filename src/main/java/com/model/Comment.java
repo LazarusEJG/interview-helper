@@ -3,7 +3,10 @@ package com.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ * A type of response that is just a comment
+ * Can be added to questions, solutions, and other comments
+ */
 public class Comment extends Response {
 	private String content;
 
@@ -18,10 +21,20 @@ public class Comment extends Response {
 		this.content = content;
 	}
 
+	/**
+	 * toString to return the content of the comment
+	 */
+	@Override
 	public String toString() {
-		return content;
+		return "Commenter: "+ author + "\n" +
+		"Publish Time: " + publishTime + "  " + "Score: " + score + 
+		"Comment:" + content + "\n";
 	}
 
+	/**
+	 * method to get the content of the comment
+	 * @return
+	 */
 	public String getContent() {
 		return content;
 	}
