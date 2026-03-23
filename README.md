@@ -16,3 +16,6 @@ https://lucid.app/lucidchart/81f5189d-f690-41d6-bdce-27805a18a5f9/edit?invitatio
 Sequence Diagram 2:
 Logging in and adding a solution then logging out.
 https://lucid.app/lucidchart/a13f9f9a-9589-4223-8379-6fa4b44e94d3/edit?invitationId=inv_2c8e8902-914f-4ee6-a8ba-4f5a0d6de413
+
+Presentation Video:
+https://www.youtube.com/watch?v=qJpodpoTyjo
