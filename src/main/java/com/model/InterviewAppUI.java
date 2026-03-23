@@ -69,7 +69,7 @@ public class InterviewAppUI {
 		System.out.println(Options.SHOW_ALL_USERS + ": Show all users");
 		if (loggedIn) {
 			System.out.println(Options.SHOW_MY_ACCOUNT + ": Show my account");
-			if (library.getCurrentUser().getType() == UserType.CONTRIBUTOR) {
+			if (library.getCurrentUser().getType().equals(UserType.CONTRIBUTOR)) {
 				System.out.println(Options.CREATE_QUESTION + ": Create question");
 			}
 			System.out.println(Options.LOGOUT + ": Logout");
@@ -294,9 +294,9 @@ public class InterviewAppUI {
 			library.registerUser(email, username, password);
 	}
 
-	void printSolution(Solution solution, int number) {
+	void printSolution(Solution solution) {
 		System.out.println(
-				number + ". " + library.getUser(solution.getAuthor()).getUsername() + "(" + solution.getScore() + ")" + "["
+				library.getUser(solution.getAuthor()).getUsername() + "(" + solution.getScore() + ")" + "["
 						+ solution.getPublishTime() + "]");
 		System.out.println(solution.getExplanation());
 		System.out.println(solution.getFile());
@@ -305,7 +305,8 @@ public class InterviewAppUI {
 	void printSolutions(ArrayList<Solution> solutions) {
 		int number = 1;
 		for (Solution solution : solutions) {
-			printSolution(solution, number);
+			System.out.print(number + ". ");
+			printSolution(solution);
 			number++;
 		}
 	}
@@ -314,7 +315,7 @@ public class InterviewAppUI {
 		String indent = "  ";
 		System.out.println(
 				indent.repeat(depth) + number + ". " + library.getUser(comment.getAuthor()).getUsername() + "("
-						+ comment.getScore() + ")");
+						+ comment.getScore() + ") [" + comment.getPublishTime() + "]");
 		// ensure that any breaks in the comment are correctly indented
 		System.out.println(indent.repeat(depth + 1) + comment.getContent().replace("\n", "\n" + indent));
 	}
@@ -594,7 +595,7 @@ public class InterviewAppUI {
 		while (true) {
 			input = keyboard.nextLine();
 			try {
-				Integer.parseInt(input);
+				return Integer.parseInt(input);
 			} catch (NumberFormatException e) {
 				System.out.println(input + " is not a valid number");
 			}
