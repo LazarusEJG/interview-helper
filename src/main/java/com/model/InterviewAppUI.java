@@ -1,5 +1,8 @@
 package com.model;
 
+import java.io.File;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.UUID;
@@ -29,6 +32,7 @@ public class InterviewAppUI {
 		public static final int UPVOTE_CURRENT_QUESTION = 24;
 		public static final int DOWNVOTE_CURRENT_QUESTION = 25;
 		public static final int GET_DAILY_QUESTION = 26;
+		public static final int PRINT_CURRENT_QUESTION = 27;
 
 		public static final int VIEW_CURRENT_QUESTION_COMMENTS = 31;
 		public static final int ADD_COMMENT_TO_QUESTION = 32;
@@ -77,6 +81,7 @@ public class InterviewAppUI {
 			System.out.println(Options.VIEW_CURRENT_QUESTION + ": View current question");
 			System.out.println(Options.UPVOTE_CURRENT_QUESTION + ": Upvote current question");
 			System.out.println(Options.DOWNVOTE_CURRENT_QUESTION + ": Downvote current question");
+			System.out.println(Options.PRINT_CURRENT_QUESTION + ": Print current question to text file");
 
 			horizontalRule('.');
 			System.out.println(Options.VIEW_CURRENT_QUESTION_COMMENTS + ": View current question comments");
@@ -151,6 +156,12 @@ public class InterviewAppUI {
 						break;
 					}
 					library.setCurrentQuestion(library.getSearchResults().get(question - 1));
+					break;
+
+				case Options.PRINT_CURRENT_QUESTION:
+					if (library.getCurrentQuestion() != null) {
+						printQuestionToFile(library.getCurrentQuestion());
+					}
 					break;
 
 				case Options.SEARCH_QUESTIONS:
@@ -318,6 +329,19 @@ public class InterviewAppUI {
 		System.out.println(question.getTitle());
 		System.out.println(question.getContent());
 		System.out.println();
+	}
+
+	void printQuestionToFile(Question question) {
+		try {
+			PrintWriter out = new PrintWriter(new File("question-output.txt"));
+			out.println(question.getTitle());
+			out.println(question.getContent());
+			out.println();
+			System.out.println("Output to question-output.txt");
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	void createQuestion() {
