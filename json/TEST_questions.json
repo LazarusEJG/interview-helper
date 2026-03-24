@@ -138,26 +138,5 @@
         ],
         "title": "Palindrome Checker",
         "content": "Write a function that checks if a given string is a palindrome."
-    },
-    {
-        "difficulty": 0,
-        "score": 0,
-        "publishTime": "2026-03-20T10:30:38.832290306",
-        "comments": [
-            {
-                "publishTime": "2026-03-20T10:31:16.785486537",
-                "score": 0,
-                "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "id": "b855574c-e9ec-46e9-a078-b81a31b72586",
-                "content": "The answer is NOT obvious, I cannot find it :("
-            }
-        ],
-        "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-        "hints": [],
-        "solutions": [],
-        "id": "c03ebbb0-3c4f-4a51-be97-995fe54903ba",
-        "categories": [],
-        "title": "this is a question",
-        "content": "This is the content of a question\nit may have many lines\n  does indentation work?\nhopefully\nExample 0\nthe answer to the question is obvious\nexamples may also have many lines\n  does indentation work here ?\nhopefully"
     }
 ]

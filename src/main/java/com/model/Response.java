@@ -3,7 +3,9 @@ package com.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
-
+/**
+ * Abstract class representing a response to a question
+ */
 public abstract class Response implements Commentable {
 	protected UUID id;
 	protected UUID author;

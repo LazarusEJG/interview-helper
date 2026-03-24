@@ -4,10 +4,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Class representing a Solution to a Question
+ */
+
 public class Solution extends Response {
 	private String file;
 	private String explanation;
 	private boolean verified = false;
+
+	private static final int VERIFICATION_THRESHOLD = 80;
 
 	public Solution(UUID author, String explanation, String filename) {
 		super(author);
@@ -21,6 +27,24 @@ public class Solution extends Response {
 		this.file = filename;
 		this.explanation = explanation;
 		this.verified = verified;
+	}
+
+	@Override
+	public void upVote() {
+		super.upVote();
+
+		if (!verified && getScore() >= VERIFICATION_THRESHOLD) {
+			verified = true;
+		}
+	}
+
+	@Override
+	public void downVote() {
+		super.downVote();
+
+		if (verified && getScore() < VERIFICATION_THRESHOLD) {
+			verified = false;
+		}
 	}
 
 	public void verify() {
