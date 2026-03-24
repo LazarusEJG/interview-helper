@@ -2,7 +2,7 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 /**
  * Facade class for the Interview Helper system.
@@ -12,7 +12,7 @@ import java.util.regex.*;
 public class InterviewApp {
 
 	private User currentUser;
-	private Question currentQuestion;
+	private ArrayList<Question> searchResults;
 	private static final String SPECIALS = "!@#$%^&?*";
 	private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
 
@@ -23,10 +23,17 @@ public class InterviewApp {
 		this.currentUser = user;
 	}
 
-	User getCurrentUser() {
+	public User getCurrentUser() {
 		return currentUser;
 	}
 
+	public Question getCurrentQuestion() {
+		return QuestionList.getInstance().getCurrentQuestion();
+	}
+
+	public ArrayList<Question> getSearchResults() {
+		return searchResults;
+	}
 
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
@@ -46,9 +53,9 @@ public class InterviewApp {
 			return false;
 
 		for (char c : username.toCharArray()) {
-			if (Character.isAlphabetic(c)) 
+			if (Character.isAlphabetic(c))
 				hasLetter = true;
-			else if (Character.isDigit(c)) 
+			else if (Character.isDigit(c))
 				hasNumber = true;
 			else
 				return false;
@@ -67,11 +74,11 @@ public class InterviewApp {
 			return false;
 
 		for (char c : password.toCharArray()) {
-			if (Character.isAlphabetic(c)) 
+			if (Character.isAlphabetic(c))
 				hasLetter = true;
-			else if (Character.isDigit(c)) 
+			else if (Character.isDigit(c))
 				hasNumber = true;
-			if (hasSpecial == false ) {
+			if (hasSpecial == false) {
 				for (char v : SPECIALS.toCharArray()) {
 					if (c == v) {
 						hasSpecial = true;
@@ -87,14 +94,15 @@ public class InterviewApp {
 	}
 
 	boolean containsUser(String username, String password) {
-		if (UserList.getInstance().getUser(username, password) != null) {
-			return true;
-		}
-		return false;
+		return UserList.getInstance().containsUser(username, password);
 	}
 
 	public ArrayList<User> getAllUsers() {
 		return UserList.getInstance().getUsers();
+	}
+
+	public User getUserFromUsername(String username) {
+		return UserList.getInstance().getUserFromUsername(username);
 	}
 
 	public boolean logout() {
@@ -113,13 +121,8 @@ public class InterviewApp {
 		UserList.getInstance().addUser(eMail, username, password);
 	}
 
-	public boolean addQuestion(Question question) {
-		if (currentUser.getType() == UserType.CONTRIBUTOR) {
-			QuestionList.getInstance().addQuestion(getUser(question.getAuthor()), question.getContent());
-			return true;
-		}
-		else
-			return false;
+	public void addQuestion(User author, String title, String content) {
+		QuestionList.getInstance().addQuestion(author, title, content);
 	}
 
 	public User getUser(UUID id) {
@@ -133,12 +136,14 @@ public class InterviewApp {
 			boolean onlySolved,
 			ArrayList<UUID> authors) {
 
-		return QuestionList.getInstance().getQuestions(
+		searchResults = QuestionList.getInstance().getQuestions(
 				tagFilter,
 				minDifficulty,
 				maxDifficulty,
 				onlySolved,
 				authors);
+
+		return searchResults;
 	}
 
 	public Question getDailyQuestion() {
@@ -158,23 +163,26 @@ public class InterviewApp {
 	}
 
 	// Getter for Bookmarked Questions for the current user.
-	public ArrayList<UUID> getBookmarkedQuestions(User currentUser) {
+	public ArrayList<UUID> getBookmarkedQuestions() {
 		return currentUser.getBookmarkedQuestions();
 	}
 
-	public ArrayList<Question> getAnsweredQuestions(User currentUser) {
+	public ArrayList<Question> getAnsweredQuestions() {
 		return currentUser.getAnsweredQuestions();
 	}
 
 	/**
 	 * Calls upon getQuestions in QuestionList
+	 * 
 	 * @return returns all questions
 	 */
 	public ArrayList<Question> getAllQuestions() {
-		return QuestionList.getInstance().getQuestions();
+		searchResults = QuestionList.getInstance().getQuestions();
+		return searchResults;
 	}
 
 	public String getHints() {
+		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion != null &&
 				currentQuestion.getHints() != null &&
@@ -186,14 +194,16 @@ public class InterviewApp {
 		return "";
 	}
 
-	public void addSolution(User currentUser, Solution solution) {
+	public void addSolution(String explanation, String filename) {
+		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion != null) {
-			currentQuestion.addSolution(currentUser, solution);
+			currentQuestion.addSolution(currentUser, explanation, filename);
 		}
 	}
 
 	public ArrayList<Solution> getSolutions() {
+		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion == null)
 			return new ArrayList<>();
@@ -204,17 +214,17 @@ public class InterviewApp {
 	}
 
 	// Getter for bookmarked solutions.
-	public ArrayList<UUID> getBookmarkedSolutions(User currentUser) {
+	public ArrayList<UUID> getBookmarkedSolutions() {
 		return currentUser.getBookmarkedSolutions();
 	}
 
 	// Getter for submitted solutions.
-	public ArrayList<UUID> getSubmittedSolutions(User currentUser) {
+	public ArrayList<UUID> getSubmittedSolutions() {
 		return currentUser.getSubmittedSolutions();
 	}
 
-	public void addComment(Commentable parent, Comment comment) {
-		parent.addComment(comment);
+	public void addComment(Commentable parent, UUID author, String content) {
+		parent.addComment(new Comment(author, content));
 	}
 
 	public void report(Response response) {

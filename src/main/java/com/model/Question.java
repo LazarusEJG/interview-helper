@@ -19,27 +19,37 @@ public class Question implements Commentable {
 
 	/**
 	 * Constructor for question
-	 * @param author UUID of the author of the question
+	 * 
+	 * @param author  UUID of the author of the question
 	 * @param content Content of the question
 	 */
-	public Question(UUID author, String content) {
+	public Question(UUID author, String title, String content) {
 		this.author = author;
+		this.title = title;
 		this.content = content;
+		publishTime = LocalDateTime.now();
+
+		id = UUID.randomUUID();
+		categories = new ArrayList<>();
+		solutions = new ArrayList<>();
+		comments = new ArrayList<>();
+		hints = new ArrayList<>();
 	}
 
 	/**
 	 * Constructor for question
-	 * @param id UUID of the question
-	 * @param author UUID of the author of the question
-	 * @param content the content within the question
-	 * @param title title of the question
-	 * @param difficulty difficulty of the question
-	 * @param categories catagory or categories of the question
-	 * @param solutions solution list of the question
-	 * @param comments comments list of the question
-	 * @param hints hints list on the question
+	 * 
+	 * @param id          UUID of the question
+	 * @param author      UUID of the author of the question
+	 * @param content     the content within the question
+	 * @param title       title of the question
+	 * @param difficulty  difficulty of the question
+	 * @param categories  catagory or categories of the question
+	 * @param solutions   solution list of the question
+	 * @param comments    comments list of the question
+	 * @param hints       hints list on the question
 	 * @param publishTime publishtime of the question
-	 * @param score current score of the question
+	 * @param score       current score of the question
 	 */
 	public Question(UUID id, UUID author, String content, String title, int difficulty,
 			ArrayList<String> categories, ArrayList<Solution> solutions,
@@ -59,9 +69,8 @@ public class Question implements Commentable {
 
 	}
 
-
 	public void upVote() {
-		
+
 	}
 
 	public void downVote() {
@@ -75,12 +84,8 @@ public class Question implements Commentable {
 	 * [I wanted to add at least somthing if I could.
 	 * Sorry in advance if this is like super wrong - EJ]
 	 */
-	public void addSolution(User user, Solution solution) {
-		if (user.getType() == UserType.REGISTERED) {
-			Solution newSolution = new Solution(UUID.randomUUID(),author,publishTime,score,
-			"","",true, comments);
-			this.solutions.add(newSolution);
-		}
+	public void addSolution(User author, String explanation, String filename) {
+		this.solutions.add(new Solution(author.getId(), explanation, filename));
 	}
 
 	/**
@@ -88,8 +93,7 @@ public class Question implements Commentable {
 	 * [^^^^ sorry if this is super wrong and needs to be changed entirely.]
 	 */
 	public void addComment(Comment comment) {
-		Comment newComment = new Comment(UUID.randomUUID(),author, publishTime, score, comments, content);
-		this.comments.add(newComment);
+		this.comments.add(comment);
 	}
 
 	public void removeResponse(User user, Response response) {

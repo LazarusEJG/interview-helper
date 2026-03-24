@@ -9,8 +9,9 @@ public class Solution extends Response {
 	private String explanation;
 	private boolean verified = false;
 
-	public Solution(UUID author, String filename) {
+	public Solution(UUID author, String explanation, String filename) {
 		super(author);
+		this.explanation = explanation;
 		this.file = filename;
 	}
 

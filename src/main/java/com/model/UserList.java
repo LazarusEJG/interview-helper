@@ -99,6 +99,24 @@ public class UserList {
 		return users;
 	}
 
+	public boolean containsUser(String username, String password) {
+		for (User user : users) {
+			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public User getUserFromUsername(String username) {
+		for (User user : users) {
+			if (user.getUsername().equals(username)) {
+				return user;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * Saves the list of users
 	 * 

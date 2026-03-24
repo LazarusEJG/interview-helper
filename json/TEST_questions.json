@@ -59,16 +59,6 @@
                 "verified": false,
                 "id": "9da25f24-9a89-4b2e-8842-72e2256f5cec",
                 "explanation": "This solution uses a brute-force approach..."
-            },
-            {
-                "publishTime": "2026-03-21T19:13:08.527854600",
-                "score": 0,
-                "file": "testSolution",
-                "comments": [],
-                "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "verified": false,
-                "id": "8885625b-eddd-4b8c-adf2-d67ffb3dfb40",
-                "explanation": "\nthis is a test solution"
             }
         ],
         "id": "2a91f234-9ac3-4f31-89fe-dd430ceab090",
@@ -152,33 +142,22 @@
     {
         "difficulty": 0,
         "score": 0,
-        "publishTime": "2026-03-21T13:17:48.795126005",
+        "publishTime": "2026-03-20T10:30:38.832290306",
         "comments": [
             {
-                "publishTime": "2026-03-21T13:22:03.771318842",
+                "publishTime": "2026-03-20T10:31:16.785486537",
                 "score": 0,
                 "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "id": "8100d145-c6a4-4c51-8000-537704b9334d",
-                "content": "I am unable to solve this question"
+                "id": "b855574c-e9ec-46e9-a078-b81a31b72586",
+                "content": "The answer is NOT obvious, I cannot find it :("
             }
         ],
         "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
         "hints": [],
-        "solutions": [
-            {
-                "publishTime": "2026-03-21T14:12:24.789839728",
-                "score": 0,
-                "file": "nothing.java",
-                "comments": [],
-                "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "verified": false,
-                "id": "157e9274-b480-4119-a6af-bcf83bac665e",
-                "explanation": "\nthere is no answer to the question\nthis is a solution with no purpose"
-            }
-        ],
-        "id": "5cef6406-a321-42d8-81fe-082c7b5a4419",
+        "solutions": [],
+        "id": "c03ebbb0-3c4f-4a51-be97-995fe54903ba",
         "categories": [],
-        "title": "bababasasd",
-        "content": "question contents\nmore contents\nExample 0\nThere is no answer"
+        "title": "this is a question",
+        "content": "This is the content of a question\nit may have many lines\n  does indentation work?\nhopefully\nExample 0\nthe answer to the question is obvious\nexamples may also have many lines\n  does indentation work here ?\nhopefully"
     }
 ]

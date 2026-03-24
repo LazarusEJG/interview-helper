@@ -7,6 +7,11 @@ import java.util.UUID;
 public class Comment extends Response {
 	private String content;
 
+	public Comment(UUID author, String content) {
+		super(author);
+		this.content = content;
+	}
+
 	/**
 	 * Comment constructor
 	 * @param id Id of the comment

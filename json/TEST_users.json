@@ -59,21 +59,5 @@
         ],
         "email": "travisscott@gmail.com",
         "username": "travisscott"
-    },
-    {
-        "completed_courses": [],
-        "submitted_solutions": [],
-        "received_votes": 0,
-        "type": "REGISTERED",
-        "last_streak_date": "2026-03-16",
-        "current_streak": 0,
-        "longest_streak": 0,
-        "bookmarked_questions": [],
-        "password": "test",
-        "bookmarked_solutions": [],
-        "id": "1a262cbd-bfc2-46cb-a1a1-186f2da5f431",
-        "interests": [],
-        "email": "test@gmail.com",
-        "username": "test"
     }
 ]
