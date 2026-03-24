@@ -2,6 +2,7 @@ module com.interview {
     requires javafx.controls;
     requires javafx.fxml;
     requires json.simple;
+    requires junit;
 
     opens com.interview to javafx.fxml;
     exports com.interview;
