@@ -1,8 +1,10 @@
 package com.model.Persistence;
 
-public abstract class QuestionDataConstants {
-	protected static final String QUESTION_FILE_PATH = "json";
-	protected static final String QUESTION_FILE_NAME = "questions.json";
+import java.nio.file.Paths;
+
+public abstract class QuestionDataConstants extends DataConstants {
+	private static final String QUESTION_FILE_PATH = "json";
+	private static final String QUESTION_FILE_NAME = "questions.json";
 	protected static final String QUESTION_ID = "id";
 	protected static final String QUESTION_TITLE = "title";
 	protected static final String QUESTION_DIFFICULTY = "difficulty";
@@ -28,4 +30,16 @@ public abstract class QuestionDataConstants {
 	protected static final String QUESTION_COMMENTS_PUBLISH_TIME = "publishTime";
 	protected static final String QUESTION_COMMENTS_SCORE = "score";
 	protected static final String QUESTION_COMMENTS_CONTENT = "content";
+
+	protected static String getFilePath(String databaseName) {
+		if (isJUnitTest()) {
+			if (databaseName != null && databaseName.equals("") == false) {
+				return Paths.get(QUESTION_FILE_PATH + "_test", databaseName, QUESTION_FILE_NAME).toString();
+			} else {
+				return Paths.get(QUESTION_FILE_PATH + "_test", "default", QUESTION_FILE_NAME).toString();
+			}
+		} else {
+			return Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString();
+		}
+	}
 }

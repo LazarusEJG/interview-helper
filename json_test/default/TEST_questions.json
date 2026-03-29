@@ -28,13 +28,6 @@
                         "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
                         "id": "69c552b4-2a36-4a97-93fe-3cb185d706ac",
                         "content": "I think the brute-force solution is easier to understand for beginners."
-                    },
-                    {
-                        "publishTime": "2026-03-22T21:04:52.218013847",
-                        "score": 0,
-                        "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
-                        "id": "ed33d0ef-79c1-4f06-8297-ca3ea8ef64ac",
-                        "content": "I do not understand how a hash map can help with this problem"
                     }
                 ],
                 "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
@@ -145,80 +138,5 @@
         ],
         "title": "Palindrome Checker",
         "content": "Write a function that checks if a given string is a palindrome."
-    },
-    {
-        "difficulty": 2,
-        "score": 0,
-        "publishTime": "2026-03-22T21:26:11.507049756",
-        "comments": [
-            {
-                "publishTime": "2026-03-22T21:35:52.477121919",
-                "score": 0,
-                "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "id": "b47e4d44-f93b-4ae7-9f1a-8aae5da9034e",
-                "content": "Has no one solved the question yet?"
-            }
-        ],
-        "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-        "hints": [],
-        "solutions": [
-            {
-                "publishTime": "2026-03-22T21:39:26.398006386",
-                "score": 0,
-                "file": "Solution.java",
-                "comments": [],
-                "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "verified": false,
-                "id": "5fb483f2-60fe-4953-bb25-cd76593fda55",
-                "explanation": "\nThis is done by access the nodes and printing them in a specific order"
-            },
-            {
-                "publishTime": "2026-03-22T21:47:43.736729248",
-                "score": 0,
-                "file": "IterativeSolution.java",
-                "comments": [
-                    {
-                        "publishTime": "2026-03-22T22:21:08.487421850",
-                        "score": 0,
-                        "author": "57b3c909-973d-462d-b851-f8a673d3e70b",
-                        "id": "8bd5662e-db92-446c-b5c2-95f4df2a1c35",
-                        "content": "I do not find the iterative solution to be more easily understood"
-                    }
-                ],
-                "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "verified": false,
-                "id": "67167e79-e5bc-4213-a338-ca56dc2717aa",
-                "explanation": "\nThis is an iterative approach that might be easier to understand"
-            }
-        ],
-        "id": "2a9130ad-492c-4cf4-9c7a-0a56d3043b57",
-        "categories": [
-            "BST"
-        ],
-        "title": "Print post-order traversal",
-        "content": "Given a binary tree, print its items in a postorder traversial\nExample 0\nPostOrderPrint(Tree(1,385,45,12,7,235,8)) -> (12, 7, 385, 235, 8, 45, 1)\nExample 1\nPostOrderPrint(Tree(25, 12, 7, 23, 8, 1, 34)) -> (1, 8, 7, 23, 12, 34, 25)"
-    },
-    {
-        "difficulty": 1,
-        "score": 0,
-        "publishTime": "2026-03-22T21:28:43.703605910",
-        "comments": [
-            {
-                "publishTime": "2026-03-22T21:37:07.900528354",
-                "score": 0,
-                "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-                "id": "ab38c4eb-eb71-43b2-ae0a-91769cf68c6d",
-                "content": "Has no one solved this question yet?"
-            }
-        ],
-        "author": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
-        "hints": [],
-        "solutions": [],
-        "id": "e778bb57-3a29-4178-af14-9bc425ea1f06",
-        "categories": [
-            "BST"
-        ],
-        "title": "Print in-order traversial",
-        "content": "Print the in-order traversial of a BST.\nExample 0\nPrintInOrder((1, 385, 45, 12, 7, 235, 8)) -> (1, 7, 8, 12, 45, 235, 385)\nExample 1\nPrintInOrder((25, 12, 7, 23, 8, 1, 34)) -> (1, 7, 8, 12, 23, 25, 34)"
     }
 ]

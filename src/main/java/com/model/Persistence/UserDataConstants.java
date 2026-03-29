@@ -1,6 +1,8 @@
 package com.model.Persistence;
 
-public abstract class UserDataConstants {
+import java.nio.file.Paths;
+
+public abstract class UserDataConstants extends DataConstants {
 	protected static final String USER_FILE_PATH = "json";
 	protected static final String USER_FILE_NAME = "users.json";
 	protected static final String USER_ID = "id";
@@ -18,4 +20,15 @@ public abstract class UserDataConstants {
 	protected static final String USER_LAST_STREAK_DAY = "last_streak_date";
 	protected static final String USER_RECEIVED_VOTES = "received_votes";
 
+	protected static String getFilePath(String databaseName) {
+		if (isJUnitTest()) {
+			if (databaseName != null && databaseName.equals("") == false) {
+				return Paths.get(USER_FILE_PATH + "_test", databaseName, USER_FILE_NAME).toString();
+			} else {
+				return Paths.get(USER_FILE_PATH + "_test", "default", USER_FILE_NAME).toString();
+			}
+		} else {
+			return Paths.get(USER_FILE_PATH, USER_FILE_NAME).toString();
+		}
+	}
 }

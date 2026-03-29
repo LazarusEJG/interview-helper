@@ -16,9 +16,13 @@ import org.json.simple.parser.JSONParser;
 public final class QuestionLoader extends QuestionDataConstants {
 
 	public static ArrayList<Question> getQuestions() {
+		return getQuestions(null);
+	}
+
+	public static ArrayList<Question> getQuestions(String databaseName) {
 		ArrayList<Question> questions = null;
 		try {
-			FileReader reader = new FileReader(Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString());
+			FileReader reader = new FileReader(getFilePath(databaseName));
 			JSONParser parser = new JSONParser();
 			JSONArray questionsJSON = (JSONArray) parser.parse(reader);
 			questions = new ArrayList<Question>(questionsJSON.size());
