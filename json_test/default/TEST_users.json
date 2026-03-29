@@ -1,0 +1,63 @@
+[
+    {
+        "completed_courses": [
+            "c032db04-7c23-4cd2-bff6-aa6107a19a9d",
+            "405b1536-4c74-4db9-911e-3414e5312f7c"
+        ],
+        "submitted_solutions": [
+            "2a91f234-9ac3-4f31-89fe-dd430ceab090"
+        ],
+        "received_votes": 150,
+        "type": "CONTRIBUTOR",
+        "last_streak_date": "2026-01-03",
+        "current_streak": 7,
+        "longest_streak": 14,
+        "bookmarked_questions": [
+            "2a91f234-9ac3-4f31-89fe-dd430ceab090",
+            "a2b5a068-da41-4098-a3f4-5d072e40708f"
+        ],
+        "password": "WholeLottaRed123",
+        "bookmarked_solutions": [
+            "164a6004-e9cf-46c1-8e0b-0d39ebdc4273",
+            "c7a988c4-9e9b-4a7a-8a98-a3e0b0b3152d"
+        ],
+        "id": "3fa7a504-89fe-46f7-bb93-80ef40dd1671",
+        "interests": [
+            "java",
+            "algorithms"
+        ],
+        "email": "playboicarti@gmail.com",
+        "username": "playboicarti"
+    },
+    {
+        "completed_courses": [
+            "c032db04-7c23-4cd2-bff6-aa6107a19a9d",
+            "405b1536-4c74-4db9-911e-3414e5312f7c",
+            "f206c365-b6be-4fc5-94d8-38d1be8b0620"
+        ],
+        "submitted_solutions": [
+            "a2b5a068-da41-4098-a3f4-5d072e40708f"
+        ],
+        "received_votes": 467,
+        "type": "REGISTERED",
+        "last_streak_date": "2025-12-26",
+        "current_streak": 14,
+        "longest_streak": 21,
+        "bookmarked_questions": [
+            "2a91f234-9ac3-4f31-89fe-dd430ceab090",
+            "a2b5a068-da41-4098-a3f4-5d072e40708f"
+        ],
+        "password": "feinfeinfein123",
+        "bookmarked_solutions": [
+            "59bd2303-a473-4132-b547-53f13efb7529",
+            "9da25f24-9a89-4b2e-8842-72e2256f5cec"
+        ],
+        "id": "57b3c909-973d-462d-b851-f8a673d3e70b",
+        "interests": [
+            "java",
+            "data structures"
+        ],
+        "email": "travisscott@gmail.com",
+        "username": "travisscott"
+    }
+]
