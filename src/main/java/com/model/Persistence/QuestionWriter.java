@@ -19,7 +19,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 				questionsJSON.add(questionJSON);
 			}
 
-			FileWriter writer = new FileWriter(Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString());
+			FileWriter writer = new FileWriter(getFilePath());
 			questionsJSON.writeJSONString(writer);
 			// DEBUG
 			writer.close();

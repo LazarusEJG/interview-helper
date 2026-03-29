@@ -14,11 +14,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public final class UserLoader extends UserDataConstants {
-
 	public static ArrayList<User> getUsers() {
+		return getUsers(null);
+	}
+
+	public static ArrayList<User> getUsers(String databaseName) {
 		ArrayList<User> users = null;
 		try {
-			FileReader reader = new FileReader(Paths.get(USER_FILE_PATH, USER_FILE_NAME).toString());
+			FileReader reader = new FileReader(getFilePath(databaseName));
 			JSONParser parser = new JSONParser();
 			JSONArray usersJSON = (JSONArray) parser.parse(reader);
 			users = new ArrayList<User>(usersJSON.size());
