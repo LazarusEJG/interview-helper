@@ -3,6 +3,7 @@ package com.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
+
 /**
  * A type of response that is just a comment
  * Can be added to questions, solutions, and other comments
@@ -26,16 +27,40 @@ public class Comment extends Response {
 	 */
 	@Override
 	public String toString() {
-		return "Commenter: "+ author + "\n" +
-		"Publish Time: " + publishTime + "  " + "Score: " + score + 
-		"Comment:" + content + "\n";
+		return "Commenter: " + author + "\n" +
+				"Publish Time: " + publishTime + "  " + "Score: " + score +
+				"Comment:" + content + "\n";
 	}
 
 	/**
 	 * method to get the content of the comment
+	 * 
 	 * @return
 	 */
 	public String getContent() {
 		return content;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof Comment)) {
+			return false;
+		}
+
+		Comment other = (Comment) obj;
+
+		if (super.equals(other) == false) {
+			return false;
+		}
+
+		if (this.content.equals(other.content) == false) {
+			return false;
+		}
+
+		return true;
 	}
 }
