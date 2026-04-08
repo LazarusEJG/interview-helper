@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 
 <BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.HomeController">
 
@@ -28,24 +27,21 @@
         <HBox spacing="40" styleClass="hero-section">
             <VBox spacing="80" styleClass="hero-left">
                <Label styleClass="heading-xl" text="Built to help you Ace Computer Science Interviews" wrapText="true" />
-               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 700;" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
+               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 600; -fx-font-size: 20px" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
                
                <Pane VBox.vgrow="ALWAYS" />
 
                <HBox spacing="40">
-                    <Button prefHeight="80.0" prefWidth="203.0" styleClass="button-primary" text="Browse Questions" />
-                    <Button onAction="#goToLogin" prefHeight="78.0" prefWidth="149.0" styleClass="button-secondary" text="Sign In" />
+                    <Button prefHeight="66.0" prefWidth="339.0" style="-fx-font-size: 30px" styleClass="button-primary" text="Browse Questions" />
+                    <Button onAction="#goToLogin" prefHeight="66.0" prefWidth="194.0" style="-fx-font-size: 30px" styleClass="button-secondary" text="Sign In" />
                </HBox>
             </VBox>
 
             <!-- Right Side Image -->
-            <ImageView fitWidth="480" preserveRatio="true" style="-fx-translate-y: 100; -fx-translate-x: 100;">
+            <ImageView fitWidth="500" preserveRatio="true" style="-fx-translate-y: 100; -fx-translate-x: 40;">
                 <image>
-                    <Image url="@images/hero.jpg" />
+                    <Image url="@images/hero.png" />
                 </image>
-                <clip>
-                  <Rectangle arcHeight="40" arcWidth="40" height="230" width="420" /> 
-                </clip>
             </ImageView>
 
         </HBox>
