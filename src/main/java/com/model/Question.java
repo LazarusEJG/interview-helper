@@ -241,4 +241,45 @@ public class Question implements Commentable {
 
 		return sb.toString();
 	}
+
+	public boolean equals(Question other) {
+		if (super.equals(other)) {
+			return true;
+		}
+
+		if (this.id.equals(other.id) == false) {
+			return false;
+		}
+		if (this.title.equals(other.title) == false) {
+			return false;
+		}
+		if (this.difficulty != other.difficulty) {
+			return false;
+		}
+		if (this.score != other.score) {
+			return false;
+		}
+		if (this.content.equals(other.content) == false) {
+			return false;
+		}
+		if (this.categories.containsAll(other.categories) == false) {
+			return false;
+		}
+		if (this.solutions.containsAll(other.solutions) == false) {
+			return false;
+		}
+		if (this.comments.containsAll(other.comments) == false) {
+			return false;
+		}
+		if (this.author.equals(other.author) == false) {
+			return false;
+		}
+		if (this.hints.containsAll(other.hints) == false) {
+			return false;
+		}
+		if (this.publishTime.equals(other.publishTime) == false) {
+			return false;
+		}
+		return true;
+	}
 }

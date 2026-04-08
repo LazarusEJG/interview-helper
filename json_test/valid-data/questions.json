@@ -1,0 +1,37 @@
+[
+  {
+    "difficulty": 4,
+    "score": 210,
+    "publishTime": "2026-03-29T21:31:19",
+    "comments": [
+      {
+        "publishTime": "2026-03-29T21:44:19",
+        "score": 14,
+        "author": "a69ef809-247b-41c4-b0a9-b71e623f9483",
+        "id": "ef913643-f345-4d08-a42f-07efbee67cc3",
+        "content": "I do not know how to solve this problem"
+      }
+    ],
+    "author": "25ded9f0-4c0a-43bc-b2a5-6505e6482101",
+    "hints": [],
+    "solutions": [
+      {
+        "publishTime": "2026-03-29T21:38:19",
+        "score": 43,
+        "file": "solutuon.java",
+        "comments": [],
+        "author": "85baa92d-d5df-4e9b-afea-c870dae6295c",
+        "verified": false,
+        "id": "955c97d1-13c9-4e9b-a5b4-d3c12053bb56",
+        "explanation": "This solution works by solving the problem"
+      }
+    ],
+    "id": "b372d951-40b2-43d6-86b3-74a993040606",
+    "categories": [
+      "graph",
+      "algorithms"
+    ],
+    "title": "Traveling salesman",
+    "content": "Given a weighted graph, find the path that reaches every node while minimizing the value"
+  }
+]

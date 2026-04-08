@@ -3,6 +3,7 @@ package com.model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
+
 /**
  * Abstract class representing a response to a question
  */
@@ -12,7 +13,7 @@ public abstract class Response implements Commentable {
 	protected LocalDateTime publishTime;
 	protected ArrayList<Comment> replies;
 	protected int score;
-	protected  boolean flagged = false;
+	protected boolean flagged = false;
 	protected boolean removed = false;
 
 	public Response(UUID author) {
@@ -80,4 +81,30 @@ public abstract class Response implements Commentable {
 		return removed;
 	}
 
+	public boolean equals(Response other) {
+
+		if (this.id.equals(other.id) == false) {
+			return false;
+		}
+		if (this.author.equals(other.author) == false) {
+			return false;
+		}
+		if (this.publishTime.equals(other.publishTime) == false) {
+			return false;
+		}
+		if (this.replies.containsAll(other.replies) == false) {
+			return false;
+		}
+		if (this.score != other.score) {
+			return false;
+		}
+		if (this.flagged != other.flagged) {
+			return false;
+		}
+		if (this.removed != other.removed) {
+			return false;
+		}
+
+		return true;
+	}
 }
