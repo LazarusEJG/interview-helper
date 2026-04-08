@@ -1,36 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
-    <children>
-      <Pane prefHeight="308.0" prefWidth="545.0" stylesheets="@styles.css">
+
+<BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.LoginController">
+
+    <!--NAV BAR-->
+    <top>
+        <HBox spacing="20" styleClass="nav-bar">
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+        </HBox>
+    </top>
+
+    <!--Center Section-->
+    <center>
+        <HBox alignment="CENTER" spacing="40" styleClass="signin-section">
          <children>
-              <Label layoutX="235.0" layoutY="17.0" text="Sign In" />
-            <PasswordField fx:id="txt_password" layoutX="99.0" layoutY="98.0" prefHeight="25.0" prefWidth="363.0" promptText="Password" />
-            <PasswordField fx:id="txt_username" layoutX="99.0" layoutY="62.0" prefHeight="25.0" prefWidth="363.0" promptText="Email or Username" />
-              <Button fx:id="secondaryButton" layoutX="462.0" layoutY="14.0" onAction="#backToHome" text="Back to home" />
-            <Button fx:id="LoginButton" layoutX="99.0" layoutY="164.0" mnemonicParsing="false" onAction="#Login" prefHeight="25.0" prefWidth="363.0" text="Sign In" />
-            <Button layoutX="365.0" layoutY="134.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0; -fx-text-fill: #4D5061;" text="Forgot Password?" textFill="#4d5061" />
-            <Label layoutX="266.0" layoutY="207.0" text="or">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
+            <VBox alignment="CENTER" prefWidth="511" spacing="16">
+                <Label text="Sign In" styleClass="signin-title" />
+                <TextField fx:id="txt_username" promptText="Username" styleClass="promptbox" />
+                <PasswordField fx:id="txt_password" promptText="Password" styleClass="promptbox" />
+                <Hyperlink text="Forgot Password?" styleClass="forgot-link" />
+                <Label fx:id="errorLabel" text="" styleClass="error-text" />
+                <Button fx:id="LoginButton" onAction="#Login" prefHeight="46" prefWidth="507.0" styleClass="button-secondary" text="Sign In" />
+                <HBox alignment="CENTER" spacing="12" styleClass="divider-row">
+                    <Separator HBox.hgrow="ALWAYS" />
+                    <Label text="OR" styleClass="divider-text" />
+                    <Separator HBox.hgrow="ALWAYS" />
+                </HBox>
+                <Button prefHeight="46" prefWidth="507.0" styleClass="button-primary" text="Continue as Guest" />
+                <Button prefHeight="46" prefWidth="507.0" styleClass="button-primary" style="-fx-background-color: -fx-primary;" text="Create an Account" />
+            </VBox>
          </children>
-      </Pane>
-    </children>
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+        </HBox>
+    </center>
+
     <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
-</VBox>
+        <URL value="@styles.css" />
+    </stylesheets>
+
+</BorderPane>

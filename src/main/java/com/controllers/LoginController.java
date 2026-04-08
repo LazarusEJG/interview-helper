@@ -8,34 +8,54 @@ import com.model.InterviewApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 public class LoginController {
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private Button LoginButton;
 
     @FXML
-    private Button secondaryButton;
-
-    @FXML
     private PasswordField txt_password;
 
     @FXML
-    private PasswordField txt_username;
+    private TextField txt_username;
 
     @FXML
-    void Login(ActionEvent event) {
+    void Login(ActionEvent event) throws IOException {
         String username = txt_username.getText();
         String password = txt_password.getText();
 
-        InterviewApp library = new InterviewApp();
+        errorLabel.setText("");
 
-        library.login(username, password);
+        if (username.isEmpty()) {
+            errorLabel.setText("Please enter your username");
+            return;
+        }
+
+        if (password.isEmpty()) {
+            errorLabel.setText("Please enter your password");
+            return;
+        }
+
+        InterviewApp library = App.getInterviewApp();
+
+        if (library.containsUser(username, password)) {
+			library.login(username, password);
+            App.setRoot("Profile");
+		} else {
+            errorLabel.setText("Invalid username or password");
+        }
+        
     }
 
     @FXML
-    void backToHome(ActionEvent event) throws IOException {
+    void backToHome(MouseEvent event) throws IOException {
         App.setRoot("Home");
     }
 

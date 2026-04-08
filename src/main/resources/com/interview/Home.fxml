@@ -17,8 +17,8 @@
         <HBox spacing="20" styleClass="nav-bar">
             <Label styleClass="nav-title" text="Interview Helper" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button styleClass="nav-button" text="Questions" />
-            <Button onAction="#goToLogin" styleClass="nav-button" text="Sign In" />
+            <Button styleClass="nav-button" style="-fx-font-size: 20px" text="Questions" />
+            <Button onAction="#goToLogin" styleClass="nav-button" style="-fx-font-size: 20px" text="Sign In" />
         </HBox>
     </top>
 
@@ -26,8 +26,8 @@
     <center>
         <HBox spacing="40" styleClass="hero-section">
             <VBox spacing="80" styleClass="hero-left">
-               <Label styleClass="heading-xl" text="Built to help you Ace Computer Science Interviews" wrapText="true" />
-               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 600; -fx-font-size: 20px" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
+               <Label styleClass="heading-xl" style="-fx-text-fill: #000000" text="Built to help you Ace Computer Science Interviews" wrapText="true" />
+               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 600; -fx-font-size: 20px; -fx-text-fill: #000000" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
                
                <Pane VBox.vgrow="ALWAYS" />
 

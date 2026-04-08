@@ -2,7 +2,7 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.regex.*;
+import java.util.regex.Pattern;
 
 /**
  * Facade class for the Interview Helper system.
@@ -95,7 +95,7 @@ public class InterviewApp {
 		return EMAIL_PATTERN.matcher(email).find();
 	}
 
-	boolean containsUser(String username, String password) {
+	public boolean containsUser(String username, String password) {
 		return UserList.getInstance().containsUser(username, password);
 	}
 

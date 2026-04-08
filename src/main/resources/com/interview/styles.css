@@ -115,3 +115,63 @@
 .hero-left {
     -fx-spacing: 20px;
 }
+
+/* --------------------------------------------------
+   Login Page
+-------------------------------------------------- */
+.signin-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-text;
+    -fx-padding: 0 0 8px 0;
+}
+
+.promptbox {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 3px;
+    -fx-padding: 10px 12px;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+}
+
+.promptbox .prompt-text {
+    -fx-fill: -fx-muted;
+    -fx-font-size: 16px;
+}
+
+.divider-row {
+    -fx-padding: 10 0 10 0;
+    -fx-alignment: center;
+}
+
+.divider-text {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 0 12px;
+}
+
+.forgot-link {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 0 0 4px 0;
+}
+
+.error-text {
+    -fx-text-fill: red;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}
+
+/* --------------------------------------------------
+   Profile Page
+-------------------------------------------------- */
+
+.profile-welcome {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #111;
+}
