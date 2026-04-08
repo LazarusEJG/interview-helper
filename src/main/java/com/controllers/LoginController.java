@@ -3,6 +3,7 @@ package com.controllers;
 import java.io.IOException;
 
 import com.interview.App;
+import com.model.InterviewApp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +26,12 @@ public class LoginController {
 
     @FXML
     void Login(ActionEvent event) {
+        String username = txt_username.getText();
+        String password = txt_password.getText();
 
+        InterviewApp library = new InterviewApp();
+
+        library.login(username, password);
     }
 
     @FXML

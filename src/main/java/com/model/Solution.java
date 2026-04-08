@@ -62,4 +62,31 @@ public class Solution extends Response {
 	public boolean isVerified() {
 		return verified;
 	}
+
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+
+		if (!(o instanceof Solution)) {
+			return false;
+		}
+
+		Solution other = (Solution) o;
+
+		if (super.equals(other) == false) {
+			return false;
+		}
+
+		if (this.file.equals(other.file) == false) {
+			return false;
+		}
+		if (this.explanation.equals(other.explanation) == false) {
+			return false;
+		}
+		if (this.verified != other.verified) {
+			return false;
+		}
+		return true;
+	}
 }

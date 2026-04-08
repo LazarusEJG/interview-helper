@@ -37,7 +37,9 @@ public class InterviewApp {
 
 	public User login(String username, String password) {
 		currentUser = UserList.getInstance().getUser(username, password);
-		currentUser.incrementStreak();
+		if (currentUser != null) {
+			currentUser.incrementStreak();
+		}
 		return currentUser;
 	}
 
