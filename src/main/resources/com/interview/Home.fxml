@@ -1,20 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import java.net.URL?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.HomeController">
-   <children>
-      <Label text="Put a finger down if you want to login" />
-      <Button fx:id="primaryButton" onAction="#goToLogin" text="Login" />
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-   <stylesheets>
-      <URL value="@styles.css" />
-   </stylesheets>
-</VBox>
+<BorderPane styleClass="root"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.controllers.HomeController">
+
+    <!--NAV BAR-->
+    <top>
+        <HBox spacing="20" styleClass="nav-bar">
+            <Label text="Interview Helper" styleClass="nav-title" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button text="Questions" styleClass="nav-button" />
+            <Button text="Sign In" onAction="#goToLogin" styleClass="nav-button" />
+        </HBox>
+    </top>
+
+    <!--Center Section-->
+    <center>
+        <HBox spacing="40" styleClass="hero-section">
+            <VBox spacing="20" styleClass="hero-left" HBox.hgrow="ALWAYS">
+               <Label text="Built to help you Ace Computer Science Interviews"
+                       wrapText="true"
+                       styleClass="heading-xl" />
+               <Label text="Level up your confidence with real questions that matter."
+                       wrapText="true"
+                       styleClass="text-muted" />
+               <Pane VBox.vgrow="ALWAYS" />
+               <HBox spacing="40">
+                    <Button text="Browse Questions" styleClass="button-primary" />
+                    <Button text="Sign In"
+                            onAction="#goToLogin"
+                            styleClass="button-secondary" />
+               </HBox>
+            </VBox>
+
+            <!-- RIGHT SIDE: HERO IMAGE -->
+            <ImageView fitWidth="420" preserveRatio="true">
+                <image>
+                    <Image url="@images/hero.jpg" />
+                </image>
+            </ImageView>
+
+        </HBox>
+    </center>
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
+</BorderPane>

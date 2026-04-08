@@ -1,4 +1,116 @@
-.label {
-    -fx-text-fill: #549df9;
-    -fx-font-size:30;
+/* --------------------------------------------------
+   COLOR VARIABLES
+-------------------------------------------------- */
+.root {
+    -fx-primary: #5C80BC;
+    -fx-primary-light: #7EA0D4;
+    -fx-accent: #E8C547;
+
+    -fx-background: #CDD1C4;
+    -fx-surface: #5C80BC;
+
+    -fx-text: #30323D;
+    -fx-text-light: #F5F7FA;
+    -fx-muted: #4D5061;
+
+    -fx-space-sm: 8px;
+    -fx-space-md: 16px;
+    -fx-space-lg: 32px;
+}
+
+/* --------------------------------------------------
+   ROOT
+-------------------------------------------------- */
+.root {
+    -fx-background-color: -fx-background;
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+    -fx-text-fill: -fx-text;
+}
+
+/* --------------------------------------------------
+   NAV BAR
+-------------------------------------------------- */
+.nav-bar {
+    -fx-background-color: -fx-surface;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, transparent, 0, 0, 0, 20);
+}
+
+.nav-title {
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 14px;
+    -fx-padding: 6px 12px;
+}
+
+.nav-button:hover {
+    -fx-text-fill: -fx-accent;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+.button {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+/* Primary button (gold) */
+.button-primary {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-text-light;
+}
+
+.button-primary:hover {
+    -fx-background-color: derive(-fx-accent, 20%);
+}
+
+/* Secondary button */
+.button-secondary {
+    -fx-background-color: -fx-muted;
+    -fx-text-fill: -fx-text-light;
+}
+
+.button-secondary:hover {
+    -fx-background-color: -fx-primary-light;
+}
+
+/* --------------------------------------------------
+   TEXT STYLES
+-------------------------------------------------- */
+.heading-xl {
+    -fx-font-size: 36px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-text;
+}
+
+.heading-md {
+    -fx-font-size: 24px;
+    -fx-font-weight: 600;
+}
+
+.text-muted {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 16px;
+}
+
+/* --------------------------------------------------
+   LAYOUT HELPERS
+-------------------------------------------------- */
+.hero-section {
+    -fx-padding: 60px 80px;
+    -fx-spacing: 60px;
+}
+
+.hero-left {
+    -fx-spacing: 20px;
 }
