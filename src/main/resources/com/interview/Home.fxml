@@ -9,46 +9,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<BorderPane styleClass="root"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.controllers.HomeController">
+<BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.HomeController">
 
     <!--NAV BAR-->
     <top>
         <HBox spacing="20" styleClass="nav-bar">
-            <Label text="Interview Helper" styleClass="nav-title" />
+            <Label styleClass="nav-title" text="Interview Helper" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button text="Questions" styleClass="nav-button" />
-            <Button text="Sign In" onAction="#goToLogin" styleClass="nav-button" />
+            <Button styleClass="nav-button" text="Questions" />
+            <Button onAction="#goToLogin" styleClass="nav-button" text="Sign In" />
         </HBox>
     </top>
 
     <!--Center Section-->
     <center>
         <HBox spacing="40" styleClass="hero-section">
-            <VBox spacing="20" styleClass="hero-left" HBox.hgrow="ALWAYS">
-               <Label text="Built to help you Ace Computer Science Interviews"
-                       wrapText="true"
-                       styleClass="heading-xl" />
-               <Label text="Level up your confidence with real questions that matter."
-                       wrapText="true"
-                       styleClass="text-muted" />
+            <VBox spacing="80" styleClass="hero-left">
+               <Label styleClass="heading-xl" text="Built to help you Ace Computer Science Interviews" wrapText="true" />
+               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 700;" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
+               
                <Pane VBox.vgrow="ALWAYS" />
+
                <HBox spacing="40">
-                    <Button text="Browse Questions" styleClass="button-primary" />
-                    <Button text="Sign In"
-                            onAction="#goToLogin"
-                            styleClass="button-secondary" />
+                    <Button prefHeight="80.0" prefWidth="203.0" styleClass="button-primary" text="Browse Questions" />
+                    <Button onAction="#goToLogin" prefHeight="78.0" prefWidth="149.0" styleClass="button-secondary" text="Sign In" />
                </HBox>
             </VBox>
 
-            <!-- RIGHT SIDE: HERO IMAGE -->
-            <ImageView fitWidth="420" preserveRatio="true">
+            <!-- Right Side Image -->
+            <ImageView fitWidth="480" preserveRatio="true" style="-fx-translate-y: 100; -fx-translate-x: 100;">
                 <image>
                     <Image url="@images/hero.jpg" />
                 </image>
+                <clip>
+                  <Rectangle arcHeight="40" arcWidth="40" height="230" width="420" /> 
+                </clip>
             </ImageView>
 
         </HBox>
