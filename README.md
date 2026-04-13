@@ -19,3 +19,6 @@ https://lucid.app/lucidchart/a13f9f9a-9589-4223-8379-6fa4b44e94d3/edit?invitatio
 
 Presentation Video:
 https://www.youtube.com/watch?v=qJpodpoTyjo
+
+Working Prototype:
+https://www.figma.com/proto/NHoYwMSu7QJJdP8IdfGq2X/Interview-Helper-UI-Remake?node-id=1-2&t=ood2FJvonYNhj8GF-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2
