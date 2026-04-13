@@ -2,32 +2,60 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
 <BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.ProfileController">
 
     <!--NAV BAR-->
     <top>
         <HBox spacing="20" styleClass="nav-bar">
-            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper"  />
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button styleClass="nav-button" style="-fx-font-size: 20px" text="Questions" />
-            <Button onAction="#goToLogin" styleClass="nav-button" style="-fx-font-size: 20px" text="Log Out" />
+            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+            <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Log Out" />
         </HBox>
     </top>
-
-    <center>
-    <Label fx:id="welcomeLabel" text="" styleClass="profile-welcome" />
-    </center>
 
     <stylesheets>
         <URL value="@styles.css" />
     </stylesheets>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ChoiceBox prefWidth="150.0" />
+            <Separator prefWidth="200.0" />
+         </children>
+      </VBox>
+   </right>
+   <left>
+      <VBox prefWidth="260.0" spacing="12.0" style="-fx-padding: 18;" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <StackPane prefHeight="140.0" prefWidth="220.0" styleClass="profile-rect-top">
+               <children>
+                <Rectangle arcHeight="8.0" arcWidth="8.0" height="140.0" styleClass="rect-fill" width="530.0" />
+                <Label fx:id="welcomeLabel" style="-fx-text-fill: #ffffff" styleClass="profile-welcome" text="" />
+               </children>
+            </StackPane>
+         </children>
+         
+            <Pane prefHeight="200.0" />
 
+        <StackPane prefHeight="120.0" prefWidth="220.0" styleClass="profile-rect-bottom">
+         <children>
+            <Rectangle arcHeight="8.0" arcWidth="8.0" height="123.0" styleClass="rect-fill" width="530.0" />
+         </children>
+        </StackPane>
+      </VBox>
+   </left>
 </BorderPane>

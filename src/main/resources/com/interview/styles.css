@@ -175,3 +175,20 @@
     -fx-font-weight: 700;
     -fx-text-fill: #111;
 }
+
+.rect-fill {
+  -fx-fill: -fx-text;
+  -fx-stroke: rgba(0,0,0,0.12);
+  -fx-stroke-width: 1;
+}
+
+.profile-rect-top { -fx-alignment: center-left; -fx-padding: 12; }
+.profile-rect-bottom { -fx-alignment: center; -fx-padding: 12; }
+
+.profile-welcome {
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-font-weight: 600;
+  -fx-padding: 6 10 6 10;
+}
+
