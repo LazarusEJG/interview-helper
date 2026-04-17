@@ -59,4 +59,9 @@ public class LoginController {
         App.setRoot("Home");
     }
 
+    @FXML
+    void toAccountCreation (MouseEvent event) throws IOException {
+        App.setRoot("CAccount");
+    }
+
 }
