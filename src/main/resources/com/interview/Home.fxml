@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.HomeController">
+
+    <!--NAV BAR-->
+    <top>
+        <HBox spacing="20" styleClass="nav-bar">
+            <Label styleClass="nav-title" text="Interview Helper" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button styleClass="nav-button" style="-fx-font-size: 20px" text="Questions" />
+            <Button onAction="#goToLogin" styleClass="nav-button" style="-fx-font-size: 20px" text="Sign In" />
+        </HBox>
+    </top>
+
+    <!--Center Section-->
+    <center>
+        <HBox spacing="40" styleClass="hero-section">
+            <VBox spacing="80" styleClass="hero-left">
+               <Label styleClass="heading-xl" style="-fx-text-fill: #000000" text="Built to help you Ace Computer Science Interviews" wrapText="true" />
+               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 600; -fx-font-size: 20px; -fx-text-fill: #000000" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
+               
+               <Pane VBox.vgrow="ALWAYS" />
+
+               <HBox spacing="40">
+                    <Button prefHeight="66.0" prefWidth="339.0" style="-fx-font-size: 30px" styleClass="button-primary" text="Browse Questions" />
+                    <Button onAction="#goToLogin" prefHeight="66.0" prefWidth="194.0" style="-fx-font-size: 30px" styleClass="button-secondary" text="Sign In" />
+               </HBox>
+            </VBox>
+
+            <!-- Right Side Image -->
+            <ImageView fitWidth="500" preserveRatio="true" style="-fx-translate-y: 100; -fx-translate-x: 40;">
+                <image>
+                    <Image url="@images/hero.png" />
+                </image>
+            </ImageView>
+
+        </HBox>
+    </center>
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
+</BorderPane>

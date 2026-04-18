@@ -17,5 +17,8 @@ Sequence Diagram 2:
 Logging in and adding a solution then logging out.
 https://lucid.app/lucidchart/a13f9f9a-9589-4223-8379-6fa4b44e94d3/edit?invitationId=inv_2c8e8902-914f-4ee6-a8ba-4f5a0d6de413
 
-Presentation Video:
-https://www.youtube.com/watch?v=qJpodpoTyjo
+Prototype Walkthrough:
+https://youtu.be/SkuekY1XCUw
+
+Working Prototype:
+https://www.figma.com/proto/NHoYwMSu7QJJdP8IdfGq2X/Interview-Helper-UI-Remake?node-id=1-2&t=ood2FJvonYNhj8GF-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2

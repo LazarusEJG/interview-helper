@@ -1,0 +1,329 @@
+/* --------------------------------------------------
+   COLOR VARIABLES
+-------------------------------------------------- */
+.root {
+    -fx-primary: #5C80BC;
+    -fx-primary-light: #7EA0D4;
+    -fx-accent: #E8C547;
+
+    -fx-background: #CDD1C4;
+    -fx-surface: #5C80BC;
+
+    -fx-text: #30323D;
+    -fx-text-light: #F5F7FA;
+    -fx-muted: #4D5061;
+
+    -fx-space-sm: 8px;
+    -fx-space-md: 16px;
+    -fx-space-lg: 32px;
+}
+
+/* --------------------------------------------------
+   ROOT
+-------------------------------------------------- */
+.root {
+    -fx-background-color: -fx-background;
+    -fx-font-family: "Inter", "Segoe UI", sans-serif;
+    -fx-text-fill: -fx-text;
+    -fx-padding: 20px 0 0 0;
+}
+
+/* --------------------------------------------------
+   NAV BAR
+-------------------------------------------------- */
+.nav-bar {
+    -fx-background-color: -fx-surface;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, transparent, 0, 0, 0, 20);
+}
+
+.nav-title {
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 14px;
+    -fx-padding: 6px 12px;
+}
+
+.nav-button:hover {
+    -fx-text-fill: -fx-accent;
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+.button {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+/* Primary button (gold) */
+.button-primary {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-text-light;
+}
+
+.button-primary:hover {
+    -fx-background-color: derive(-fx-accent, 20%);
+}
+
+/* Secondary button */
+.button-secondary {
+    -fx-background-color: -fx-muted;
+    -fx-text-fill: -fx-text-light;
+}
+
+.button-secondary:hover {
+    -fx-background-color: -fx-primary-light;
+}
+
+/* --------------------------------------------------
+   TEXT STYLES
+-------------------------------------------------- */
+.heading-xl {
+    -fx-font-size: 36px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-text;
+}
+
+.heading-md {
+    -fx-font-size: 24px;
+    -fx-font-weight: 600;
+}
+
+.text-muted {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 16px;
+}
+
+/* --------------------------------------------------
+   LAYOUT HELPERS
+-------------------------------------------------- */
+.hero-section {
+    -fx-padding: 60px 80px;
+    -fx-spacing: 60px;
+}
+
+.hero-left {
+    -fx-spacing: 20px;
+}
+
+/* --------------------------------------------------
+   Login Page
+-------------------------------------------------- */
+.signin-title {
+    -fx-font-size: 32px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-text;
+    -fx-padding: 0 0 8px 0;
+}
+
+.promptbox {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 3px;
+    -fx-padding: 10px 12px;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+}
+
+.promptbox .prompt-text {
+    -fx-fill: -fx-muted;
+    -fx-font-size: 16px;
+}
+
+.divider-row {
+    -fx-padding: 10 0 10 0;
+    -fx-alignment: center;
+}
+
+.divider-text {
+    -fx-text-fill: #6B7280;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 0 12px;
+}
+
+.forgot-link {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 0 0 4px 0;
+}
+
+.error-text {
+    -fx-text-fill: red;
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+}
+
+/* --------------------------------------------------
+   Profile Page
+-------------------------------------------------- */
+
+.profile-welcome {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #111;
+}
+/* --------------------------------------------------
+   QUESTION LIST & SCROLLABLE AREA
+-------------------------------------------------- */
+
+/* Scroll Pane */
+.question-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-padding: 0;
+}
+
+.question-scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Scroll Bar Styling */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8;
+    -fx-padding: 0;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: #E8E8E8;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-primary;
+    -fx-background-radius: 4;
+    -fx-pref-width: 8;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: -fx-primary-light;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Questions Container */
+.questions-container {
+    -fx-padding: 10;
+    -fx-spacing: 15;
+}
+
+/* Question Box / Card */
+.question-box {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-padding: 20;
+    -fx-spacing: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 4, 0, 0, 2);
+    -fx-border-color: #E8E8E8;
+    -fx-border-radius: 12;
+    -fx-border-width: 1;
+}
+
+.question-box:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 8, 0, 0, 4);
+    -fx-border-color: -fx-primary-light;
+}
+
+/* Question Text */
+.question-text {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: -fx-text;
+    -fx-wrap-text: true;
+    -fx-line-spacing: 2;
+}
+
+/* Question Author */
+.question-author {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 12px;
+    -fx-font-weight: 400;
+}
+
+/* Question Difficulty */
+.question-difficulty {
+    -fx-text-fill: -fx-accent;
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+    -fx-padding: 2 8 2 8;
+    -fx-background-color: rgba(232, 197, 71, 0.15);
+    -fx-background-radius: 12;
+}
+
+/* Answer Button inside Question Box */
+.answer-button {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: 600;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-pref-width: 120;
+}
+
+.answer-button:hover {
+    -fx-background-color: -fx-primary-light;
+}
+
+/* Filter Field Styling */
+.filter-combo, .filter-field-black {
+    -fx-background-color: white;
+    -fx-border-color: #D1D5DB;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 10 6 10;
+    -fx-font-size: 13px;
+}
+
+.filter-combo:focused, .filter-field-black:focused {
+    -fx-border-color: -fx-primary;
+    -fx-border-width: 2;
+}
+
+.filter-combo .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.floating-add-button {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-text-light;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25;
+    -fx-padding: 12 24 12 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 4);
+    -fx-cursor: hand;
+}
+
+.floating-add-button:hover {
+    -fx-background-color: derive(-fx-accent, 15%);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 16, 0, 0, 6);
+}
+
+/* Question Title */
+.question-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: -fx-primary;
+    -fx-padding: 0 0 4 0;
+    -fx-border-color: transparent transparent -fx-accent transparent;
+    -fx-border-width: 0 0 2 0;
+}
