@@ -171,9 +171,9 @@
 -------------------------------------------------- */
 
 .profile-welcome {
-    -fx-font-size: 20px;
+    -fx-font-size: 42px;
     -fx-font-weight: 700;
-    -fx-text-fill: #111;
+    -fx-text-fill: #ffffff;
 }
 
 .rect-fill {
@@ -187,8 +187,29 @@
 
 .profile-welcome {
   -fx-text-fill: white;
-  -fx-font-size: 16px;
-  -fx-font-weight: 600;
+  -fx-font-size: 42px;
+  -fx-font-weight: bold;
   -fx-padding: 6 10 6 10;
+  -fx-text-alignment: left;
 }
 
+.profile-interests {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: left;
+}
+
+.stat-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.stat-value {
+    -fx-font-size: 16px;
+    -fx-text-fill: #ffffff;
+    -fx-font-weigt: bold;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}

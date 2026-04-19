@@ -26,9 +26,10 @@
     <center>
         <HBox spacing="40" styleClass="hero-section">
             <VBox spacing="80" styleClass="hero-left">
+            <VBox spacing="80" alignment="CENTER_LEFT">
                <Label styleClass="heading-xl" style="-fx-text-fill: #000000" text="Built to help you Ace Computer Science Interviews" wrapText="true" />
                <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 600; -fx-font-size: 20px; -fx-text-fill: #000000" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
-               
+            </VBox>
                <Pane VBox.vgrow="ALWAYS" />
 
                <HBox spacing="40">
