@@ -165,6 +165,8 @@ public class ProfileController {
 
     @FXML
     private void goToLogin() throws IOException {
+        InterviewApp library = App.getInterviewApp();
+        library.logout();
         App.setRoot("Login");
     }
 

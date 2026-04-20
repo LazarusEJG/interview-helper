@@ -39,7 +39,7 @@
                     <Label styleClass="divider-text" text="OR" />
                     <Separator HBox.hgrow="ALWAYS" />
                 </HBox>
-                <Button prefHeight="46" prefWidth="507.0" styleClass="button-primary" text="Continue as Guest" />
+                <Button onMouseClicked="#goToQuestions" prefHeight="46" prefWidth="507.0" styleClass="button-primary" text="Continue as Guest" />
                 <Button fx:id="CAccountButton" onMouseClicked="#toAccountCreation" prefHeight="46" prefWidth="507.0" style="-fx-background-color: -fx-primary;" styleClass="button-primary" text="Create an Account" />
             </VBox>
          </children>

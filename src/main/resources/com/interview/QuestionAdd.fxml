@@ -19,8 +19,8 @@
             <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper"/>
             <Pane HBox.hgrow="ALWAYS" />
             <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
-            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />
-            <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
+            <Button onMouseClicked="#goToProfile" style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />
+            <Button fx:id="SignInButton" onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Log Out" />
         </HBox>
     </top>
 

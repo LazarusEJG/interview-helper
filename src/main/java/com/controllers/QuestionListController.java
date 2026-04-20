@@ -7,13 +7,39 @@ import com.model.InterviewApp;
 import com.model.User;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 public class QuestionListController {
 
     @FXML
+    private Button SignInButton;
+
+    @FXML
+    private Button addQuestionBtn;
+
+    @FXML
+    public void initialize() {
+        InterviewApp library = App.getInterviewApp();
+        User user = library.getCurrentUser();
+        if ( user != null) {
+            SignInButton.setText("Log Out");
+            addQuestionBtn.setVisible(true);
+        } else {
+            addQuestionBtn.setVisible(false);
+        }
+    }
+
+    @FXML
     private void goToLogin() throws IOException {
-        App.setRoot("Login");
+        InterviewApp library = App.getInterviewApp();
+        User user = library.getCurrentUser();
+        if ( user != null) {
+            library.logout();
+            App.setRoot("Login");
+        } else {
+            App.setRoot("Login");
+        }
     }
 
     @FXML

@@ -17,8 +17,8 @@
         <HBox spacing="20" styleClass="nav-bar">
             <Label styleClass="nav-title" text="Interview Helper" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
-            <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
+            <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+            <Button fx:id="SignInButton" onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
         </HBox>
     </top>
 
@@ -34,7 +34,7 @@
 
                <HBox spacing="40">
                     <Button onAction="#goToQuestionList" prefHeight="66.0" prefWidth="339.0" style="-fx-font-size: 30px" styleClass="button-primary" text="Browse Questions" />
-                    <Button onAction="#goToLogin" prefHeight="66.0" prefWidth="194.0" style="-fx-font-size: 30px" styleClass="button-secondary" text="Sign In" />
+                    <Button fx:id="SignInButton2" onAction="#goToLogin2" prefHeight="66.0" prefWidth="194.0" style="-fx-font-size: 30px" styleClass="button-secondary" text="Sign In" />
                </HBox>
             </VBox>
 
