@@ -32,7 +32,7 @@
    <center>
       <VBox fx:id="rightColumn" spacing="20" alignment="TOP_LEFT" style="-fx-padding: 20;">
          <children>
-            <ComboBox fx:id="categorySelector" prefWidth="250">
+            <ComboBox fx:id="categorySelector" prefWidth="400" styleClass="profile-combo">
                <items>
                   <FXCollections fx:factory="observableArrayList">
                      <String fx:value="Bookmarked Questions" />
@@ -42,6 +42,8 @@
                   </FXCollections>
                </items>
             </ComboBox>
+
+            <Separator prefWidth="250"/>
 
             <ScrollPane fitToWidth="true" prefHeight="500">
                <content>

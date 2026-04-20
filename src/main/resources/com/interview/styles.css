@@ -213,3 +213,54 @@
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
+
+.profile-combo {
+    -fx-background-color: -fx-background;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+    -fx-padding: 6 10;
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+.profile-combo .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.profile-combo .arrow {
+    -fx-background-color: #3a3a3a;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.combo-box-popup .list-view .virtual-flow {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .clipped-container {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup > .list-view {
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 10 12;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10;
+    -fx-margin: 4 0; /* gives spacing between items */
+}
