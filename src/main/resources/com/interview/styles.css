@@ -5,21 +5,18 @@
     -fx-primary: #5C80BC;
     -fx-primary-light: #7EA0D4;
     -fx-accent: #E8C547;
-
     -fx-background: #CDD1C4;
     -fx-surface: #5C80BC;
-
     -fx-text: #30323D;
     -fx-text-light: #F5F7FA;
     -fx-muted: #4D5061;
-
     -fx-space-sm: 8px;
     -fx-space-md: 16px;
     -fx-space-lg: 32px;
 }
 
 /* --------------------------------------------------
-   ROOT
+   ROOT & GLOBAL
 -------------------------------------------------- */
 .root {
     -fx-background-color: -fx-background;
@@ -34,7 +31,6 @@
 .nav-bar {
     -fx-background-color: -fx-surface;
     -fx-padding: 20px;
-    -fx-effect: dropshadow(gaussian, transparent, 0, 0, 0, 20);
 }
 
 .nav-title {
@@ -65,7 +61,6 @@
     -fx-cursor: hand;
 }
 
-/* Primary button (gold) */
 .button-primary {
     -fx-background-color: -fx-accent;
     -fx-text-fill: -fx-text-light;
@@ -75,7 +70,6 @@
     -fx-background-color: derive(-fx-accent, 20%);
 }
 
-/* Secondary button */
 .button-secondary {
     -fx-background-color: -fx-muted;
     -fx-text-fill: -fx-text-light;
@@ -117,7 +111,7 @@
 }
 
 /* --------------------------------------------------
-   Login Page
+   LOGIN PAGE
 -------------------------------------------------- */
 .signin-title {
     -fx-font-size: 32px;
@@ -167,30 +161,28 @@
 }
 
 /* --------------------------------------------------
-   Profile Page
+   PROFILE PAGE
 -------------------------------------------------- */
-
 .profile-welcome {
     -fx-font-size: 20px;
     -fx-font-weight: 700;
     -fx-text-fill: #111;
 }
+
 /* --------------------------------------------------
    QUESTION LIST & SCROLLABLE AREA
 -------------------------------------------------- */
-
-/* Scroll Pane */
-.question-scroll-pane {
+.question-scroll-pane, .dark-scroll-pane, .comments-scroll {
     -fx-background-color: transparent;
     -fx-background: transparent;
     -fx-padding: 0;
 }
 
-.question-scroll-pane .viewport {
+.question-scroll-pane .viewport, .dark-scroll-pane .viewport, .comments-scroll .viewport {
     -fx-background-color: transparent;
 }
 
-/* Scroll Bar Styling */
+/* Scroll Bar Styling - Unified */
 .scroll-bar:vertical {
     -fx-background-color: transparent;
     -fx-pref-width: 8;
@@ -218,6 +210,17 @@
     -fx-padding: 0;
 }
 
+/* Dark theme scroll bar overrides */
+.dark-scroll-pane .scroll-bar:vertical .track,
+.comments-scroll .scroll-bar:vertical .track {
+    -fx-background-color: #3A3A3A;
+}
+
+.dark-scroll-pane .scroll-bar:vertical .thumb,
+.comments-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #666666;
+}
+
 /* Questions Container */
 .questions-container {
     -fx-padding: 10;
@@ -241,7 +244,6 @@
     -fx-border-color: -fx-primary-light;
 }
 
-/* Question Text */
 .question-text {
     -fx-font-size: 15px;
     -fx-font-weight: 600;
@@ -250,14 +252,12 @@
     -fx-line-spacing: 2;
 }
 
-/* Question Author */
 .question-author {
     -fx-text-fill: -fx-muted;
     -fx-font-size: 12px;
     -fx-font-weight: 400;
 }
 
-/* Question Difficulty */
 .question-difficulty {
     -fx-text-fill: -fx-accent;
     -fx-font-size: 12px;
@@ -267,7 +267,6 @@
     -fx-background-radius: 12;
 }
 
-/* Answer Button inside Question Box */
 .answer-button {
     -fx-background-color: -fx-primary;
     -fx-text-fill: white;
@@ -315,10 +314,8 @@
 
 .floating-add-button:hover {
     -fx-background-color: derive(-fx-accent, 15%);
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 16, 0, 0, 6);
 }
 
-/* Question Title */
 .question-title {
     -fx-font-size: 16px;
     -fx-font-weight: 700;
@@ -326,4 +323,474 @@
     -fx-padding: 0 0 4 0;
     -fx-border-color: transparent transparent -fx-accent transparent;
     -fx-border-width: 0 0 2 0;
+}
+
+/* --------------------------------------------------
+   SPLIT VIEW (QUESTION + ANSWER)
+-------------------------------------------------- */
+.split-view {
+    -fx-padding: 30;
+    -fx-spacing: 25;
+}
+
+.dark-box {
+    -fx-background-color: #2D2D2D;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 8, 0, 0, 2);
+}
+
+.light-strip {
+    -fx-background-color: #4A4A4A;
+    -fx-padding: 12 15 12 15;
+    -fx-background-radius: 12 12 0 0;
+}
+
+/* Tab buttons - unified */
+.strip-button, .strip-button-active {
+    -fx-font-size: 14px;
+    -fx-font-weight: 600;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+}
+
+.strip-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #B0B0B0;
+}
+
+.strip-button-active {
+    -fx-background-color: #5C80BC;
+    -fx-text-fill: white;
+    -fx-background-radius: 4;
+}
+
+.strip-button:hover {
+    -fx-background-color: #5C5C5C;
+    -fx-background-radius: 4;
+}
+
+.icon-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #E8C547;
+    -fx-font-size: 14px;
+    -fx-padding: 6 8 6 8;
+    -fx-cursor: hand;
+}
+
+.icon-button:hover {
+    -fx-background-color: #5C5C5C;
+    -fx-background-radius: 4;
+}
+
+.vote-count {
+    -fx-text-fill: #E8C547;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Content Area */
+.content-area {
+    -fx-padding: 20;
+    -fx-spacing: 15;
+}
+
+.dark-scroll-pane {
+    -fx-background-color: #2D2D2D;
+    -fx-background: #2D2D2D;
+}
+
+.dark-scroll-pane .viewport {
+    -fx-background-color: #2D2D2D;
+}
+
+.question-title-dark {
+    -fx-font-size: 24px;
+    -fx-font-weight: 700;
+    -fx-text-fill: white;
+}
+
+.dark-separator {
+    -fx-background-color: #4A4A4A;
+}
+
+.question-author-dark {
+    -fx-text-fill: #B0B0B0;
+    -fx-font-size: 14px;
+}
+
+.question-text-dark {
+    -fx-font-size: 14px;
+    -fx-text-fill: #E0E0E0;
+    -fx-line-spacing: 2;
+}
+
+.question-text-dark Text {
+    -fx-fill: white;
+}
+
+/* Section Labels */
+.section-label-dark {
+    -fx-text-fill: #E8C547;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 0 5 0;
+}
+
+.category-tag {
+    -fx-background-color: #4A4A4A;
+    -fx-text-fill: #E8C547;
+    -fx-padding: 4 12 4 12;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+}
+
+.difficulty-value {
+    -fx-text-fill: #E8C547;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.hint-text {
+    -fx-background-color: #3A3A3A;
+    -fx-padding: 10;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+}
+
+.hint-text Text {
+    -fx-fill: #B0B0B0;
+}
+
+/* Comments Section */
+.comments-accordion {
+    -fx-background-color: #4A4A4A;
+    -fx-background-radius: 0 0 12 12;
+}
+
+.comments-accordion .titled-pane .title {
+    -fx-background-color: #4A4A4A;
+    -fx-background-radius: 0 0 12 12;
+    -fx-padding: 10;
+}
+
+.comments-accordion .titled-pane .title .text {
+    -fx-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.comments-accordion .titled-pane .content {
+    -fx-background-color: #3A3A3A;
+    -fx-padding: 10;
+}
+
+.comments-container {
+    -fx-padding: 10;
+    -fx-spacing: 15;
+}
+
+/* Threaded Comments */
+.nested-reply {
+    -fx-padding: 10 0 0 20;
+    -fx-border-color: transparent transparent transparent #5C80BC;
+    -fx-border-width: 0 0 0 2;
+    -fx-border-insets: 0 0 0 10;
+}
+
+.comment-main {
+    -fx-background-color: #2D2D2D;
+    -fx-background-radius: 8;
+    -fx-padding: 10;
+    -fx-border-color: #4A4A4A;
+    -fx-border-radius: 8;
+}
+
+.comment-author {
+    -fx-text-fill: #E8C547;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.comment-text {
+    -fx-text-fill: #E0E0E0;
+    -fx-font-size: 13px;
+    -fx-wrap-text: true;
+}
+
+.comment-date {
+    -fx-text-fill: #888888;
+    -fx-font-size: 11px;
+}
+
+.comment-input {
+    -fx-background-color: #2D2D2D;
+    -fx-border-color: #4A4A4A;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #888888;
+    -fx-padding: 10;
+}
+
+/* Solutions Section */
+.solution-card {
+    -fx-background-color: #3A3A3A;
+    -fx-background-radius: 8;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-border-color: #4A4A4A;
+    -fx-border-radius: 8;
+}
+
+.solution-author {
+    -fx-text-fill: #E8C547;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.solution-score {
+    -fx-text-fill: #E8C547;
+    -fx-font-size: 12px;
+}
+
+.solution-date {
+    -fx-text-fill: #888888;
+    -fx-font-size: 11px;
+}
+
+.solution-explanation {
+    -fx-font-size: 13px;
+    -fx-text-fill: #E0E0E0;
+}
+
+.view-solution-btn {
+    -fx-background-color: #5C80BC;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 6 12 6 12;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+    -fx-pref-width: 120;
+}
+
+/* Workspace */
+.workspace-label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.workspace-text-area {
+    -fx-background-color: #2D2D2D;
+    -fx-border-color: #4A4A4A;
+    -fx-border-width: 0;
+    -fx-text-fill: #E0E0E0;
+    -fx-font-family: "Courier New", monospace;
+    -fx-font-size: 14px;
+    -fx-padding: 15;
+}
+
+.workspace-text-area .content {
+    -fx-background-color: #2D2D2D;
+}
+
+.workspace-text-area:focused {
+    -fx-border-color: #E8C547;
+    -fx-border-width: 2;
+}
+
+.workspace-buttons {
+    -fx-padding: 15;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+/* Keep categories, difficulty, and hints white */
+.category-tag, .difficulty-value, .hint-text Text {
+    -fx-text-fill: white;
+}
+
+/* Compact categories and difficulty row */
+.compact-row {
+    -fx-spacing: 15;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.category-tag {
+    -fx-background-color: #4A4A4A;
+    -fx-padding: 4 12 4 12;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+}
+
+/* OVERRIDES - Make everything in left box white */
+.dark-box .section-label-dark,
+.dark-box .category-tag,
+.dark-box .difficulty-value,
+.dark-box .hint-text Text,
+.dark-box .comment-author,
+.dark-box .comment-text,
+.dark-box .comment-date,
+.dark-box .solution-author,
+.dark-box .solution-score,
+.dark-box .solution-explanation,
+.dark-box .solution-date,
+.dark-box .question-author-dark,
+.dark-box .question-text-dark Text,
+.dark-box .icon-button,
+.dark-box .vote-count {
+    -fx-text-fill: white !important;
+}
+
+/* Keep strip buttons white */
+.strip-button, .strip-button-active {
+    -fx-text-fill: white !important;
+}
+
+/* Keep question title white */
+.question-title-dark {
+    -fx-text-fill: white !important;
+}
+
+/* --------------------------------------------------
+   SOLUTIONS SECTION
+-------------------------------------------------- */
+.solution-card {
+    -fx-background-color: #2D2D2D;
+    -fx-padding: 15px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #444;
+    -fx-border-radius: 8px;
+}
+
+.solution-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #5C80BC;
+}
+
+.solution-upvotes {
+    -fx-font-size: 13px;
+    -fx-text-fill: #E8C547;
+}
+
+.solution-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #CCCCCC;
+}
+
+.code-block {
+    -fx-background-color: #1E1E1E;
+    -fx-padding: 12px;
+    -fx-background-radius: 6px;
+    -fx-font-family: "Courier New", monospace;
+    -fx-font-size: 13px;
+}
+
+.strip-button-active {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 15px;
+    -fx-border-color: #5C80BC;
+    -fx-border-width: 0 0 2px 0;
+}
+
+.strip-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #AAAAAA;
+    -fx-padding: 8px 15px;
+}
+
+.strip-button:hover {
+    -fx-text-fill: white;
+}
+
+/* Ensure all text in dark boxes is white */
+.dark-box .label,
+.dark-box .button,
+.dark-box .text {
+    -fx-text-fill: white;
+}
+
+.titled-pane > .title {
+    -fx-text-fill: white;
+}
+
+.titled-pane > .title .text {
+    -fx-fill: white;
+}
+
+/* --------------------------------------------------
+   COMMENT SECTION STYLES
+-------------------------------------------------- */
+.comment-card {
+    -fx-background-color: #2D2D2D;
+    -fx-padding: 12px;
+    -fx-background-radius: 8px;
+    -fx-border-color: #444;
+    -fx-border-radius: 8px;
+}
+
+.comment-author {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.comment-time {
+    -fx-font-size: 11px;
+}
+
+.vote-count-small {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-min-width: 25px;
+    -fx-alignment: center;
+}
+
+/* Darker reply button - uniform with dark theme */
+.button-reply {
+    -fx-background-color: #3D3D3D;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: 600;
+    -fx-padding: 5px 12px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+    -fx-border-color: #555;
+    -fx-border-radius: 4px;
+}
+
+.button-reply:hover {
+    -fx-background-color: #4D4D4D;
+    -fx-border-color: #666;
+}
+
+/* Small icon buttons matching top row style */
+.icon-button-small {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 6px;
+    -fx-cursor: hand;
+}
+
+.icon-button-small:hover {
+    -fx-text-fill: #E8C547;
+}
+
+.comment-input {
+    -fx-background-color: #3D3D3D;
+    -fx-text-fill: white;
+    -fx-border-color: #555;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 8px;
+}
+
+.comment-input .content {
+    -fx-background-color: #3D3D3D;
+}
+
+.add-comment-box {
+    -fx-padding: 10px 0 5px 0;
 }

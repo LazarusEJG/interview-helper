@@ -24,6 +24,7 @@
             </HBox.margin></Label>
             <Pane HBox.hgrow="ALWAYS" />
             <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+         <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />
             <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
         </HBox>
     </top>
@@ -40,7 +41,7 @@
                     <VBox spacing="6" styleClass="filter-item">
                         <ComboBox fx:id="minDifficultyCombo" prefHeight="41.0" prefWidth="158.0" promptText="Min Difficulty" styleClass="filter-combo">
                             <VBox.margin>
-                                <Insets left="10.0" top="20.0" />
+                                <Insets left="10.0" top="30.0" />
                             </VBox.margin>
                         </ComboBox>
                     </VBox>
@@ -49,7 +50,7 @@
                     <VBox spacing="6" styleClass="filter-item">
                         <ComboBox fx:id="maxDifficultyCombo" prefHeight="41.0" prefWidth="153.0" promptText="Max Difficulty" styleClass="filter-combo">
                             <VBox.margin>
-                                <Insets top="20.0" />
+                                <Insets top="30.0" />
                             </VBox.margin>
                         </ComboBox>
                     </VBox>
@@ -58,7 +59,7 @@
                     <VBox spacing="6" styleClass="filter-item">
                         <TextField fx:id="authorFilterField" prefWidth="151.0" promptText="Search by author" styleClass="filter-field-black">
                             <VBox.margin>
-                                <Insets top="25.0" />
+                                <Insets top="35.0" />
                             </VBox.margin>
                         </TextField>
                     </VBox>
@@ -66,12 +67,12 @@
                     <!-- Filter Buttons -->
                     <Button fx:id="applyFiltersBtn" prefWidth="120" styleClass="button-secondary" text="Apply">
                         <HBox.margin>
-                            <Insets left="10.0" top="15.0" />
+                            <Insets left="10.0" top="25.0" />
                         </HBox.margin>
                     </Button>
                     <Button fx:id="clearFiltersBtn" prefWidth="120" styleClass="button-primary" text="Clear">
                         <HBox.margin>
-                            <Insets left="10.0" right="10.0" top="15.0" />
+                            <Insets left="10.0" right="10.0" top="25.0" />
                         </HBox.margin>
                     </Button>
 
