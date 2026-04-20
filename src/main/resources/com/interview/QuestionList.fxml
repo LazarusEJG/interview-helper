@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="413.0" prefWidth="860.0" styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.QuestionListController">
+
+    <!-- NAV BAR -->
+    <top>
+        <HBox spacing="20" styleClass="nav-bar">
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper">
+            <HBox.margin>
+               <Insets top="10.0" />
+            </HBox.margin></Label>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+         <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />
+            <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane>
+            <!-- MAIN CONTENT -->
+            <VBox spacing="25" styleClass="questions-main-container">
+                
+                <!-- FILTERS SECTION - ALONG THE TOP -->
+                <HBox alignment="CENTER_LEFT" spacing="30" styleClass="filters-top-bar">
+
+                    <!-- Min Difficulty -->
+                    <VBox spacing="6" styleClass="filter-item">
+                        <ComboBox fx:id="minDifficultyCombo" prefHeight="41.0" prefWidth="158.0" promptText="Min Difficulty" styleClass="filter-combo">
+                            <VBox.margin>
+                                <Insets left="10.0" top="30.0" />
+                            </VBox.margin>
+                        </ComboBox>
+                    </VBox>
+
+                    <!-- Max Difficulty -->
+                    <VBox spacing="6" styleClass="filter-item">
+                        <ComboBox fx:id="maxDifficultyCombo" prefHeight="41.0" prefWidth="153.0" promptText="Max Difficulty" styleClass="filter-combo">
+                            <VBox.margin>
+                                <Insets top="30.0" />
+                            </VBox.margin>
+                        </ComboBox>
+                    </VBox>
+
+                    <!-- Author -->
+                    <VBox spacing="6" styleClass="filter-item">
+                        <TextField fx:id="authorFilterField" prefWidth="151.0" promptText="Search by author" styleClass="filter-field-black">
+                            <VBox.margin>
+                                <Insets top="35.0" />
+                            </VBox.margin>
+                        </TextField>
+                    </VBox>
+
+                    <!-- Filter Buttons -->
+                    <Button fx:id="applyFiltersBtn" prefWidth="120" styleClass="button-secondary" text="Apply">
+                        <HBox.margin>
+                            <Insets left="10.0" top="25.0" />
+                        </HBox.margin>
+                    </Button>
+                    <Button fx:id="clearFiltersBtn" prefWidth="120" styleClass="button-primary" text="Clear">
+                        <HBox.margin>
+                            <Insets left="10.0" right="10.0" top="25.0" />
+                        </HBox.margin>
+                    </Button>
+
+                </HBox>
+                
+                <!-- SCROLLABLE QUESTION LIST -->
+                <ScrollPane fx:id="questionScrollPane" fitToWidth="true" styleClass="question-scroll-pane" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox fx:id="questionsContainer" spacing="15" styleClass="questions-container">
+                            
+                            <!-- EXAMPLE QUESTION CARD -->
+                            <VBox spacing="10" styleClass="question-box">
+                                <Label styleClass="question-title" text="Two Sum Problem" />
+                                <Label styleClass="question-text" text="Give an array of integer nums and an integer target, return indicies of the two numbers that add up to that target." wrapText="true" />
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <Label styleClass="question-author" text="By: travisscott" />
+                                    <Label styleClass="question-difficulty" text="Difficulty: 4/5" />
+                                </HBox>
+                                <Button styleClass="answer-button" text="View Answer" />
+                            </VBox>
+
+                            <!-- EXAMPLE QUESTION CARD 2 -->
+                            <VBox spacing="10" styleClass="question-box">
+                                <Label styleClass="question-title" text="Palindrome Checker" />
+                                <Label styleClass="question-text" text="Write a function that checks if a given string is a palindrome." wrapText="true" />
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <Label styleClass="question-author" text="By: playboicarti" />
+                                    <Label styleClass="question-difficulty" text="Difficulty: 2/5" />
+                                </HBox>
+                                <Button styleClass="answer-button" text="View Answer" />
+                            </VBox>
+
+                            <!-- EXAMPLE QUESTION CARD 3 -->
+                            <VBox spacing="10" styleClass="question-box">
+                                <Label styleClass="question-title" text="Longest Substring Without Repeating Characters" />
+                                <Label styleClass="question-text" text="Given a string &quot;s&quot;, find the length of the longest substring without repeating characters." wrapText="true" />
+                                <HBox alignment="CENTER_LEFT" spacing="10">
+                                    <Label styleClass="question-author" text="By: JohnnyT" />
+                                    <Label styleClass="question-difficulty" text="Difficulty: 3/5" />
+                                </HBox>
+                                <Button styleClass="answer-button" text="View Answer" />
+                            </VBox>
+                            
+                        </VBox>
+                    </content>
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                    </VBox.margin>
+                </ScrollPane>
+
+            </VBox>
+            
+            <!-- FLOATING ADD BUTTON -->
+            <Button fx:id="addQuestionBtn" onAction="#handleAddQuestion" styleClass="button-primary" text="+ Add Question" StackPane.alignment="BOTTOM_RIGHT">
+                <StackPane.margin>
+                    <Insets bottom="40.0" right="40.0" />
+                </StackPane.margin>
+                <padding>
+                    <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                </padding>
+            </Button>
+            
+        </StackPane>
+    </center>
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
+</BorderPane>

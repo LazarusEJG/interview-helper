@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="700.0" prefWidth="900.0" styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.QuestionAddController">
+
+    <!-- NAV BAR -->
+    <top>
+        <HBox spacing="20" styleClass="nav-bar">
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper">
+                <HBox.margin>
+                    <Insets top="10.0" />
+                </HBox.margin>
+            </Label>
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />
+            <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="20" styleClass="split-view" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+            
+            <!-- SINGLE GREY BOX -->
+            <VBox styleClass="dark-box" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                
+                <!-- TOP LIGHT GREY STRIP -->
+                <HBox alignment="CENTER_LEFT" styleClass="light-strip">
+                    <Label styleClass="workspace-label" text="Content" />
+                </HBox>
+                
+                <!-- MIDDLE CONTENT - WILL GROW -->
+                <VBox spacing="20" styleClass="content-area" VBox.vgrow="ALWAYS">
+                    
+                    <Label styleClass="form-label" text="Title" textFill="WHITE" />
+                    <TextField fx:id="titleField" promptText="Enter title..." styleClass="form-field" />
+                    
+                    <Label styleClass="form-label" text="Description" textFill="WHITE" />
+                    <TextField fx:id="descriptionField" promptText="Enter description..." styleClass="form-field" />
+                    
+                    <Label styleClass="form-label" text="Content" textFill="WHITE" />
+                    <TextArea fx:id="contentArea" promptText="Enter your content here..." styleClass="form-textarea" wrapText="true" VBox.vgrow="ALWAYS" />
+                    
+                </VBox>
+                
+                <!-- BOTTOM BUTTONS -->
+                <HBox spacing="15" styleClass="form-buttons">
+                    <Button fx:id="saveBtn" styleClass="button-secondary" text="Save">
+                  <HBox.margin>
+                     <Insets bottom="20.0" left="20.0" />
+                  </HBox.margin></Button>
+                    <Button fx:id="attachmentsBtn" styleClass="button-secondary" text="Attachments" />
+                    <Button fx:id="submitBtn" styleClass="button-primary" text="Submit" />
+                </HBox>
+                
+            </VBox>
+            
+        </HBox>
+    </center>
+
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
+</BorderPane>
