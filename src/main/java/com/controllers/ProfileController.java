@@ -67,9 +67,9 @@ public class ProfileController {
         );
         avatarImage.setImage(img);
         Platform.runLater(() -> {
-        Circle clip = new Circle(100);
-        clip.setCenterX(100);
-        clip.setCenterY(100);
+        Circle clip = new Circle(150);
+        clip.setCenterX(150);
+        clip.setCenterY(150);
         avatarImage.setClip(clip);
         });
 
@@ -171,6 +171,11 @@ public class ProfileController {
     @FXML
     void backToHome(MouseEvent event) throws IOException {
         App.setRoot("Home");
+    }
+
+    @FXML
+    private void goToQuestions(MouseEvent event) throws IOException {
+        App.setRoot("QuestionList");
     }
 
 }

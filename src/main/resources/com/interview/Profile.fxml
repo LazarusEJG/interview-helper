@@ -23,9 +23,9 @@
     <!--NAV BAR-->
     <top>
         <HBox spacing="20" styleClass="nav-bar">
-            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper" />
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper"/>
             <Pane HBox.hgrow="ALWAYS" />
-            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+            <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
             <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Log Out" />
         </HBox>
     </top>
@@ -66,9 +66,9 @@
                </children>
             </StackPane>
 
-             <StackPane prefHeight="220.0" prefWidth="200.0" alignment="CENTER">
+             <StackPane prefHeight="320.0" prefWidth="300.0" alignment="CENTER">
                <children>
-               <ImageView fx:id="avatarImage" fitWidth="200" fitHeight="200" preserveRatio="false" />
+               <ImageView fx:id="avatarImage" fitWidth="300" fitHeight="300" preserveRatio="false" />
                </children>
             </StackPane>
 

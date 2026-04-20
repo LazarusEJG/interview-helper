@@ -12,4 +12,9 @@ public class HomeController {
     private void goToLogin() throws IOException {
         App.setRoot("Login");
     }
+
+    @FXML
+    private void goToQuestionList() throws IOException {
+        App.setRoot("QuestionList");
+    }
 }

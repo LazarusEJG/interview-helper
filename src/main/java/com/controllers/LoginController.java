@@ -64,4 +64,9 @@ public class LoginController {
         App.setRoot("CAccount");
     }
 
+    @FXML
+    private void goToQuestions(MouseEvent event) throws IOException {
+        App.setRoot("QuestionList");
+    }
+
 }

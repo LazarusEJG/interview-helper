@@ -19,7 +19,7 @@
         <HBox spacing="20" styleClass="nav-bar">
             <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper" />
             <Pane HBox.hgrow="ALWAYS" />
-            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+            <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
         </HBox>
     </top>
 

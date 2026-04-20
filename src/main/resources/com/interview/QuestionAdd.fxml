@@ -16,11 +16,7 @@
     <!-- NAV BAR -->
     <top>
         <HBox spacing="20" styleClass="nav-bar">
-            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper">
-                <HBox.margin>
-                    <Insets top="10.0" />
-                </HBox.margin>
-            </Label>
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper"/>
             <Pane HBox.hgrow="ALWAYS" />
             <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
             <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />

@@ -29,6 +29,11 @@ public class CAccountController {
         App.setRoot("Home");
     }
 
+    @FXML
+    private void goToQuestions(MouseEvent event) throws IOException {
+        App.setRoot("QuestionList");
+    }
+
     @FXML //use fx:id="SignUpButton" should make use of txt_password, txt_username, and txt_email
     private void SignUp() throws IOException {
 
