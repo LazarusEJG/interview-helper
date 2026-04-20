@@ -33,4 +33,8 @@ public class CAccountController {
     private void SignUp() throws IOException {
 
     }
+
+    /**
+     * Link Question button to question list page
+     */
 }

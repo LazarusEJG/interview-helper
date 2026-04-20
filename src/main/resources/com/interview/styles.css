@@ -262,5 +262,5 @@
     -fx-font-size: 14px;
     -fx-border-color: transparent;
     -fx-border-radius: 10;
-    -fx-margin: 4 0; /* gives spacing between items */
+    -fx-margin: 4 0;
 }
