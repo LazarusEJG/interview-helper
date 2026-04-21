@@ -11,44 +11,44 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 public class SelectedQuestionController {
-        
-    @FXML
-    private Button SignInButton;
 
-    @FXML
-    public void initialize() {
-        InterviewApp library = App.getInterviewApp();
-        User user = library.getCurrentUser();
-        if ( user != null) {
-            SignInButton.setText("Log Out");
-        }
-    }
+	@FXML
+	private Button SignInButton;
 
-    @FXML
-    private void goToLogin() throws IOException {
-        InterviewApp library = App.getInterviewApp();
-        User user = library.getCurrentUser();
-        if ( user != null) {
-            library.logout();
-            App.setRoot("Login");
-        } else {
-            App.setRoot("Login");
-        }
-    }
+	@FXML
+	public void initialize() {
+		InterviewApp library = App.getInterviewApp();
+		User user = library.getCurrentUser();
+		if (user != null) {
+			SignInButton.setText("Log Out");
+		}
+	}
 
-    @FXML
-    void backToHome(MouseEvent event) throws IOException {
-        App.setRoot("Home");
-    }
+	@FXML
+	private void goToLogin() throws IOException {
+		InterviewApp library = App.getInterviewApp();
+		User user = library.getCurrentUser();
+		if (user != null) {
+			library.logout();
+			App.setRoot("Login");
+		} else {
+			App.setRoot("Login");
+		}
+	}
 
-    @FXML
-    void goToProfile(MouseEvent event) throws IOException {
-        InterviewApp library = App.getInterviewApp();
-        User user = library.getCurrentUser();
-        if ( user == null) {
-            App.setRoot("Login");
-        } else {
-            App.setRoot("Profile");
-        }
-    }
+	@FXML
+	void backToHome(MouseEvent event) throws IOException {
+		App.setRoot("Home");
+	}
+
+	@FXML
+	void goToProfile(MouseEvent event) throws IOException {
+		InterviewApp library = App.getInterviewApp();
+		User user = library.getCurrentUser();
+		if (user == null) {
+			App.setRoot("Login");
+		} else {
+			App.setRoot("Profile");
+		}
+	}
 }

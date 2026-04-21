@@ -14,59 +14,59 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class LoginController {
-    @FXML
-    private Label errorLabel;
+	@FXML
+	private Label errorLabel;
 
-    @FXML
-    private Button LoginButton;
+	@FXML
+	private Button LoginButton;
 
-    @FXML
-    private PasswordField txt_password;
+	@FXML
+	private PasswordField txt_password;
 
-    @FXML
-    private TextField txt_username;
+	@FXML
+	private TextField txt_username;
 
-    @FXML
-    void Login(ActionEvent event) throws IOException {
-        String username = txt_username.getText();
-        String password = txt_password.getText();
+	@FXML
+	void Login(ActionEvent event) throws IOException {
+		String username = txt_username.getText();
+		String password = txt_password.getText();
 
-        errorLabel.setText("");
+		errorLabel.setText("");
 
-        if (username.isEmpty()) {
-            errorLabel.setText("Please enter your username");
-            return;
-        }
+		if (username.isEmpty()) {
+			errorLabel.setText("Please enter your username");
+			return;
+		}
 
-        if (password.isEmpty()) {
-            errorLabel.setText("Please enter your password");
-            return;
-        }
+		if (password.isEmpty()) {
+			errorLabel.setText("Please enter your password");
+			return;
+		}
 
-        InterviewApp library = App.getInterviewApp();
+		InterviewApp library = App.getInterviewApp();
 
-        if (library.containsUser(username, password)) {
+		if (library.containsUser(username, password)) {
 			library.login(username, password);
-            App.setRoot("Profile");
+			App.setRoot("Profile");
 		} else {
-            errorLabel.setText("Invalid username or password");
-        }
-        
-    }
+			errorLabel.setText("Invalid username or password");
+		}
 
-    @FXML
-    void backToHome(MouseEvent event) throws IOException {
-        App.setRoot("Home");
-    }
+	}
 
-    @FXML
-    void toAccountCreation (MouseEvent event) throws IOException {
-        App.setRoot("CAccount");
-    }
+	@FXML
+	void backToHome(MouseEvent event) throws IOException {
+		App.setRoot("Home");
+	}
 
-    @FXML
-    private void goToQuestions(MouseEvent event) throws IOException {
-        App.setRoot("QuestionList");
-    }
+	@FXML
+	void toAccountCreation(MouseEvent event) throws IOException {
+		App.setRoot("CAccount");
+	}
+
+	@FXML
+	private void goToQuestions(MouseEvent event) throws IOException {
+		App.setRoot("QuestionList");
+	}
 
 }

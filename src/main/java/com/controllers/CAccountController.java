@@ -11,35 +11,36 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class CAccountController {
-    
-    @FXML
-    private Button SignUpButton;
 
-    @FXML
-    private TextField txt_email;
+	@FXML
+	private Button SignUpButton;
 
-    @FXML
-    private PasswordField txt_password;
+	@FXML
+	private TextField txt_email;
 
-    @FXML
-    private TextField txt_username;
+	@FXML
+	private PasswordField txt_password;
 
-    @FXML
-    void backToHome(MouseEvent event) throws IOException {
-        App.setRoot("Home");
-    }
+	@FXML
+	private TextField txt_username;
 
-    @FXML
-    private void goToQuestions(MouseEvent event) throws IOException {
-        App.setRoot("QuestionList");
-    }
+	@FXML
+	void backToHome(MouseEvent event) throws IOException {
+		App.setRoot("Home");
+	}
 
-    @FXML //use fx:id="SignUpButton" should make use of txt_password, txt_username, and txt_email
-    private void SignUp() throws IOException {
+	@FXML
+	private void goToQuestions(MouseEvent event) throws IOException {
+		App.setRoot("QuestionList");
+	}
 
-    }
+	@FXML // use fx:id="SignUpButton" should make use of txt_password, txt_username, and
+				// txt_email
+	private void SignUp() throws IOException {
 
-    /**
-     * Link Question button to question list page
-     */
+	}
+
+	/**
+	 * Link Question button to question list page
+	 */
 }
