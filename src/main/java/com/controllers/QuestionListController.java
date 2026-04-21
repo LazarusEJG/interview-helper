@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.interview.App;
 import com.model.InterviewApp;
 import com.model.User;
+import com.model.UserType;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,7 +25,11 @@ public class QuestionListController {
         User user = library.getCurrentUser();
         if ( user != null) {
             SignInButton.setText("Log Out");
-            addQuestionBtn.setVisible(true);
+            if (user.getType() != UserType.CONTRIBUTOR) {
+                addQuestionBtn.setVisible(false);
+            } else {
+                addQuestionBtn.setVisible(true);
+            }
         } else {
             addQuestionBtn.setVisible(false);
         }
