@@ -68,7 +68,7 @@
         <ScrollPane fx:id="questionScrollPane" fitToWidth="true" styleClass="question-scroll-pane" VBox.vgrow="ALWAYS">
           <content>
             <VBox fx:id="questionsContainer" spacing="15" styleClass="questions-container">
-              <!-- EXAMPLE QUESTION CARD -->
+              <?ignore <!-- EXAMPLE QUESTION CARD -->
               <VBox spacing="10" styleClass="question-box">
                 <Label styleClass="question-title" text="Two Sum Problem"/>
                 <Label styleClass="question-text" text="Give an array of integer nums and an integer target, return indicies of the two numbers that add up to that target." wrapText="true"/>
@@ -98,6 +98,7 @@
                 </HBox>
                 <Button styleClass="answer-button" text="View Answer"/>
 							</VBox>
+							?>
             </VBox>
           </content>
           <VBox.margin>
