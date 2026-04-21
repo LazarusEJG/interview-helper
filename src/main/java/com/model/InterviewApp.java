@@ -47,7 +47,7 @@ public class InterviewApp {
 		return (currentUser != null);
 	}
 
-	boolean isValidUsername(String username) {
+	public boolean isValidUsername(String username) {
 		boolean hasLetter = false;
 		boolean hasNumber = false;
 
@@ -67,7 +67,7 @@ public class InterviewApp {
 
 	}
 
-	boolean isValidPassword(String password) {
+	public boolean isValidPassword(String password) {
 		boolean hasLetter = false;
 		boolean hasNumber = false;
 		boolean hasSpecial = false;
@@ -91,7 +91,7 @@ public class InterviewApp {
 		return (hasLetter && hasNumber && hasSpecial);
 	}
 
-	boolean isValidEmail(String email) {
+	public boolean isValidEmail(String email) {
 		return EMAIL_PATTERN.matcher(email).find();
 	}
 
