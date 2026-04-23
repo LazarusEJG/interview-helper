@@ -102,7 +102,7 @@ public class QuestionList {
 	 */
 	public Question getQuestion(UUID id) {
 		for (Question question : questions) {
-			if (question.getId() == id) {
+			if (question.getId().equals(id)) {
 				return question;
 			}
 		}

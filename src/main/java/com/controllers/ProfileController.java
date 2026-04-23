@@ -1,6 +1,10 @@
 package com.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.UUID;
+import com.model.Question;
+import com.model.Solution;
 
 import com.interview.App;
 import com.model.InterviewApp;
@@ -96,6 +100,10 @@ public class ProfileController {
 		if (selected.equals("Bookmarked Questions")) {
 			loadBookmarkedQuestions();
 		}
+
+		if (selected.equals("Bookmarked Solutions")) {
+			loadBookmarkedSolutions();
+		}
 	}
 
 	/**
@@ -136,25 +144,24 @@ public class ProfileController {
 	 * and it has a placeholder not the actual code for the question
 	 */
 	private void loadBookmarkedQuestions() {
-		contentContainer.getChildren().add(
-				createCard(
-						"Two Sum Problem",
-						"Given an array of integers nums and an integer target"));
+		ArrayList<UUID> bookmarks = App.getInterviewApp().getCurrentUser().getBookmarkedQuestions();
 
-		contentContainer.getChildren().add(
-				createCard(
-						"Reverse Linked List",
-						"Write a function to reverse a singly linked list"));
+		for (UUID id : bookmarks) {
+			Question q = App.getInterviewApp().getQuestionByUUID(id);
+			contentContainer.getChildren().add(
+				createCard(q.getTitle(), q.getContent()));
+		}
+	}
 
-		contentContainer.getChildren().add(
-				createCard(
-						"Palindrom Checker",
-						"Write a function that checks if a given string is a palindrom"));
+	private void loadBookmarkedSolutions() {
+		ArrayList<UUID> bookmarks = App.getInterviewApp().getCurrentUser().getBookmarkedSolutions();
 
-		contentContainer.getChildren().add(
-				createCard(
-						"Longest Substring Without Repeating Characters",
-						"Given a string “s”, find the length of the longest substring without repeating characters."));
+		for (UUID id : bookmarks) {
+			Solution s = App.getInterviewApp().getSolutionByUUID(id);
+			String author = App.getInterviewApp().getUser(s.getAuthor()).getUsername();
+			String content = s.getExplanation();
+			contentContainer.getChildren().add(createCard(author, content));
+		}
 	}
 
 	@FXML

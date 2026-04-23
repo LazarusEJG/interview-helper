@@ -95,6 +95,11 @@ public class InterviewApp {
 		return EMAIL_PATTERN.matcher(email).find();
 	}
 
+	public Question getQuestionByUUID(UUID id) {
+		return QuestionList.getInstance().getQuestion(id);
+	}
+
+
 	public boolean containsUser(String username, String password) {
 		return UserList.getInstance().containsUser(username, password);
 	}
@@ -213,6 +218,17 @@ public class InterviewApp {
 		ArrayList<Solution> solutions = currentQuestion.getSolutions();
 
 		return solutions != null ? solutions : new ArrayList<>();
+	}
+
+	public Solution getSolutionByUUID(UUID id) {
+		for (Question q : QuestionList.getInstance().getQuestions()) {
+			for (Solution s : q.getSolutions()) {
+				if (s.getId().equals(id)) {
+					return s;
+				}
+			}
+		}
+		return null;
 	}
 
 	// Getter for bookmarked solutions.
