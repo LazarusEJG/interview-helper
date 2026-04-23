@@ -53,12 +53,12 @@
             </TextField>
           </VBox>
           <!-- Filter Buttons -->
-          <Button fx:id="applyFiltersBtn" prefWidth="120" styleClass="button-secondary" text="Apply">
+          <Button fx:id="applyFiltersBtn" onMouseClicked="#showQuestions" prefWidth="120" styleClass="button-secondary" text="Apply">
             <HBox.margin>
               <Insets left="10.0" top="25.0"/>
             </HBox.margin>
           </Button>
-          <Button fx:id="clearFiltersBtn" prefWidth="120" styleClass="button-primary" text="Clear">
+          <Button fx:id="clearFiltersBtn" onMouseClicked="#clearFilters" prefWidth="120" styleClass="button-primary" text="Clear">
             <HBox.margin>
               <Insets left="10.0" right="10.0" top="25.0"/>
             </HBox.margin>
