@@ -42,4 +42,8 @@ public abstract class QuestionDataConstants extends DataConstants {
 			return Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString();
 		}
 	}
+
+	protected static String getFilePath() {
+		return Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString();
+	}
 }
