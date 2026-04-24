@@ -3,6 +3,7 @@ package com.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.Arrays;
 import com.model.Question;
 import com.model.Solution;
 
@@ -104,6 +105,14 @@ public class ProfileController {
 		if (selected.equals("Bookmarked Solutions")) {
 			loadBookmarkedSolutions();
 		}
+
+		if (selected.equals("Submitted Solutions")) {
+			loadSubmittedSolutions();
+		}
+
+		if (selected.equals("Submitted Questions")) {
+			loadSubmittedQuestions();
+		}
 	}
 
 	/**
@@ -158,9 +167,31 @@ public class ProfileController {
 
 		for (UUID id : bookmarks) {
 			Solution s = App.getInterviewApp().getSolutionByUUID(id);
-			String author = App.getInterviewApp().getUser(s.getAuthor()).getUsername();
+			String authorName = App.getInterviewApp().getUser(s.getAuthor()).getUsername();
 			String content = s.getExplanation();
-			contentContainer.getChildren().add(createCard(author, content));
+			contentContainer.getChildren().add(createCard(authorName, content));
+		}
+	}
+
+	private void loadSubmittedQuestions() {
+		ArrayList<UUID> authorID = new ArrayList<>(Arrays.asList(App.getInterviewApp().getCurrentUser().getId()));
+
+		ArrayList<Question> bookmarks = App.getInterviewApp().getQuestions(null, null, null, false, authorID);
+
+		for (Question q : bookmarks) {
+			contentContainer.getChildren().add(
+				createCard(q.getTitle(), q.getContent()));
+		}
+	}
+
+	private void loadSubmittedSolutions() {
+		ArrayList<UUID> bookmarks = App.getInterviewApp().getCurrentUser().getSubmittedSolutions();
+
+		for (UUID id : bookmarks) {
+			Solution s = App.getInterviewApp().getSolutionByUUID(id);
+			String authorName = App.getInterviewApp().getUser(s.getAuthor()).getUsername();
+			String content = s.getExplanation();
+			contentContainer.getChildren().add(createCard(authorName, content));
 		}
 	}
 

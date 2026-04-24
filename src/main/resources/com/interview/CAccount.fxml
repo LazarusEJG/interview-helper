@@ -4,14 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.CAccountController">
 
@@ -29,19 +27,19 @@
         <HBox alignment="CENTER" spacing="40" styleClass="signin-section">
          <children>
             <VBox alignment="CENTER" prefWidth="511" spacing="16">
-                <Label text="Create Account" styleClass="signin-title" />
+                <Label styleClass="signin-title" text="Create Account" />
                 <TextField fx:id="txt_email" promptText="email" styleClass="promptbox" />
-                <TextField fx:id="txt_username" promptText="Username" styleClass="promptbox" />
-                <PasswordField fx:id="txt_password" promptText="Password" styleClass="promptbox" />
-                <Label fx:id="errorLabel" text="" styleClass="error-text" />
-                <Button fx:id="SignUpButton" prefHeight="46" prefWidth="507.0" styleClass="button-secondary" text="Sign Up" />
+                <TextField fx:id="txt_username" promptText=" Username (Unique 6-12 chars; 1 letter; 1 number)" styleClass="promptbox" />
+                <PasswordField fx:id="txt_password" promptText="Password (8+ chars; 1 letter; 1 number; 1 special !@#$%^&amp;?*)" styleClass="promptbox" />
+                <Label fx:id="errorLabel" styleClass="error-text" text="" />
+                <Button fx:id="SignUpButton" onAction="#SignUp" prefHeight="46" prefWidth="507.0" styleClass="button-secondary" text="Sign Up" />
                 <HBox alignment="CENTER" spacing="12" styleClass="divider-row">
                     <Separator HBox.hgrow="ALWAYS" />
-                    <Label text="OR" styleClass="divider-text" />
+                    <Label styleClass="divider-text" text="OR" />
                     <Separator HBox.hgrow="ALWAYS" />
                 </HBox>
                 <Button prefHeight="46" prefWidth="507.0" styleClass="button-primary" text="Continue as Guest" />
-                <Button prefHeight="46" prefWidth="507.0" styleClass="button-primary" style="-fx-background-color: -fx-primary;" text="Create an Account" />
+                <Button prefHeight="46" prefWidth="507.0" style="-fx-background-color: -fx-primary;" styleClass="button-primary" text="Create an Account" />
             </VBox>
          </children>
         </HBox>
