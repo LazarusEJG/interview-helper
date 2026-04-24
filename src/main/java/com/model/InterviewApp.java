@@ -127,8 +127,8 @@ public class InterviewApp {
 		UserList.getInstance().addUser(eMail, username, password);
 	}
 
-	public void addQuestion(User author, String title, String content) {
-		QuestionList.getInstance().addQuestion(author, title, content);
+	public void addQuestion(User author, String title, String description, String content) {
+		QuestionList.getInstance().addQuestion(author, title, description, content);
 	}
 
 	public User getUser(UUID id) {

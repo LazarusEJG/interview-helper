@@ -42,7 +42,7 @@ public class QuestionListItemController {
 
 		title.setText(question.getTitle());
 		System.out.println(question.getTitle());
-		text.setText(question.getContent());
+		text.setText(question.getDescription());
 		author.setText(library.getUser(question.getAuthor()).getUsername());
 		difficulty.setText("Difficulty: " + question.getDifficulty() + "/5");
 

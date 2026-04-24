@@ -33,6 +33,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 		JSONObject questionJSON = new JSONObject();
 		questionJSON.put(QUESTION_ID, question.getId().toString());
 		questionJSON.put(QUESTION_TITLE, question.getTitle());
+		questionJSON.put(QUESTION_DESCRIPTION, question.getDescription());
 		questionJSON.put(QUESTION_DIFFICULTY, question.getDifficulty());
 		questionJSON.put(QUESTION_SCORE, question.getScore());
 		questionJSON.put(QUESTION_CONTENT, question.getContent());
