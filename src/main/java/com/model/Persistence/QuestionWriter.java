@@ -95,6 +95,11 @@ public final class QuestionWriter extends QuestionDataConstants {
 		commentJSON.put(QUESTION_COMMENTS_PUBLISH_TIME, comment.getPublishTime().toString());
 		commentJSON.put(QUESTION_COMMENTS_SCORE, comment.getScore());
 		commentJSON.put(QUESTION_COMMENTS_CONTENT, comment.getContent());
+		JSONArray comments = new JSONArray();
+		for (Comment reply : comment.getReplies()) {
+			comments.add(getCommentJSON(reply));
+		}
+		commentJSON.put(QUESTION_COMMENTS, comments);
 
 		return commentJSON;
 	}

@@ -99,7 +99,6 @@ public class InterviewApp {
 		return QuestionList.getInstance().getQuestion(id);
 	}
 
-
 	public boolean containsUser(String username, String password) {
 		return UserList.getInstance().containsUser(username, password);
 	}
@@ -241,8 +240,10 @@ public class InterviewApp {
 		return currentUser.getSubmittedSolutions();
 	}
 
-	public void addComment(Commentable parent, UUID author, String content) {
-		parent.addComment(new Comment(author, content));
+	public Comment addComment(Commentable parent, UUID author, String content) {
+		Comment comment = new Comment(author, content);
+		parent.addComment(comment);
+		return comment;
 	}
 
 	public void report(Response response) {

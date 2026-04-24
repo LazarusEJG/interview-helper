@@ -11,5 +11,5 @@
     <Label fx:id="author" styleClass="question-author" text="By: travisscott"/>
     <Label fx:id="difficulty" styleClass="question-difficulty" text="Difficulty: 4/5"/>
   </HBox>
-  <Button fx:id="answerButton" styleClass="answer-button" text="View Answer"/>
+  <Button fx:id="answerButton" onMouseClicked="#openQuestion" styleClass="answer-button" text="View Answer"/>
 </VBox>

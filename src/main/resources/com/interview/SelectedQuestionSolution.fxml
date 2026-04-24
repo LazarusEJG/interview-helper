@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" spacing="10" styleClass="solution-card" fx:controller="com.controllers.SelectedQuestionSolutionController">
+  <HBox alignment="CENTER_LEFT" spacing="10">
+    <Label fx:id="title" styleClass="solution-title" text="Solution 1: Hash Map Approach" textFill="WHITE"/>
+    <Pane HBox.hgrow="ALWAYS"/>
+    <Label fx:id="upvotes" styleClass="solution-upvotes" text="▲ 45" textFill="WHITE"/>
+  </HBox>
+  <Separator styleClass="dark-separator"/>
+  <TextFlow styleClass="solution-text">
+    <Text fx:id="explanation" fill="WHITE" text="This solution uses a hash map to store the indices of elements we have seen so far."/>
+  </TextFlow>
+  <TextFlow styleClass="code-block">
+    <Text fx:id="code" fill="WHITE" text="function twoSum(nums, target) {&#10;  const map = new Map();&#10;  for (let i = 0; i &lt; nums.length; i++) {&#10;    const complement = target - nums[i];&#10;    if (map.has(complement)) {&#10;      return [map.get(complement), i];&#10;    }&#10;    map.set(nums[i], i);&#10;  }&#10;  return [];&#10;}"/>
+  </TextFlow>
+  <HBox spacing="10">
+    <Label fx:id="author" style="-fx-font-size: 11px;" text="By: travisscott" textFill="#AAAAAA"/>
+    <Label fx:id="verified" style="-fx-font-size: 11px;" text="✓ Verified" textFill="#4CAF50"/>
+  </HBox>
+  <HBox spacing="10">
+    <Button fx:id="viewCommentsBtn" onMouseClicked="#toggleComments" style="-fx-font-size: 12px;" styleClass="button-secondary" text="View Comments (3)"/>
+    <Button fx:id="addCommentBtn" onMouseClicked="#toggleReply" style="-fx-font-size: 12px;" styleClass="button-secondary" text="Add Comment" visible="false" managed="false"/>
+  </HBox>
+  <VBox fx:id="commentsContainer" spacing="15" styleClass="comments-container" visible="false" managed="false">
+    <HBox fx:id="addCommentBox" spacing="10" styleClass="add-comment-box" visible="false" managed="false">
+      <TextArea fx:id="newCommentInput" prefHeight="60" promptText="Write a comment..." styleClass="comment-input" HBox.hgrow="ALWAYS"/>
+      <Button fx:id="postCommentBtn" onMouseClicked="#addComment" styleClass="button-secondary" text="Post">
+        <HBox.margin>
+          <Insets top="10.0"/>
+        </HBox.margin>
+      </Button>
+    </HBox>
+  </VBox>
+</VBox>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" spacing="8" styleClass="comment-card" fx:controller="com.controllers.SelectedQuestionCommentController">
+  <HBox alignment="CENTER_LEFT" spacing="10">
+    <Label fx:id="author" styleClass="comment-author" text="travisscott" textFill="WHITE"/>
+    <Label fx:id="time" styleClass="comment-time" text="Jan 18, 2026" textFill="#AAAAAA"/>
+    <Pane HBox.hgrow="ALWAYS"/>
+    <HBox alignment="CENTER" spacing="8">
+      <Button fx:id="upvoteBtn" styleClass="icon-button-small" text="▲" textFill="WHITE"/>
+      <Label fx:id="score" styleClass="vote-count-small" text="10" textFill="WHITE"/>
+      <Button fx:id="downvoteBtn" styleClass="icon-button-small" text="▼" textFill="WHITE"/>
+    </HBox>
+  </HBox>
+  <Label fx:id="content" text="Great solution! I like how you used a hash map." textFill="WHITE" wrapText="true"/>
+  <VBox fx:id="commentsContainer" spacing="15" styleClass="comments-container">
+    <HBox fx:id="addCommentBox" spacing="10" styleClass="add-comment-box" visible="false" managed="false">
+      <TextArea fx:id="newCommentInput" prefHeight="60" promptText="Write a comment..." styleClass="comment-input" HBox.hgrow="ALWAYS"/>
+      <Button fx:id="postCommentBtn" onMouseClicked="#addReply" styleClass="button-secondary" text="Post">
+        <HBox.margin>
+          <Insets top="10.0"/>
+        </HBox.margin>
+      </Button>
+    </HBox>
+  </VBox>
+  <Button fx:id="replyBtn" onMouseClicked="#toggleReplyBox" styleClass="button-reply" text="Reply"/>
+</VBox>
