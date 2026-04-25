@@ -95,8 +95,10 @@ public class Question implements Commentable {
 	 *                 [I wanted to add at least somthing if I could.
 	 *                 Sorry in advance if this is like super wrong - EJ]
 	 */
-	public void addSolution(User author, String explanation, String filename) {
-		this.solutions.add(new Solution(author.getId(), explanation, filename));
+	public Solution addSolution(User author, String explanation, String filename, String code) {
+		Solution solution = new Solution(author.getId(), explanation, filename, code);
+		this.solutions.add(solution);
+		return solution;
 	}
 
 	/**

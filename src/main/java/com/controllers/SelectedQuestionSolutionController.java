@@ -18,6 +18,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
 public class SelectedQuestionSolutionController {
 	@FXML
@@ -31,6 +32,8 @@ public class SelectedQuestionSolutionController {
 
 	@FXML
 	private Text code;
+	@FXML
+	private TextFlow codeBlock;
 
 	@FXML
 	private Label author;
@@ -64,11 +67,18 @@ public class SelectedQuestionSolutionController {
 		title.setText("Solution " + i);
 		upvotes.setText(String.valueOf(solution.getScore()));
 		explanation.setText(solution.getExplanation());
+		String codeString = solution.getCode();
+		if (codeString != null && codeString.isEmpty() == false) {
+			code.setText(codeString);
+		} else {
+			codeBlock.setVisible(false);
+			codeBlock.setManaged(false);
+		}
 		verified.setText(solution.isVerified() ? "✓" : "Not" + " Verified");
 
 		ArrayList<Comment> replies = solution.getReplies();
 		replyCount = replies.size();
-		if (replyCount > 0) {
+		if (replyCount > 0 || library.getCurrentUser() != null) {
 			for (Comment reply : replies) {
 				showComment(reply);
 			}

@@ -23,6 +23,7 @@ public abstract class QuestionDataConstants extends DataConstants {
 	protected static final String QUESTION_SOLUTIONS_SCORE = "score";
 	protected static final String QUESTION_SOLUTIONS_FILE = "file";
 	protected static final String QUESTION_SOLUTIONS_EXPLANATION = "explanation";
+	protected static final String QUESTION_SOLUTIONS_CODE = "code";
 	protected static final String QUESTION_SOLUTIONS_VERIFIED = "verified";
 
 	protected static final String QUESTION_COMMENTS = "comments";

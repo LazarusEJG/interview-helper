@@ -11,21 +11,25 @@ import java.util.UUID;
 public class Solution extends Response {
 	private String file;
 	private String explanation;
+	private String code;
 	private boolean verified = false;
 
 	private static final int VERIFICATION_THRESHOLD = 80;
 
-	public Solution(UUID author, String explanation, String filename) {
+	public Solution(UUID author, String explanation, String filename, String code) {
 		super(author);
 		this.explanation = explanation;
+		this.code = code;
 		this.file = filename;
 	}
 
 	public Solution(UUID id, UUID author, LocalDateTime publishTime, int score, String filename, String explanation,
+			String code,
 			boolean verified, ArrayList<Comment> comments) {
 		super(id, author, publishTime, comments, score);
 		this.file = filename;
 		this.explanation = explanation;
+		this.code = code;
 		this.verified = verified;
 	}
 
@@ -59,6 +63,10 @@ public class Solution extends Response {
 		return explanation;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
 	public boolean isVerified() {
 		return verified;
 	}
@@ -82,6 +90,9 @@ public class Solution extends Response {
 			return false;
 		}
 		if (this.explanation.equals(other.explanation) == false) {
+			return false;
+		}
+		if (this.code.equals(other.code) == false) {
 			return false;
 		}
 		if (this.verified != other.verified) {

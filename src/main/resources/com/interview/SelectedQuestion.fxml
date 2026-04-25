@@ -133,7 +133,7 @@
                 <ScrollPane fitToWidth="true" styleClass="comments-scroll">
                   <content>
                     <VBox fx:id="commentsContainer" spacing="15" styleClass="comments-container">
-                      <!-- COMMENT 1 -->
+                      <?ignore <!-- COMMENT 1 -->
                       <VBox fx:id="comment1" spacing="8" styleClass="comment-card">
                         <HBox alignment="CENTER_LEFT" spacing="10">
                           <Label fx:id="comment1Author" styleClass="comment-author" text="travisscott" textFill="WHITE"/>
@@ -177,11 +177,12 @@
                         </HBox>
                         <Label fx:id="comment3Content" text="I do not understand how a hash map can help with this problem" textFill="WHITE" wrapText="true"/>
                         <Button fx:id="comment3ReplyBtn" styleClass="button-reply" text="Reply"/>
-                      </VBox>
+											</VBox>
+											?>
                       <!-- ADD COMMENT -->
                       <HBox fx:id="addCommentBox" spacing="10" styleClass="add-comment-box">
                         <TextArea fx:id="newCommentInput" prefHeight="60" promptText="Write a comment..." styleClass="comment-input" HBox.hgrow="ALWAYS"/>
-                        <Button fx:id="postCommentBtn" styleClass="button-secondary" text="Post">
+                        <Button fx:id="postCommentBtn" onMouseClicked="#postComment" styleClass="button-secondary" text="Post">
                           <HBox.margin>
                             <Insets top="10.0"/>
                           </HBox.margin>
@@ -200,9 +201,14 @@
         <HBox alignment="CENTER_LEFT" styleClass="light-strip">
           <Label styleClass="workspace-label" text="Workspace"/>
         </HBox>
-        <TextArea fx:id="answerTextArea" styleClass="workspace-text-area" wrapText="true" VBox.vgrow="ALWAYS"/>
+        <VBox>
+          <Label text="Explanation" styleClass="section-label-dark"/>
+          <TextArea fx:id="answerTextArea" styleClass="workspace-text-area" wrapText="true" VBox.vgrow="ALWAYS"/>
+          <Label text="Code" styleClass="section-label-dark"/>
+          <TextArea fx:id="answerCodeTextArea" styleClass="workspace-text-area"/>
+        </VBox>
         <HBox spacing="15" styleClass="workspace-buttons">
-          <Button fx:id="submitAnswerBtn" styleClass="button-primary" text="Submit Answer"/>
+          <Button fx:id="submitAnswerBtn" onMouseClicked="#postSolution" styleClass="button-primary" text="Submit Answer"/>
         </HBox>
       </VBox>
     </HBox>

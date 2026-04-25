@@ -21,7 +21,7 @@
   <TextFlow styleClass="solution-text">
     <Text fx:id="explanation" fill="WHITE" text="This solution uses a hash map to store the indices of elements we have seen so far."/>
   </TextFlow>
-  <TextFlow styleClass="code-block">
+  <TextFlow fx:id="codeBlock" styleClass="code-block">
     <Text fx:id="code" fill="WHITE" text="function twoSum(nums, target) {&#10;  const map = new Map();&#10;  for (let i = 0; i &lt; nums.length; i++) {&#10;    const complement = target - nums[i];&#10;    if (map.has(complement)) {&#10;      return [map.get(complement), i];&#10;    }&#10;    map.set(nums[i], i);&#10;  }&#10;  return [];&#10;}"/>
   </TextFlow>
   <HBox spacing="10">

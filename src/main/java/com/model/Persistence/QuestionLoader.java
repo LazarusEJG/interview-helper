@@ -79,13 +79,14 @@ public final class QuestionLoader extends QuestionDataConstants {
 			int score = ((Long) solutionJSON.get(QUESTION_SOLUTIONS_SCORE)).intValue();
 			String filename = (String) solutionJSON.get(QUESTION_SOLUTIONS_FILE);
 			String explanation = (String) solutionJSON.get(QUESTION_SOLUTIONS_EXPLANATION);
+			String code = (String) solutionJSON.get(QUESTION_SOLUTIONS_CODE);
 			boolean verified = ((boolean) solutionJSON.get(QUESTION_SOLUTIONS_VERIFIED));
 
 			// Comments
 			JSONArray commentsJSON = (JSONArray) solutionJSON.get(QUESTION_COMMENTS);
 			ArrayList<Comment> comments = getComments(commentsJSON);
 
-			solutions.add(new Solution(id, author, publishTime, score, filename, explanation, verified, comments));
+			solutions.add(new Solution(id, author, publishTime, score, filename, explanation, code, verified, comments));
 		}
 		return solutions;
 	}

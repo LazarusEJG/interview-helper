@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -31,7 +32,15 @@ public class SelectedQuestionController {
 	@FXML
 	private VBox workspaceContainer;
 	@FXML
+	private TextArea answerTextArea;
+	@FXML
+	private TextArea answerCodeTextArea;
+	@FXML
 	private HBox addCommentBox;
+	@FXML
+	private Button postCommentBtn;
+	@FXML
+	private TextArea newCommentInput;
 
 	@FXML
 	private ScrollPane solutionsScrollPane;
@@ -72,6 +81,10 @@ public class SelectedQuestionController {
 	@FXML
 	private TitledPane commentsPane;
 
+	private Question question;
+	private int commentCount;
+	private int solutionCount;
+
 	public void setData(Question question) throws IOException {
 		InterviewApp library = App.getInterviewApp();
 
@@ -104,36 +117,47 @@ public class SelectedQuestionController {
 		// solutions
 		solutionsContainer.getChildren().clear();
 		ArrayList<Solution> solutions = question.getSolutions();
-		for (int i = 0; i < solutions.size(); i++) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/interview/SelectedQuestionSolution.fxml"));
-
-			Parent root = loader.load();
-			SelectedQuestionSolutionController controller = loader.getController();
-
-			controller.setData(solutions.get(i), i);
-
-			solutionsContainer.getChildren().add(root);
+		solutionCount = solutions.size();
+		for (int i = 0; i < solutionCount; i++) {
+			showSolution(solutions.get(i), i);
 		}
 		// comments
-		commentsContainer.getChildren().clear();
+		// commentsContainer.getChildren().clear();
 		ArrayList<Comment> comments = question.getComments();
-		if (comments.size() > 0) {
-
-			for (int i = 0; i < comments.size(); i++) {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/interview/SelectedQuestionComment.fxml"));
-
-				Parent root = loader.load();
-				SelectedQuestionCommentController controller = loader.getController();
-
-				controller.setData(comments.get(i));
-
-				commentsContainer.getChildren().add(root);
+		commentCount = comments.size();
+		if (commentCount > 0 || library.getCurrentUser() != null) {
+			for (Comment comment : comments) {
+				showComment(comment);
 			}
-			commentsPane.setText("View Comments (" + comments.size() + ")");
+			commentsPane.setText("View Comments (" + commentCount + ")");
 		} else {
 			commentsPane.setVisible(false);
 			commentsPane.setManaged(false);
 		}
+
+		this.question = question;
+	}
+
+	private void showSolution(Solution solution, int i) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/interview/SelectedQuestionSolution.fxml"));
+
+		Parent root = loader.load();
+		SelectedQuestionSolutionController controller = loader.getController();
+
+		controller.setData(solution, i);
+
+		solutionsContainer.getChildren().add(root);
+	}
+
+	private void showComment(Comment comment) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/interview/SelectedQuestionComment.fxml"));
+
+		Parent root = loader.load();
+		SelectedQuestionCommentController controller = loader.getController();
+
+		controller.setData(comment);
+
+		commentsContainer.getChildren().add(root);
 
 	}
 
@@ -178,8 +202,35 @@ public class SelectedQuestionController {
 	}
 
 	@FXML
+	private void postComment() throws IOException {
+		InterviewApp library = App.getInterviewApp();
+
+		Comment reply = library.addComment(question, library.getCurrentUser().getId(), newCommentInput.getText());
+		showComment(reply);
+		commentCount++;
+		commentsPane.setText("View Comments (" + commentCount + ")");
+		newCommentInput.setText("");
+	}
+
+	@FXML
+	private void postSolution() throws IOException {
+		InterviewApp library = App.getInterviewApp();
+		String explanation = answerTextArea.getText();
+		String code = answerCodeTextArea.getText();
+
+		Solution solution = library.addSolution(explanation, null, code);
+
+		showSolution(solution, solutionCount++);
+
+		answerTextArea.setText("");
+		answerCodeTextArea.setText("");
+		// TODO
+	}
+
+	@FXML
 	private void goToLogin() throws IOException {
 		InterviewApp library = App.getInterviewApp();
+
 		User user = library.getCurrentUser();
 		if (user != null) {
 			library.logout();
@@ -191,12 +242,16 @@ public class SelectedQuestionController {
 
 	@FXML
 	void backToHome(MouseEvent event) throws IOException {
+		InterviewApp library = App.getInterviewApp();
 		App.setRoot("Home");
+		library.setCurrentQuestion(null);
 	}
 
 	@FXML
 	private void goToQuestions(MouseEvent event) throws IOException {
+		InterviewApp library = App.getInterviewApp();
 		App.setRoot("QuestionList");
+		library.setCurrentQuestion(null);
 	}
 
 	@FXML
@@ -208,5 +263,6 @@ public class SelectedQuestionController {
 		} else {
 			App.setRoot("Profile");
 		}
+		library.setCurrentQuestion(null);
 	}
 }

@@ -51,6 +51,8 @@ public class QuestionListItemController {
 
 	@FXML
 	public void openQuestion() throws IOException {
+		InterviewApp library = App.getInterviewApp();
+
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/interview/SelectedQuestion.fxml"));
 
 		Parent root = loader.load();
@@ -60,5 +62,7 @@ public class QuestionListItemController {
 
 		Scene scene = title.getScene();
 		scene.setRoot(root);
+
+		library.setCurrentQuestion(question);
 	}
 }

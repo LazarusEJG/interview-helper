@@ -680,7 +680,7 @@
 }
 
 .workspace-text-area .content {
-    -fx-background-color: #2D2D2D;
+    -fx-background-color: #3a3a3a;
 }
 
 .workspace-text-area:focused {

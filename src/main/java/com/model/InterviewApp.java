@@ -200,12 +200,13 @@ public class InterviewApp {
 		return "";
 	}
 
-	public void addSolution(String explanation, String filename) {
+	public Solution addSolution(String explanation, String filename, String code) {
 		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion != null) {
-			currentQuestion.addSolution(currentUser, explanation, filename);
+			return currentQuestion.addSolution(currentUser, explanation, filename, code);
 		}
+		return null;
 	}
 
 	public ArrayList<Solution> getSolutions() {

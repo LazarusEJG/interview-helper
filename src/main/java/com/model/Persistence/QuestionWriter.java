@@ -78,6 +78,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 		solutionJSON.put(QUESTION_SOLUTIONS_SCORE, solution.getScore());
 		solutionJSON.put(QUESTION_SOLUTIONS_FILE, solution.getFile());
 		solutionJSON.put(QUESTION_SOLUTIONS_EXPLANATION, solution.getExplanation());
+		solutionJSON.put(QUESTION_SOLUTIONS_CODE, solution.getCode());
 		solutionJSON.put(QUESTION_SOLUTIONS_VERIFIED, solution.isVerified());
 		// Comments
 		JSONArray comments = new JSONArray();

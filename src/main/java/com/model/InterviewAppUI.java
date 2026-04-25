@@ -421,7 +421,7 @@ public class InterviewAppUI {
 			option = getQuestionField();
 		}
 
-		//library.addQuestion(author, title, content);
+		// library.addQuestion(author, title, content);
 	}
 
 	int getQuestionField() {
@@ -546,7 +546,7 @@ public class InterviewAppUI {
 		System.out.println("Enter the filename:");
 		String filename = keyboard.nextLine();
 
-		library.addSolution(content, filename);
+		library.addSolution(content, filename, null);
 	}
 
 	String multiLineInput() {
