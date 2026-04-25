@@ -100,6 +100,9 @@ public class UserList {
 	}
 
 	public boolean containsUser(String username, String password) {
+		if (username == null || password == null) {
+			return false;
+		}
 		for (User user : users) {
 			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 				return true;
