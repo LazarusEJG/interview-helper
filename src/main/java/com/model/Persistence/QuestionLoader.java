@@ -32,6 +32,7 @@ public final class QuestionLoader extends QuestionDataConstants {
 
 				UUID id = UUID.fromString((String) questionJSON.get(QUESTION_ID));
 				String title = (String) questionJSON.get(QUESTION_TITLE);
+				String description = (String) questionJSON.get(QUESTION_DESCRIPTION);
 				int difficulty = ((Long) questionJSON.get(QUESTION_DIFFICULTY)).intValue();
 				int score = ((Long) questionJSON.get(QUESTION_SCORE)).intValue();
 				String content = (String) questionJSON.get(QUESTION_CONTENT);
@@ -54,8 +55,9 @@ public final class QuestionLoader extends QuestionDataConstants {
 				JSONArray commentsJSON = (JSONArray) questionJSON.get(QUESTION_COMMENTS);
 				ArrayList<Comment> comments = getComments(commentsJSON);
 
-				questions.add(new Question(id, author, content, title, difficulty, categories, solutions, comments, hints,
-						publishTime, score));
+				questions.add(
+						new Question(id, author, description, content, title, difficulty, categories, solutions, comments, hints,
+								publishTime, score));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,13 +79,14 @@ public final class QuestionLoader extends QuestionDataConstants {
 			int score = ((Long) solutionJSON.get(QUESTION_SOLUTIONS_SCORE)).intValue();
 			String filename = (String) solutionJSON.get(QUESTION_SOLUTIONS_FILE);
 			String explanation = (String) solutionJSON.get(QUESTION_SOLUTIONS_EXPLANATION);
+			String code = (String) solutionJSON.get(QUESTION_SOLUTIONS_CODE);
 			boolean verified = ((boolean) solutionJSON.get(QUESTION_SOLUTIONS_VERIFIED));
 
 			// Comments
 			JSONArray commentsJSON = (JSONArray) solutionJSON.get(QUESTION_COMMENTS);
 			ArrayList<Comment> comments = getComments(commentsJSON);
 
-			solutions.add(new Solution(id, author, publishTime, score, filename, explanation, verified, comments));
+			solutions.add(new Solution(id, author, publishTime, score, filename, explanation, code, verified, comments));
 		}
 		return solutions;
 	}

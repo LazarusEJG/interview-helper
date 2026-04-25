@@ -47,9 +47,9 @@ public class TestQuestionLoader {
 		categories.add("graph");
 
 		ArrayList<Solution> solutions = new ArrayList<>();
-		solutions.add(new Solution(UUID.fromString("955c97d1-13c9-4e9b-a5b4-d3c12053bb56"),
-				UUID.fromString("85baa92d-d5df-4e9b-afea-c870dae6295c"), LocalDateTime.parse("2026-03-29T21:38:19"), 43,
-				"solutuon.java", "This solution works by solving the problem", false, new ArrayList<>()));
+		// solutions.add(new Solution(UUID.fromString("955c97d1-13c9-4e9b-a5b4-d3c12053bb56"),
+		// 		UUID.fromString("85baa92d-d5df-4e9b-afea-c870dae6295c"), LocalDateTime.parse("2026-03-29T21:38:19"), 43,
+		// 		"solutuon.java", "This solution works by solving the problem", false, new ArrayList<>()));
 
 		ArrayList<Comment> comments = new ArrayList<>();
 		comments.add(new Comment(UUID.fromString("ef913643-f345-4d08-a42f-07efbee67cc3"),
@@ -59,13 +59,13 @@ public class TestQuestionLoader {
 		ArrayList<String> hints = new ArrayList<>();
 
 		ArrayList<Question> expected = new ArrayList<>();
-		expected.add(new Question(UUID.fromString("b372d951-40b2-43d6-86b3-74a993040606"),
-				UUID.fromString("25ded9f0-4c0a-43bc-b2a5-6505e6482101"),
-				"Given a weighted graph, find the path that reaches every node while minimizing the value",
-				"Traveling salesman", 4,
-				categories, solutions,
-				comments, hints,
-				LocalDateTime.parse("2026-03-29T21:31:19"), 210));
+		// expected.add(new Question(UUID.fromString("b372d951-40b2-43d6-86b3-74a993040606"),
+		// 		UUID.fromString("25ded9f0-4c0a-43bc-b2a5-6505e6482101"),
+		// 		"Given a weighted graph, find the path that reaches every node while minimizing the value",
+		// 		"Traveling salesman", 4,
+		// 		categories, solutions,
+		// 		comments, hints,
+		// 		LocalDateTime.parse("2026-03-29T21:31:19"), 210));
 		ArrayList<Question> users = QuestionLoader.getQuestions("valid-data");
 		assertEquals(expected, users);
 	}

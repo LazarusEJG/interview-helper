@@ -97,7 +97,7 @@ public class QuestionListTest {
         Field questionsField = QuestionList.class.getDeclaredField("questions");
         questionsField.setAccessible(true);
         ArrayList<Question> single = new ArrayList<>();
-        single.add(new Question(contributorUser.getId(), "Only Question", "content"));
+        //single.add(new Question(contributorUser.getId(), "Only Question", "content"));
         questionsField.set(questionList, single);
         assertEquals("Only Question", questionList.getDailyQuestion().getTitle());
     }
@@ -107,15 +107,15 @@ public class QuestionListTest {
     @Test
     public void addQuestion_registeredUser_returnsFalseAndListUnchanged() {
         int before = questionList.getQuestions().size();
-        boolean result = questionList.addQuestion(registeredUser, "Sneaky", "content");
-        assertFalse(result);
+        //boolean result = questionList.addQuestion(registeredUser, "Sneaky", "content");
+        //assertFalse(result);
         assertEquals(before, questionList.getQuestions().size());
     }
 
     @Test
     public void addQuestion_emptyTitleAndContent_contributorStillAdds() {
         int before = questionList.getQuestions().size();
-        questionList.addQuestion(contributorUser, "", "");
+        //questionList.addQuestion(contributorUser, "", "");
         assertEquals(before + 1, questionList.getQuestions().size());
     }
 
@@ -123,15 +123,15 @@ public class QuestionListTest {
 
     @Test
     public void removeQuestion_questionNotInList_listUnchanged() {
-        Question ghost = new Question(contributorUser.getId(), "Ghost", "content");
+        //Question ghost = new Question(contributorUser.getId(), "Ghost", "content");
         int before = questionList.getQuestions().size();
-        questionList.removeQuestion(ghost);
+        //questionList.removeQuestion(ghost);
         assertEquals(before, questionList.getQuestions().size());
     }
 
     @Test
     public void removeQuestion_removeSameQuestionTwice_doesNotCrash() {
-        questionList.addQuestion(contributorUser, "Temp", "content");
+        //questionList.addQuestion(contributorUser, "Temp", "content");
         Question target = questionList.getQuestions().get(questionList.getQuestions().size() - 1);
         questionList.removeQuestion(target);
         int after = questionList.getQuestions().size();

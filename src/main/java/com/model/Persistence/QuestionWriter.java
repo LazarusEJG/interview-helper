@@ -33,6 +33,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 		JSONObject questionJSON = new JSONObject();
 		questionJSON.put(QUESTION_ID, question.getId().toString());
 		questionJSON.put(QUESTION_TITLE, question.getTitle());
+		questionJSON.put(QUESTION_DESCRIPTION, question.getDescription());
 		questionJSON.put(QUESTION_DIFFICULTY, question.getDifficulty());
 		questionJSON.put(QUESTION_SCORE, question.getScore());
 		questionJSON.put(QUESTION_CONTENT, question.getContent());
@@ -77,6 +78,7 @@ public final class QuestionWriter extends QuestionDataConstants {
 		solutionJSON.put(QUESTION_SOLUTIONS_SCORE, solution.getScore());
 		solutionJSON.put(QUESTION_SOLUTIONS_FILE, solution.getFile());
 		solutionJSON.put(QUESTION_SOLUTIONS_EXPLANATION, solution.getExplanation());
+		solutionJSON.put(QUESTION_SOLUTIONS_CODE, solution.getCode());
 		solutionJSON.put(QUESTION_SOLUTIONS_VERIFIED, solution.isVerified());
 		// Comments
 		JSONArray comments = new JSONArray();
@@ -95,6 +97,11 @@ public final class QuestionWriter extends QuestionDataConstants {
 		commentJSON.put(QUESTION_COMMENTS_PUBLISH_TIME, comment.getPublishTime().toString());
 		commentJSON.put(QUESTION_COMMENTS_SCORE, comment.getScore());
 		commentJSON.put(QUESTION_COMMENTS_CONTENT, comment.getContent());
+		JSONArray comments = new JSONArray();
+		for (Comment reply : comment.getReplies()) {
+			comments.add(getCommentJSON(reply));
+		}
+		commentJSON.put(QUESTION_COMMENTS, comments);
 
 		return commentJSON;
 	}

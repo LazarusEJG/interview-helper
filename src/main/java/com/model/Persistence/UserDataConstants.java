@@ -31,4 +31,8 @@ public abstract class UserDataConstants extends DataConstants {
 			return Paths.get(USER_FILE_PATH, USER_FILE_NAME).toString();
 		}
 	}
+
+	protected static String getFilePath() {
+		return Paths.get(USER_FILE_PATH, USER_FILE_NAME).toString();
+	}
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" spacing="10" styleClass="question-box" fx:controller="com.controllers.QuestionListItemController">
+  <Label fx:id="title" styleClass="question-title" text="Two Sum Problem"/>
+  <Label fx:id="text" styleClass="question-text" text="Give an array of integer nums and an integer target, return indicies of the two numbers that add up to that target." wrapText="true"/>
+  <HBox alignment="CENTER_LEFT" spacing="10">
+    <Label fx:id="author" styleClass="question-author" text="By: travisscott"/>
+    <Label fx:id="difficulty" styleClass="question-difficulty" text="Difficulty: 4/5"/>
+  </HBox>
+  <Button fx:id="answerButton" onMouseClicked="#openQuestion" styleClass="answer-button" text="View Answer"/>
+</VBox>

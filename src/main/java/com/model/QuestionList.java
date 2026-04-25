@@ -68,9 +68,10 @@ public class QuestionList {
 	 * @param content The content of the question
 	 * @return True if the method was successful, false otherwise
 	 */
-	public boolean addQuestion(User author, String title, String content) {
+	public boolean addQuestion(User author, String title, String description, String content) {
 		if (author.getType() == UserType.CONTRIBUTOR) {
-			questions.add(new Question(author.getId(), title, content));
+			questions.add(new Question(author.getId(), title, description, content));
+			QuestionWriter.saveQuestions(questions);
 			return true;
 		}
 		return false;
@@ -102,7 +103,7 @@ public class QuestionList {
 	 */
 	public Question getQuestion(UUID id) {
 		for (Question question : questions) {
-			if (question.getId() == id) {
+			if (question.getId().equals(id)) {
 				return question;
 			}
 		}

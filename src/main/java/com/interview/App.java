@@ -15,31 +15,36 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-    private static Scene scene;
-    private static InterviewApp interviewApp = new InterviewApp();
+	private static Scene scene;
+	private static InterviewApp interviewApp = new InterviewApp();
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("Home"), 1200, 800);
-        stage.setScene(scene);
-        stage.show();
-    }
+	@Override
+	public void start(Stage stage) throws IOException {
+		scene = new Scene(loadFXML("Home"), 1200, 800);
+		stage.setScene(scene);
+		stage.show();
+	}
 
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+	@Override
+	public void stop() {
+		interviewApp.close();
+	}
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+	public static void setRoot(String fxml) throws IOException {
+		scene.setRoot(loadFXML(fxml));
+	}
 
-    public static InterviewApp getInterviewApp() {
-        return interviewApp;
-    }
+	private static Parent loadFXML(String fxml) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+		return fxmlLoader.load();
+	}
 
-    public static void main(String[] args) {
-        launch();
-    }
+	public static InterviewApp getInterviewApp() {
+		return interviewApp;
+	}
+
+	public static void main(String[] args) {
+		launch();
+	}
 
 }

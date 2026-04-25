@@ -22,8 +22,8 @@
                <Insets top="10.0" />
             </HBox.margin></Label>
             <Pane HBox.hgrow="ALWAYS" />
-            <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
-            <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
+            <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+            <Button fx:id="SignInButton" onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
         </HBox>
     </top>
 
@@ -32,20 +32,14 @@
         <HBox spacing="40" styleClass="hero-section">
             <VBox spacing="80" styleClass="hero-left">
             <VBox alignment="CENTER_LEFT" spacing="80">
-               <Label style="-fx-text-fill: #000000" styleClass="heading-xl" text="Built to help you Ace Computer Science Interviews" wrapText="true">
-                  <font>
-                     <Font size="24.0" />
-                  </font></Label>
-               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 600; -fx-font-size: 20px; -fx-text-fill: #000000" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true">
-                  <font>
-                     <Font size="24.0" />
-                  </font></Label>
+               <Label style="-fx-text-fill: #000000" styleClass="heading-xl" text="Built to help you Ace Computer Science Interviews" wrapText="true" />
+               <Label prefHeight="67.0" prefWidth="392.0" style="-fx-font-weight: 600; -fx-font-size: 20px; -fx-text-fill: #000000" styleClass="text-muted" text="Level up your confidence with real questions that matter." wrapText="true" />
             </VBox>
                <Pane VBox.vgrow="ALWAYS" />
 
                <HBox spacing="40">
-                    <Button prefHeight="66.0" prefWidth="339.0" style="-fx-font-size: 30px" styleClass="button-primary" text="Browse Questions" />
-                    <Button onAction="#goToLogin" prefHeight="66.0" prefWidth="194.0" style="-fx-font-size: 30px" styleClass="button-secondary" text="Sign In" />
+                    <Button onAction="#goToQuestionList" prefHeight="66.0" prefWidth="339.0" style="-fx-font-size: 30px" styleClass="button-primary" text="Browse Questions" />
+                    <Button fx:id="SignInButton2" onAction="#goToLogin2" prefHeight="66.0" prefWidth="194.0" style="-fx-font-size: 30px" styleClass="button-secondary" text="Sign In" />
                </HBox>
             </VBox>
 

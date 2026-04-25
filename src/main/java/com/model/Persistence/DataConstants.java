@@ -2,7 +2,8 @@ package com.model.Persistence;
 
 public abstract class DataConstants {
 	protected static String getFilePath() {
-		throw new UnsupportedOperationException();
+		return "json/";
+		// throw new UnsupportedOperationException();
 	}
 
 	public static boolean isJUnitTest() {

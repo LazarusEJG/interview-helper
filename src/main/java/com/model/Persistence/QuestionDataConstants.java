@@ -7,6 +7,7 @@ public abstract class QuestionDataConstants extends DataConstants {
 	private static final String QUESTION_FILE_NAME = "questions.json";
 	protected static final String QUESTION_ID = "id";
 	protected static final String QUESTION_TITLE = "title";
+	protected static final String QUESTION_DESCRIPTION = "description";
 	protected static final String QUESTION_DIFFICULTY = "difficulty";
 	protected static final String QUESTION_SCORE = "score";
 	protected static final String QUESTION_CONTENT = "content";
@@ -22,6 +23,7 @@ public abstract class QuestionDataConstants extends DataConstants {
 	protected static final String QUESTION_SOLUTIONS_SCORE = "score";
 	protected static final String QUESTION_SOLUTIONS_FILE = "file";
 	protected static final String QUESTION_SOLUTIONS_EXPLANATION = "explanation";
+	protected static final String QUESTION_SOLUTIONS_CODE = "code";
 	protected static final String QUESTION_SOLUTIONS_VERIFIED = "verified";
 
 	protected static final String QUESTION_COMMENTS = "comments";
@@ -41,5 +43,9 @@ public abstract class QuestionDataConstants extends DataConstants {
 		} else {
 			return Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString();
 		}
+	}
+
+	protected static String getFilePath() {
+		return Paths.get(QUESTION_FILE_PATH, QUESTION_FILE_NAME).toString();
 	}
 }

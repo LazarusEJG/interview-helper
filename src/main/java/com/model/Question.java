@@ -9,6 +9,8 @@ public class Question implements Commentable {
 	private String title;
 	private int difficulty;
 	private int score;
+	private String description;
+
 	private String content;
 	private ArrayList<String> categories;
 	private ArrayList<Solution> solutions;
@@ -23,10 +25,12 @@ public class Question implements Commentable {
 	 * @param author  UUID of the author of the question
 	 * @param content Content of the question
 	 */
-	public Question(UUID author, String title, String content) {
+	public Question(UUID author, String title, String description, String content) {
 		this.author = author;
 		this.title = title;
+		this.description = description;
 		this.content = content;
+		this.difficulty = 1;
 		publishTime = LocalDateTime.now();
 
 		id = UUID.randomUUID();
@@ -51,12 +55,13 @@ public class Question implements Commentable {
 	 * @param publishTime publishtime of the question
 	 * @param score       current score of the question
 	 */
-	public Question(UUID id, UUID author, String content, String title, int difficulty,
+	public Question(UUID id, UUID author, String description, String content, String title, int difficulty,
 			ArrayList<String> categories, ArrayList<Solution> solutions,
 			ArrayList<Comment> comments, ArrayList<String> hints,
 			LocalDateTime publishTime, int score) {
 		this.id = id; // refer to UUID instance variable
 		this.author = author;
+		this.description = description;
 		this.content = content;
 		this.title = title;
 		this.difficulty = difficulty;
@@ -90,8 +95,10 @@ public class Question implements Commentable {
 	 *                 [I wanted to add at least somthing if I could.
 	 *                 Sorry in advance if this is like super wrong - EJ]
 	 */
-	public void addSolution(User author, String explanation, String filename) {
-		this.solutions.add(new Solution(author.getId(), explanation, filename));
+	public Solution addSolution(User author, String explanation, String filename, String code) {
+		Solution solution = new Solution(author.getId(), explanation, filename, code);
+		this.solutions.add(solution);
+		return solution;
 	}
 
 	/**
@@ -164,6 +171,10 @@ public class Question implements Commentable {
 	 */
 	public int getScore() {
 		return score;
+	}
+
+	public String getDescription() {
+		return description;
 	}
 
 	/**
@@ -248,6 +259,9 @@ public class Question implements Commentable {
 		}
 
 		if (this.id.equals(other.id) == false) {
+			return false;
+		}
+		if (this.description.equals(other.description) == false) {
 			return false;
 		}
 		if (this.title.equals(other.title) == false) {

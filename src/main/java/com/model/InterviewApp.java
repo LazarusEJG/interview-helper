@@ -47,7 +47,7 @@ public class InterviewApp {
 		return (currentUser != null);
 	}
 
-	boolean isValidUsername(String username) {
+	public boolean isValidUsername(String username) {
 		boolean hasLetter = false;
 		boolean hasNumber = false;
 
@@ -67,7 +67,7 @@ public class InterviewApp {
 
 	}
 
-	boolean isValidPassword(String password) {
+	public boolean isValidPassword(String password) {
 		boolean hasLetter = false;
 		boolean hasNumber = false;
 		boolean hasSpecial = false;
@@ -91,8 +91,12 @@ public class InterviewApp {
 		return (hasLetter && hasNumber && hasSpecial);
 	}
 
-	boolean isValidEmail(String email) {
+	public boolean isValidEmail(String email) {
 		return EMAIL_PATTERN.matcher(email).find();
+	}
+
+	public Question getQuestionByUUID(UUID id) {
+		return QuestionList.getInstance().getQuestion(id);
 	}
 
 	public boolean containsUser(String username, String password) {
@@ -123,8 +127,12 @@ public class InterviewApp {
 		UserList.getInstance().addUser(eMail, username, password);
 	}
 
-	public void addQuestion(User author, String title, String content) {
-		QuestionList.getInstance().addQuestion(author, title, content);
+	public void addQuestion(User author, String title, String description, String content) {
+		if (title.isEmpty() == false && content.isEmpty() == false)
+			QuestionList.getInstance().addQuestion(author, title, description, content);
+		else {
+			return;
+		}
 	}
 
 	public User getUser(UUID id) {
@@ -196,12 +204,13 @@ public class InterviewApp {
 		return "";
 	}
 
-	public void addSolution(String explanation, String filename) {
+	public Solution addSolution(String explanation, String filename, String code) {
 		Question currentQuestion = QuestionList.getInstance().getCurrentQuestion();
 
 		if (currentQuestion != null) {
-			currentQuestion.addSolution(currentUser, explanation, filename);
+			return currentQuestion.addSolution(currentUser, explanation, filename, code);
 		}
+		return null;
 	}
 
 	public ArrayList<Solution> getSolutions() {
@@ -215,6 +224,17 @@ public class InterviewApp {
 		return solutions != null ? solutions : new ArrayList<>();
 	}
 
+	public Solution getSolutionByUUID(UUID id) {
+		for (Question q : QuestionList.getInstance().getQuestions()) {
+			for (Solution s : q.getSolutions()) {
+				if (s.getId().equals(id)) {
+					return s;
+				}
+			}
+		}
+		return null;
+	}
+
 	// Getter for bookmarked solutions.
 	public ArrayList<UUID> getBookmarkedSolutions() {
 		return currentUser.getBookmarkedSolutions();
@@ -225,8 +245,10 @@ public class InterviewApp {
 		return currentUser.getSubmittedSolutions();
 	}
 
-	public void addComment(Commentable parent, UUID author, String content) {
-		parent.addComment(new Comment(author, content));
+	public Comment addComment(Commentable parent, UUID author, String content) {
+		Comment comment = new Comment(author, content);
+		parent.addComment(comment);
+		return comment;
 	}
 
 	public void report(Response response) {
