@@ -30,6 +30,7 @@ public class Question implements Commentable {
 		this.title = title;
 		this.description = description;
 		this.content = content;
+		this.difficulty = 1;
 		publishTime = LocalDateTime.now();
 
 		id = UUID.randomUUID();

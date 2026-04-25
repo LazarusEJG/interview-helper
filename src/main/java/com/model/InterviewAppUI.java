@@ -421,7 +421,7 @@ public class InterviewAppUI {
 			option = getQuestionField();
 		}
 
-		library.addQuestion(author, title, content);
+		//library.addQuestion(author, title, content);
 	}
 
 	int getQuestionField() {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -16,7 +15,7 @@
     <!-- NAV BAR -->
     <top>
         <HBox spacing="20" styleClass="nav-bar">
-            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper"/>
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper" />
             <Pane HBox.hgrow="ALWAYS" />
             <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
             <Button onMouseClicked="#goToProfile" style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />
@@ -46,18 +45,12 @@
                     
                     <Label styleClass="form-label" text="Content" textFill="WHITE" />
                     <TextArea fx:id="contentArea" promptText="Enter your content here..." styleClass="form-textarea" wrapText="true" VBox.vgrow="ALWAYS" />
+                 <Label fx:id="errorLabel" prefHeight="20.0" prefWidth="330.0" styleClass="error-text" style="-fx-text-fill: red;" text="" />
+               <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0">
+                    <Button fx:id="submitBtn" onAction="#Submit" prefHeight="45.0" prefWidth="321.0" styleClass="button-primary" text="Submit" />
+               </HBox>
                     
                 </VBox>
-                
-                <!-- BOTTOM BUTTONS -->
-                <HBox spacing="15" styleClass="form-buttons">
-                    <Button fx:id="saveBtn" styleClass="button-secondary" text="Save">
-                  <HBox.margin>
-                     <Insets bottom="20.0" left="20.0" />
-                  </HBox.margin></Button>
-                    <Button fx:id="attachmentsBtn" styleClass="button-secondary" text="Attachments" />
-                    <Button fx:id="submitBtn" styleClass="button-primary" text="Submit" />
-                </HBox>
                 
             </VBox>
             

@@ -71,6 +71,7 @@ public class QuestionList {
 	public boolean addQuestion(User author, String title, String description, String content) {
 		if (author.getType() == UserType.CONTRIBUTOR) {
 			questions.add(new Question(author.getId(), title, description, content));
+			QuestionWriter.saveQuestions(questions);
 			return true;
 		}
 		return false;
