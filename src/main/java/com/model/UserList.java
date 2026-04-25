@@ -76,6 +76,12 @@ public class UserList {
 	 * @return whether or not the process of adding a user completed successfully
 	 */
 	public boolean addUser(String eMail, String username, String password) {
+		if (eMail == null || username == null || password == null) {
+			return false;
+		}
+		if (eMail.isEmpty() || username.isEmpty() || password.isEmpty()) {
+			return false;
+		}
 		users.add(new User(eMail, username, password));
 		UserWriter.saveUsers(users);
 		return true; // temporary return statement
