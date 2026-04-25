@@ -128,7 +128,11 @@ public class InterviewApp {
 	}
 
 	public void addQuestion(User author, String title, String description, String content) {
-		QuestionList.getInstance().addQuestion(author, title, description, content);
+		if (title.isEmpty() == false && content.isEmpty() == false)
+			QuestionList.getInstance().addQuestion(author, title, description, content);
+		else {
+			return;
+		}
 	}
 
 	public User getUser(UUID id) {
