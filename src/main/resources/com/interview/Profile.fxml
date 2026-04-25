@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import java.lang.String?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.ScrollPane?>
 
 <BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.ProfileController">
 
     <!--NAV BAR-->
     <top>
         <HBox spacing="20" styleClass="nav-bar">
-            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper" />
+            <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper">
+            <HBox.margin>
+               <Insets top="10.0" />
+            </HBox.margin></Label>
             <Pane HBox.hgrow="ALWAYS" />
             <Button style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
             <Button onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Log Out" />
         </HBox>
     </top>
    <center>
-      <VBox fx:id="rightColumn" spacing="20" alignment="TOP_LEFT" style="-fx-padding: 20;">
+      <VBox fx:id="rightColumn" alignment="TOP_LEFT" spacing="20" style="-fx-padding: 20;">
          <children>
             <ComboBox fx:id="categorySelector" prefWidth="400" styleClass="profile-combo">
                <items>
@@ -43,7 +45,7 @@
                </items>
             </ComboBox>
 
-            <Separator prefWidth="250"/>
+            <Separator prefWidth="250" />
 
             <ScrollPane fitToWidth="true" prefHeight="500">
                <content>
@@ -60,47 +62,47 @@
                <children>
                 <Rectangle arcHeight="8.0" arcWidth="8.0" height="140.0" styleClass="rect-fill" width="530.0" />
                 <VBox alignment="CENTER_LEFT" spacing="6" style="-fx-padding: 0 0 0 20;">
-                  <Label fx:id="welcomeLabel" styleClass="profile-welcome" text="" wrapText="true"/>
+                  <Label fx:id="welcomeLabel" styleClass="profile-welcome" text="" wrapText="true" />
                   <Label fx:id="interestsLabel" styleClass="profile-interests" />
                 </VBox>
                </children>
             </StackPane>
 
-             <StackPane prefHeight="220.0" prefWidth="200.0" alignment="CENTER">
+             <StackPane alignment="CENTER" prefHeight="220.0" prefWidth="200.0">
                <children>
-               <ImageView fx:id="avatarImage" fitWidth="200" fitHeight="200" preserveRatio="false" />
+               <ImageView fx:id="avatarImage" fitHeight="200" fitWidth="200" preserveRatio="false" />
                </children>
             </StackPane>
 
             <StackPane prefHeight="120.0" prefWidth="220.0" styleClass="profile-rect-bottom">
             <children>
                <Rectangle arcHeight="8.0" arcWidth="8.0" height="123.0" styleClass="rect-fill" width="530.0" />
-               <HBox spacing="40" alignment="CENTER" style="-fx-padding: 20;">
+               <HBox alignment="CENTER" spacing="40" style="-fx-padding: 20;">
                   <children>
-                     <VBox spacing="4" alignment="CENTER" prefWidth="125">
-                        <Label text="Received Votes:" styleClass="stat-label" wrapText="true"/>
-                        <Label fx:id="votesLabel" styleClass="stat-value"/>
+                     <VBox alignment="CENTER" prefWidth="125" spacing="4">
+                        <Label styleClass="stat-label" text="Received Votes:" wrapText="true" />
+                        <Label fx:id="votesLabel" styleClass="stat-value" />
                      </VBox>
 
                      <Separator orientation="VERTICAL" />
 
-                     <VBox spacing="4" alignment="CENTER" prefWidth="110">
-                        <Label text="Streak:" styleClass="stat-label" wrapText="true"/>
-                        <Label fx:id="streakLabel" styleClass="stat-value"/>
+                     <VBox alignment="CENTER" prefWidth="110" spacing="4">
+                        <Label styleClass="stat-label" text="Streak:" wrapText="true" />
+                        <Label fx:id="streakLabel" styleClass="stat-value" />
                      </VBox>
 
                      <Separator orientation="VERTICAL" />
 
-                     <VBox spacing="4" alignment="CENTER" prefWidth="120">
-                        <Label text="Longest Streak:" styleClass="stat-label" wrapText="true"/>
-                        <Label fx:id="longestStreakLabel" styleClass="stat-value"/>
+                     <VBox alignment="CENTER" prefWidth="120" spacing="4">
+                        <Label styleClass="stat-label" text="Longest Streak:" wrapText="true" />
+                        <Label fx:id="longestStreakLabel" styleClass="stat-value" />
                      </VBox>
 
                      <Separator orientation="VERTICAL" />
 
-                     <VBox spacing="4" alignment="CENTER" prefWidth="150">
-                        <Label text="last Streak:" styleClass="stat-label" wrapText="true"/>
-                        <Label fx:id="lastStreakLabel" styleClass="stat-value"/>
+                     <VBox alignment="CENTER" prefWidth="150" spacing="4">
+                        <Label styleClass="stat-label" text="last Streak:" wrapText="true" />
+                        <Label fx:id="lastStreakLabel" styleClass="stat-value" />
                      </VBox>
                   </children>
                </HBox>
