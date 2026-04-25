@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
@@ -14,126 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
-<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" prefHeight="700.0" prefWidth="1200.0" styleClass="root" fx:controller="com.controllers.SelectedQuestionController">
-  <!-- NAV BAR -->
-  <top>
-    <HBox spacing="20" styleClass="nav-bar">
-      <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper"/>
-      <Pane HBox.hgrow="ALWAYS"/>
-      <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions"/>
-      <Button onMouseClicked="#goToProfile" style="-fx-font-size: 20px" styleClass="nav-button" text="Profile"/>
-      <Button fx:id="SignInButton" onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In"/>
-    </HBox>
-  </top>
-  <center>
-    <HBox spacing="20" styleClass="split-view" HBox.hgrow="ALWAYS">
-      <!-- LEFT BOX -->
-      <VBox styleClass="dark-box" HBox.hgrow="ALWAYS">
-        <!-- TOP STRIP - TABS & VOTING -->
-        <HBox alignment="CENTER_LEFT" styleClass="light-strip">
-          <HBox spacing="15">
-            <Button fx:id="descriptionBtn" onMouseClicked="#showDescription" styleClass="strip-button-active" text="Description"/>
-            <Button fx:id="solutionsBtn" onMouseClicked="#showSolutions" styleClass="strip-button" text="Solutions"/>
-          </HBox>
-          <Pane HBox.hgrow="ALWAYS"/>
-          <HBox alignment="CENTER" spacing="10">
-            <Button fx:id="bookmarkBtn" styleClass="icon-button" text="🔖"/>
-            <Button fx:id="upvoteBtn" styleClass="icon-button" text="▲"/>
-            <Label fx:id="scoreLabel" styleClass="vote-count" text="100"/>
-            <Button fx:id="downvoteBtn" styleClass="icon-button" text="▼"/>
-          </HBox>
-        </HBox>
-        <!-- DESCRIPTION VIEW -->
-        <ScrollPane fx:id="descriptionScrollPane" fitToWidth="true" styleClass="dark-scroll-pane" VBox.vgrow="ALWAYS">
-          <content>
-            <VBox spacing="15" styleClass="content-area">
-              <Label fx:id="questionTitle" styleClass="question-title-dark" text="Two Sum Problem"/>
-              <Separator styleClass="dark-separator"/>
-              <Label fx:id="questionAuthor" styleClass="question-author-dark" text="By: travisscott"/>
-              <TextFlow styleClass="question-text-dark">
-                <Text fx:id="questionContent" text="Given an array of integers nums and an integer target, return indices of the two numbers that add up to that target."/>
-              </TextFlow>
-              <HBox alignment="CENTER_LEFT" spacing="20">
-                <VBox spacing="5">
-                  <Label styleClass="section-label-dark" text="Categories"/>
-                  <HBox fx:id="categoriesContainer" spacing="10">
-                    <Label styleClass="category-tag" text="arrays"/>
-                    <Label styleClass="category-tag" text="algorithms"/>
-                  </HBox>
-                </VBox>
-                <VBox spacing="5">
-                  <Label styleClass="section-label-dark" text="Difficulty"/>
-                  <Label fx:id="difficultyLabel" styleClass="difficulty-value" text="1/5"/>
-                </VBox>
-              </HBox>
-              <Label fx:id="hintsLabel" styleClass="section-label-dark" text="Hints"/>
-              <VBox fx:id="hintsContainer" spacing="8">
-                <TextFlow styleClass="hint-text">
-                  <Text fill="WHITE" text="💡 Try using a hash map."/>
-                </TextFlow>
-                <TextFlow styleClass="hint-text">
-                  <Text fill="WHITE" text="💡 Consider edge cases."/>
-                </TextFlow>
-              </VBox>
-            </VBox>
-          </content>
-        </ScrollPane>
-        <!-- SOLUTIONS VIEW (hidden by default) -->
-        <ScrollPane fx:id="solutionsScrollPane" fitToWidth="true" managed="false" styleClass="dark-scroll-pane" visible="false" VBox.vgrow="ALWAYS">
-          <content>
-            <VBox fx:id="solutionsContainer" spacing="20" styleClass="content-area">
-              <!-- SOLUTION CARD 1 -->
-              <VBox spacing="10" styleClass="solution-card">
-                <HBox alignment="CENTER_LEFT" spacing="10">
-                  <Label fx:id="solution1Title" styleClass="solution-title" text="Solution 1: Hash Map Approach" textFill="WHITE"/>
-                  <Pane HBox.hgrow="ALWAYS"/>
-                  <Label fx:id="solution1Upvotes" styleClass="solution-upvotes" text="▲ 45" textFill="WHITE"/>
-                </HBox>
-                <Separator styleClass="dark-separator"/>
-                <TextFlow styleClass="solution-text">
-                  <Text fx:id="solution1Explanation" fill="WHITE" text="This solution uses a hash map to store the indices of elements we have seen so far."/>
-                </TextFlow>
-                <TextFlow styleClass="code-block">
-                  <Text fx:id="solution1Code" fill="WHITE" text="function twoSum(nums, target) {&#10;  const map = new Map();&#10;  for (let i = 0; i &lt; nums.length; i++) {&#10;    const complement = target - nums[i];&#10;    if (map.has(complement)) {&#10;      return [map.get(complement), i];&#10;    }&#10;    map.set(nums[i], i);&#10;  }&#10;  return [];&#10;}"/>
-                </TextFlow>
-                <HBox spacing="10">
-                  <Label fx:id="solution1Author" style="-fx-font-size: 11px;" text="By: travisscott" textFill="#AAAAAA"/>
-                  <Label fx:id="solution1Verified" style="-fx-font-size: 11px;" text="✓ Verified" textFill="#4CAF50"/>
-                </HBox>
-                <Button fx:id="solution1ViewCommentsBtn" style="-fx-font-size: 12px;" styleClass="button-secondary" text="View Comments (3)"/>
-              </VBox>
-              <!-- SOLUTION CARD 2 -->
-              <VBox spacing="10" styleClass="solution-card">
-                <HBox alignment="CENTER_LEFT" spacing="10">
-                  <Label fx:id="solution2Title" styleClass="solution-title" text="Solution 2: Brute Force" textFill="WHITE"/>
-                  <Pane HBox.hgrow="ALWAYS"/>
-                  <Label fx:id="solution2Upvotes" styleClass="solution-upvotes" text="▲ 30" textFill="WHITE"/>
-                </HBox>
-                <Separator styleClass="dark-separator"/>
-                <TextFlow styleClass="solution-text">
-                  <Text fx:id="solution2Explanation" fill="WHITE" text="This solution uses a brute-force approach by checking every pair of numbers."/>
-                </TextFlow>
-                <TextFlow styleClass="code-block">
-                  <Text fx:id="solution2Code" fill="WHITE" text="function twoSum(nums, target) {&#10;  for (let i = 0; i &lt; nums.length; i++) {&#10;    for (let j = i + 1; j &lt; nums.length; j++) {&#10;      if (nums[i] + nums[j] === target) {&#10;        return [i, j];&#10;      }&#10;    }&#10;  }&#10;  return [];&#10;}"/>
-                </TextFlow>
-                <HBox spacing="10">
-                  <Label fx:id="solution2Author" style="-fx-font-size: 11px;" text="By: playboicarti" textFill="#AAAAAA"/>
-                  <Label fx:id="solution2Verified" style="-fx-font-size: 11px;" text="Not Verified" textFill="#FF9800"/>
-                </HBox>
-                <Button fx:id="solution2ViewCommentsBtn" style="-fx-font-size: 12px;" styleClass="button-secondary" text="View Comments (2)"/>
-              </VBox>
-            </VBox>
-          </content>
-        </ScrollPane>
-        <!-- COMMENTS ACCORDION -->
-        <Accordion styleClass="comments-accordion">
-          <panes>
-            <TitledPane fx:id="commentsPane" text="Comments (3)">
-              <content>
-                <ScrollPane fitToWidth="true" styleClass="comments-scroll">
-                  <content>
-                    <VBox fx:id="commentsContainer" spacing="15" styleClass="comments-container">
-                      <?ignore <!-- COMMENT 1 -->
+<?ignore <!-- COMMENT 1 -->
                       <VBox fx:id="comment1" spacing="8" styleClass="comment-card">
                         <HBox alignment="CENTER_LEFT" spacing="10">
                           <Label fx:id="comment1Author" styleClass="comment-author" text="travisscott" textFill="WHITE"/>
@@ -179,12 +61,133 @@
                         <Button fx:id="comment3ReplyBtn" styleClass="button-reply" text="Reply"/>
 											</VBox>
 											?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0" styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.SelectedQuestionController">
+  <!-- NAV BAR -->
+  <top>
+    <HBox spacing="20" styleClass="nav-bar">
+      <Label onMouseClicked="#backToHome" styleClass="nav-title" text="Interview Helper" />
+      <Pane HBox.hgrow="ALWAYS" />
+      <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
+      <Button onMouseClicked="#goToProfile" style="-fx-font-size: 20px" styleClass="nav-button" text="Profile" />
+      <Button fx:id="SignInButton" onAction="#goToLogin" style="-fx-font-size: 20px" styleClass="nav-button" text="Sign In" />
+    </HBox>
+  </top>
+  <center>
+    <HBox spacing="20" styleClass="split-view" HBox.hgrow="ALWAYS">
+      <!-- LEFT BOX -->
+      <VBox styleClass="dark-box" HBox.hgrow="ALWAYS">
+        <!-- TOP STRIP - TABS & VOTING -->
+        <HBox alignment="CENTER_LEFT" styleClass="light-strip">
+          <HBox spacing="15">
+            <Button fx:id="descriptionBtn" onMouseClicked="#showDescription" styleClass="strip-button-active" text="Description" />
+            <Button fx:id="solutionsBtn" onMouseClicked="#showSolutions" styleClass="strip-button" text="Solutions" />
+          </HBox>
+          <Pane HBox.hgrow="ALWAYS" />
+          <HBox alignment="CENTER" spacing="10">
+            <Button fx:id="bookmarkBtn" styleClass="icon-button" text="🔖" />
+            <Button fx:id="upvoteBtn" styleClass="icon-button" text="▲" />
+            <Label fx:id="scoreLabel" styleClass="vote-count" text="100" />
+            <Button fx:id="downvoteBtn" styleClass="icon-button" text="▼" />
+          </HBox>
+        </HBox>
+        <!-- DESCRIPTION VIEW -->
+        <ScrollPane fx:id="descriptionScrollPane" fitToWidth="true" styleClass="dark-scroll-pane" VBox.vgrow="ALWAYS">
+          <content>
+            <VBox spacing="15" styleClass="content-area">
+              <Label fx:id="questionTitle" styleClass="question-title-dark" text="Two Sum Problem" />
+              <Separator styleClass="dark-separator" />
+              <Label fx:id="questionAuthor" styleClass="question-author-dark" text="By: travisscott" />
+              <TextFlow styleClass="question-text-dark">
+                <Text fx:id="questionContent" text="Given an array of integers nums and an integer target, return indices of the two numbers that add up to that target." />
+              </TextFlow>
+              <HBox alignment="CENTER_LEFT" spacing="20">
+                <VBox spacing="5">
+                  <Label styleClass="section-label-dark" text="Categories" />
+                  <HBox fx:id="categoriesContainer" spacing="10">
+                    <Label styleClass="category-tag" text="arrays" />
+                    <Label styleClass="category-tag" text="algorithms" />
+                  </HBox>
+                </VBox>
+                <VBox spacing="5">
+                  <Label styleClass="section-label-dark" text="Difficulty" />
+                  <Label fx:id="difficultyLabel" styleClass="difficulty-value" text="1/5" />
+                </VBox>
+              </HBox>
+              <Label fx:id="hintsLabel" styleClass="section-label-dark" text="Hints" />
+              <VBox fx:id="hintsContainer" spacing="8">
+                <TextFlow styleClass="hint-text">
+                  <Text fill="WHITE" text="💡 Try using a hash map." />
+                </TextFlow>
+                <TextFlow styleClass="hint-text">
+                  <Text fill="WHITE" text="💡 Consider edge cases." />
+                </TextFlow>
+              </VBox>
+            </VBox>
+          </content>
+        </ScrollPane>
+        <!-- SOLUTIONS VIEW (hidden by default) -->
+        <ScrollPane fx:id="solutionsScrollPane" fitToWidth="true" managed="false" styleClass="dark-scroll-pane" visible="false" VBox.vgrow="ALWAYS">
+          <content>
+            <VBox fx:id="solutionsContainer" spacing="20" styleClass="content-area">
+              <!-- SOLUTION CARD 1 -->
+              <VBox spacing="10" styleClass="solution-card">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                  <Label fx:id="solution1Title" styleClass="solution-title" text="Solution 1: Hash Map Approach" textFill="WHITE" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label fx:id="solution1Upvotes" styleClass="solution-upvotes" text="▲ 45" textFill="WHITE" />
+                </HBox>
+                <Separator styleClass="dark-separator" />
+                <TextFlow styleClass="solution-text">
+                  <Text fx:id="solution1Explanation" fill="WHITE" text="This solution uses a hash map to store the indices of elements we have seen so far." />
+                </TextFlow>
+                <TextFlow styleClass="code-block">
+                  <Text fx:id="solution1Code" fill="WHITE" text="function twoSum(nums, target) {&#10;  const map = new Map();&#10;  for (let i = 0; i &lt; nums.length; i++) {&#10;    const complement = target - nums[i];&#10;    if (map.has(complement)) {&#10;      return [map.get(complement), i];&#10;    }&#10;    map.set(nums[i], i);&#10;  }&#10;  return [];&#10;}" />
+                </TextFlow>
+                <HBox spacing="10">
+                  <Label fx:id="solution1Author" style="-fx-font-size: 11px;" text="By: travisscott" textFill="#AAAAAA" />
+                  <Label fx:id="solution1Verified" style="-fx-font-size: 11px;" text="✓ Verified" textFill="#4CAF50" />
+                </HBox>
+                <Button fx:id="solution1ViewCommentsBtn" style="-fx-font-size: 12px;" styleClass="button-secondary" text="View Comments (3)" />
+              </VBox>
+              <!-- SOLUTION CARD 2 -->
+              <VBox spacing="10" styleClass="solution-card">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                  <Label fx:id="solution2Title" styleClass="solution-title" text="Solution 2: Brute Force" textFill="WHITE" />
+                  <Pane HBox.hgrow="ALWAYS" />
+                  <Label fx:id="solution2Upvotes" styleClass="solution-upvotes" text="▲ 30" textFill="WHITE" />
+                </HBox>
+                <Separator styleClass="dark-separator" />
+                <TextFlow styleClass="solution-text">
+                  <Text fx:id="solution2Explanation" fill="WHITE" text="This solution uses a brute-force approach by checking every pair of numbers." />
+                </TextFlow>
+                <TextFlow styleClass="code-block">
+                  <Text fx:id="solution2Code" fill="WHITE" text="function twoSum(nums, target) {&#10;  for (let i = 0; i &lt; nums.length; i++) {&#10;    for (let j = i + 1; j &lt; nums.length; j++) {&#10;      if (nums[i] + nums[j] === target) {&#10;        return [i, j];&#10;      }&#10;    }&#10;  }&#10;  return [];&#10;}" />
+                </TextFlow>
+                <HBox spacing="10">
+                  <Label fx:id="solution2Author" style="-fx-font-size: 11px;" text="By: playboicarti" textFill="#AAAAAA" />
+                  <Label fx:id="solution2Verified" style="-fx-font-size: 11px;" text="Not Verified" textFill="#FF9800" />
+                </HBox>
+                <Button fx:id="solution2ViewCommentsBtn" style="-fx-font-size: 12px;" styleClass="button-secondary" text="View Comments (2)" />
+              </VBox>
+            </VBox>
+          </content>
+        </ScrollPane>
+        <!-- COMMENTS ACCORDION -->
+        <Accordion styleClass="comments-accordion">
+          <panes>
+            <TitledPane fx:id="commentsPane" text="Comments (3)">
+              <content>
+                <ScrollPane fitToWidth="true" styleClass="comments-scroll">
+                  <content>
+                    <VBox fx:id="commentsContainer" spacing="15" styleClass="comments-container">
+                      
                       <!-- ADD COMMENT -->
                       <HBox fx:id="addCommentBox" spacing="10" styleClass="add-comment-box">
-                        <TextArea fx:id="newCommentInput" prefHeight="60" promptText="Write a comment..." styleClass="comment-input" HBox.hgrow="ALWAYS"/>
+                        <TextArea fx:id="newCommentInput" prefHeight="60" promptText="Write a comment..." styleClass="comment-input" HBox.hgrow="ALWAYS" />
                         <Button fx:id="postCommentBtn" onMouseClicked="#postComment" styleClass="button-secondary" text="Post">
                           <HBox.margin>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                           </HBox.margin>
                         </Button>
                       </HBox>
@@ -199,21 +202,27 @@
       <!-- RIGHT BOX - WORKSPACE -->
       <VBox fx:id="workspaceContainer" styleClass="dark-box" HBox.hgrow="ALWAYS">
         <HBox alignment="CENTER_LEFT" styleClass="light-strip">
-          <Label styleClass="workspace-label" text="Workspace"/>
+          <Label styleClass="workspace-label" text="Workspace" />
         </HBox>
         <VBox>
-          <Label text="Explanation" styleClass="section-label-dark"/>
-          <TextArea fx:id="answerTextArea" styleClass="workspace-text-area" wrapText="true" VBox.vgrow="ALWAYS"/>
-          <Label text="Code" styleClass="section-label-dark"/>
-          <TextArea fx:id="answerCodeTextArea" styleClass="workspace-text-area"/>
+          <Label styleClass="section-label-dark" text="Explanation">
+                  <VBox.margin>
+                     <Insets left="15.0" />
+                  </VBox.margin></Label>
+          <TextArea fx:id="answerTextArea" styleClass="workspace-text-area" wrapText="true" VBox.vgrow="ALWAYS" />
+          <Label styleClass="section-label-dark" text="Code">
+                  <VBox.margin>
+                     <Insets left="15.0" />
+                  </VBox.margin></Label>
+          <TextArea fx:id="answerCodeTextArea" styleClass="workspace-text-area" />
         </VBox>
         <HBox spacing="15" styleClass="workspace-buttons">
-          <Button fx:id="submitAnswerBtn" onMouseClicked="#postSolution" styleClass="button-primary" text="Submit Answer"/>
+          <Button fx:id="submitAnswerBtn" onMouseClicked="#postSolution" styleClass="button-primary" text="Submit Answer" />
         </HBox>
       </VBox>
     </HBox>
   </center>
   <stylesheets>
-    <URL value="@styles.css"/>
+    <URL value="@styles.css" />
   </stylesheets>
 </BorderPane>
