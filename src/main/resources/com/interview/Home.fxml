@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane styleClass="root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.HomeController">
 
@@ -19,7 +18,7 @@
         <HBox spacing="20" styleClass="nav-bar">
             <Label styleClass="nav-title" text="Interview Helper">
             <HBox.margin>
-               <Insets top="10.0" />
+               <Insets />
             </HBox.margin></Label>
             <Pane HBox.hgrow="ALWAYS" />
             <Button onMouseClicked="#goToQuestions" style="-fx-font-size: 20px" styleClass="nav-button" text="Questions" />
@@ -44,7 +43,7 @@
             </VBox>
 
             <!-- Right Side Image -->
-            <ImageView fitHeight="673.0" fitWidth="1036.0" preserveRatio="true" style="-fx-translate-y: 100; -fx-translate-x: 40;">
+            <ImageView preserveRatio="true" style="-fx-translate-y: 100; -fx-translate-x: 40;">
                 <image>
                     <Image url="@images/hero.png" />
                 </image>
